@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 export default function Footer() {
   return (
     <footer className="bg-card text-card-foreground border-t">
-      <div className="container mx-auto px-4 md:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Column 1: Logo & Social */}
           <div className="flex flex-col gap-4 items-start">
             <Link href="/" className="flex items-center gap-2">
@@ -32,7 +32,7 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="font-headline font-bold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
               <li><Link href="/safaris" className="text-muted-foreground hover:text-primary transition-colors">Safari Packages</Link></li>
@@ -43,7 +43,7 @@ export default function Footer() {
 
           {/* Column 3: Contact Info */}
           <div>
-            <h3 className="font-headline font-bold mb-4">Contact Us</h3>
+            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
             <address className="space-y-2 text-sm not-italic text-muted-foreground">
               <p>Sokoine Road, Arusha, Tanzania</p>
               <p>
@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Column 4: Newsletter */}
           <div>
-            <h3 className="font-headline font-bold mb-4">Newsletter</h3>
+            <h3 className="text-xl font-bold mb-4">Newsletter</h3>
             <p className="text-muted-foreground text-sm mb-4">
               Get safari tips and special offers directly in your inbox.
             </p>

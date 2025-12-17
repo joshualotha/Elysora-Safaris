@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "hero-home-luxury",
+      "description": "A majestic elephant walks across the Serengeti plains at sunset, with Mount Kilimanjaro in the background.",
+      "imageUrl": "https://images.unsplash.com/photo-1547471080-7cc2d5d88e93?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "safari kilimanjaro"
+    },
+    {
       "id": "hero-home",
       "description": "A majestic elephant walks across the Serengeti plains at sunset.",
       "imageUrl": "https://images.unsplash.com/photo-1693045625402-545cf309c5b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzYWZhcmklMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -21,7 +27,7 @@
     {
       "id": "safari-card-3",
       "description": "A giraffe eating leaves from an acacia tree.",
-      "imageUrl": "https://images.unsplash.com/photo-1657298446503-752bc4ebfb40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnaXJhZmZlJTIwd2lsZGxpZmV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1529429617124-95b102e59DF5?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "giraffe wildlife"
     },
     {
@@ -39,7 +45,7 @@
     {
       "id": "destination-serengeti",
       "description": "The vast, open plains of the Serengeti.",
-      "imageUrl": "https://images.unsplash.com/photo-1704699980617-2c6459eee6f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzZXJlbmdldGklMjBwbGFpbnN8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1588981206266-01c82e663559?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "serengeti plains"
     },
     {
@@ -63,7 +69,7 @@
     {
       "id": "destination-zanzibar",
       "description": "A pristine white sand beach in Zanzibar.",
-      "imageUrl": "https://images.unsplash.com/photo-1688807274851-87f0f8a5d39a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8emFuemliYXIlMjBiZWFjaHxlbnwwfHx8fDE3NjU5Nzg2MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1582255590924-4b4f53c9c43a?q=80&w=1974&auto=format&fit=crop",
       "imageHint": "zanzibar beach"
     },
     {
@@ -75,7 +81,7 @@
     {
       "id": "about-hero",
       "description": "A group of friendly safari guides smiling.",
-      "imageUrl": "https://images.unsplash.com/photo-1638237082267-29b237a89ec4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzYWZhcmklMjBndWlkZXN8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1529941544435-5a5dec353c39?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "safari guides"
     },
     {
@@ -105,7 +111,7 @@
     {
       "id": "contact-hero",
       "description": "A safari jeep driving through a river.",
-      "imageUrl": "https://images.unsplash.com/photo-1685222311021-baa54aa3ff23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzYWZhcmklMjBhY3Rpb258ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1628135513689-a3153835f1b5?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "safari action"
     },
     {

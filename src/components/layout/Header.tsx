@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Mountain, Search } from "lucide-react";
+import { Menu, Mountain, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -30,28 +30,29 @@ export default function Header() {
   }, []);
 
   const isHome = pathname === '/';
+  const headerTextColor = isScrolled || !isHome ? 'text-charcoal' : 'text-white';
 
   return (
     <header className={cn(
-        "sticky top-0 z-50 w-full transition-colors duration-300",
-        isScrolled || !isHome ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b" : "bg-transparent",
+        "sticky top-0 z-50 w-full transition-all duration-300",
+        isScrolled ? "bg-white/90 backdrop-blur-lg border-b" : "bg-transparent",
     )}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className={cn(
           "flex items-center gap-2 transition-colors",
-          isScrolled || !isHome ? "text-primary" : "text-white"
+           headerTextColor
         )}>
           <Mountain className="h-8 w-8" />
           <span className="font-headline text-2xl font-bold">Elysora</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6 bg-background/50 backdrop-blur-sm px-6 py-2 rounded-full border border-gray-200/20">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                pathname === link.href ? "text-primary" : (isScrolled || !isHome ? "text-foreground/80" : "text-white")
+                "text-sm font-semibold transition-colors hover:text-primary relative after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full hover:after:left-0",
+                pathname === link.href ? "text-primary after:w-full after:left-0" : headerTextColor
               )}
             >
               {link.label}
@@ -59,24 +60,28 @@ export default function Header() {
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-2">
-           <Button variant="ghost" size="icon" className={cn(isScrolled || !isHome ? "" : "text-white hover:bg-white/10 hover:text-white")}><Search className="h-5 w-5"/></Button>
-           <Button asChild className={cn(isScrolled || !isHome ? "" : "bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20")}>
-            <Link href="/custom-safari">Plan Your Trip</Link>
+           <Button asChild>
+            <Link href="/custom-safari">Book Now</Link>
           </Button>
         </div>
         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="outline" size="icon" className={cn(isScrolled || !isHome ? "" : "bg-transparent border-white/50 text-white hover:bg-white/10 hover:text-white")}>
+            <Button variant="ghost" size="icon" className={cn(headerTextColor, "hover:bg-black/10")}>
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left">
+          <SheetContent side="right" className="bg-ivory w-full p-0">
+             <div className="flex justify-between items-center p-4 border-b">
+                 <Link href="/" className="flex items-center gap-2 text-charcoal" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Mountain className="h-6 w-6 text-primary" />
+                    <span className="font-headline text-xl font-bold">Elysora</span>
+                  </Link>
+                <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                    <X className="h-6 w-6"/>
+                </Button>
+             </div>
             <div className="flex flex-col gap-6 p-6">
-              <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                <Mountain className="h-6 w-6 text-primary" />
-                <span className="font-headline text-xl font-bold">Elysora</span>
-              </Link>
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <Link
@@ -84,18 +89,18 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
-                      "text-lg font-medium transition-colors hover:text-primary",
+                      "text-2xl font-semibold transition-colors hover:text-primary",
                       pathname === link.href
                         ? "text-primary"
-                        : "text-foreground"
+                        : "text-charcoal"
                     )}
                   >
                     {link.label}
                   </Link>
                 ))}
               </nav>
-              <Button asChild size="lg" onClick={() => setIsMobileMenuOpen(false)}>
-                <Link href="/custom-safari">Plan Your Safari</Link>
+              <Button asChild size="lg" className="mt-8" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/custom-safari">Book Your Safari</Link>
               </Button>
             </div>
           </SheetContent>
