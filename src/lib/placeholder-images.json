@@ -1,27 +1,21 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-home-luxury",
+      "id": "hero-home",
       "description": "A majestic elephant walks across the Serengeti plains at sunset, with Mount Kilimanjaro in the background.",
       "imageUrl": "https://images.unsplash.com/photo-1547471080-7cc2d5d88e93?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "safari kilimanjaro"
     },
     {
-      "id": "hero-home",
-      "description": "A majestic elephant walks across the Serengeti plains at sunset.",
-      "imageUrl": "https://images.unsplash.com/photo-1693045625402-545cf309c5b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzYWZhcmklMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "safari landscape"
-    },
-    {
       "id": "safari-card-1",
       "description": "A lion resting under a tree in the Serengeti.",
-      "imageUrl": "https://images.unsplash.com/photo-1547516358-84a69cdda97f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxsaW9uJTIwd2lsZGxpZmV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1589903739535-22b0a992e541?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "lion wildlife"
     },
     {
       "id": "safari-card-2",
       "description": "A herd of zebras grazing in Ngorongoro Crater.",
-      "imageUrl": "https://images.unsplash.com/photo-1707761195908-6a96d50beaed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx6ZWJyYSUyMGhlcmR8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1563914224-383561919598?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "zebra herd"
     },
     {
@@ -39,12 +33,12 @@
     {
       "id": "safari-card-5",
       "description": "A luxurious safari tent under the stars.",
-      "imageUrl": "https://images.unsplash.com/photo-1636297073236-5c01ecaf3dd0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzYWZhcmklMjBjYW1wfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1603525282548-81d39e73d38b?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "safari camp"
     },
     {
       "id": "destination-serengeti",
-      "description": "The vast, open plains of the Serengeti.",
+      "description": "The vast, open plains of the Serengeti with wildebeest.",
       "imageUrl": "https://images.unsplash.com/photo-1588981206266-01c82e663559?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "serengeti plains"
     },
@@ -56,9 +50,9 @@
     },
     {
       "id": "destination-tarangire",
-      "description": "Baobab trees in Tarangire National Park.",
-      "imageUrl": "https://images.unsplash.com/photo-1578203429997-7e508d4bcc86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxiYW9iYWIlMjB0cmVlc3xlbnwwfHx8fDE3NjU5Nzg2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "baobab trees"
+      "description": "Elephants and baobab trees in Tarangire National Park.",
+      "imageUrl": "https://images.unsplash.com/photo-1617936195345-3801a613253c?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "tarangire elephant"
     },
     {
       "id": "destination-manyara",
@@ -68,14 +62,14 @@
     },
     {
       "id": "destination-zanzibar",
-      "description": "A pristine white sand beach in Zanzibar.",
+      "description": "A traditional Dhow boat on a pristine white sand beach in Zanzibar.",
       "imageUrl": "https://images.unsplash.com/photo-1582255590924-4b4f53c9c43a?q=80&w=1974&auto=format&fit=crop",
       "imageHint": "zanzibar beach"
     },
     {
       "id": "destination-kilimanjaro",
-      "description": "Mount Kilimanjaro with its snow-capped peak.",
-      "imageUrl": "https://images.unsplash.com/photo-1535075303792-2c5c8d2aa7f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb3VudCUyMGtpbGltYW5qYXJvfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Mount Kilimanjaro with its snow-capped peak above the clouds.",
+      "imageUrl": "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1974&auto=format&fit=crop",
       "imageHint": "mount kilimanjaro"
     },
     {
@@ -85,6 +79,12 @@
       "imageHint": "safari guides"
     },
     {
+      "id": "community-project",
+      "description": "A smiling child from a local Maasai village.",
+      "imageUrl": "https://images.unsplash.com/photo-1640119259111-acc19f7c38f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYWFzYWklMjBwZW9wbGV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "maasai child"
+    },
+    {
       "id": "team-member-1",
       "description": "Portrait of a safari guide.",
       "imageUrl": "https://images.unsplash.com/photo-1604397616041-684aa2139540?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxndWlkZSUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
@@ -92,15 +92,15 @@
     },
     {
       "id": "team-member-2",
-      "description": "Portrait of another safari guide.",
-      "imageUrl": "https://images.unsplash.com/photo-1661376069661-98cee1ce025b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxndWlkZSUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "guide portrait"
+      "description": "Portrait of a female safari operations manager.",
+      "imageUrl": "https://images.unsplash.com/photo-1594744806629-9a5a491522d4?q=80&w=1964&auto=format&fit=crop",
+      "imageHint": "female guide"
     },
     {
       "id": "team-member-3",
-      "description": "Portrait of a company staff member.",
-      "imageUrl": "https://images.unsplash.com/photo-1644269444230-c6d1f2722e10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzdGFmZiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NTkzMTI5M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "staff portrait"
+      "description": "Portrait of a senior safari guide.",
+      "imageUrl": "https://images.unsplash.com/photo-1661376069661-98cee1ce025b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxndWlkZSUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "guide portrait"
     },
     {
       "id": "tanzania-map",
@@ -117,7 +117,7 @@
     {
       "id": "safari-gallery-1",
       "description": "Cheetah on a rock.",
-      "imageUrl": "https://images.unsplash.com/photo-1638292597251-6fe6b2ba50f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjaGVldGFoJTIwd2lsZGxpZmV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1553531384-411a247ccd73?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "cheetah wildlife"
     },
     {
@@ -129,8 +129,134 @@
     {
       "id": "safari-gallery-3",
       "description": "Maasai people in traditional dress.",
-      "imageUrl": "https://images.unsplash.com/photo-1640119259111-acc19f7c38f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYWFzYWklMjBwZW9wbGV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1529941544435-5a5dec353c39?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "maasai people"
+    },
+    {
+      "id": "blog-hero",
+      "description": "A person writing in a journal with a safari landscape in the background.",
+      "imageUrl": "https://images.unsplash.com/photo-1510153726548-8a735b4304b4?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "safari journal"
+    },
+    {
+      "id": "blog-post-1",
+      "description": "Wildebeest crossing a river during the Great Migration.",
+      "imageUrl": "https://images.unsplash.com/photo-1534996903247-3914a647413a?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "great migration"
+    },
+    {
+      "id": "blog-post-2",
+      "description": "Safari luggage and gear neatly packed.",
+      "imageUrl": "https://images.unsplash.com/photo-1588869209703-99b7aa3a0339?q=80&w=1974&auto=format&fit=crop",
+      "imageHint": "safari luggage"
+    },
+    {
+      "id": "blog-post-3",
+      "description": "A close-up shot of a leopard's face.",
+      "imageUrl": "https://images.unsplash.com/photo-1570489913233-a6f059b5a452?q=80&w=1974&auto=format&fit=crop",
+      "imageHint": "leopard portrait"
+    },
+    {
+      "id": "blog-post-4",
+      "description": "A large herd of elephants in Tarangire National Park.",
+      "imageUrl": "https://images.unsplash.com/photo-1593822765634-1946a3b26b3c?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "elephant herd"
+    },
+    {
+      "id": "planning-hero",
+      "description": "A map of Africa with a compass and binoculars.",
+      "imageUrl": "https://images.unsplash.com/photo-1519974749222-634241604d59?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "safari planning"
+    },
+    {
+      "id": "reviews-hero",
+      "description": "A happy couple on a safari, taking a selfie with giraffes in the background.",
+      "imageUrl": "https://images.unsplash.com/photo-1608303598001-f3c05c141785?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "safari couple"
+    },
+    {
+      "id": "gallery-hero",
+      "description": "A close-up of a camera lens reflecting a safari scene.",
+      "imageUrl": "https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "camera lens"
+    },
+    {
+      "id": "faq-hero",
+      "description": "A safari guide pointing something out to guests.",
+      "imageUrl": "https://images.unsplash.com/photo-1631121592926-b7642af441c5?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "safari guide"
+    },
+    {
+      "id": "conservation-hero",
+      "description": "A baby elephant being cared for by a conservationist.",
+      "imageUrl": "https://images.unsplash.com/photo-1600839598239-8c6444876332?q=80&w=1968&auto=format&fit=crop",
+      "imageHint": "elephant conservation"
+    },
+    {
+      "id": "terms-hero",
+      "description": "A person signing a document with a pen.",
+      "imageUrl": "https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=1964&auto=format&fit=crop",
+      "imageHint": "signing document"
+    },
+    {
+      "id": "privacy-hero",
+      "description": "A lock and key symbolizing data privacy.",
+      "imageUrl": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "data privacy"
+    },
+    {
+      "id": "review-author-1",
+      "description": "Portrait of a couple",
+      "imageUrl": "https://images.unsplash.com/photo-1633460730540-e4029e619db8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3VwbGUlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjU5MTQ3MjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple portrait"
+    },
+    {
+      "id": "review-author-2",
+      "description": "Portrait of a man",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzY1OTQxNDAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "review-author-3",
+      "description": "Portrait of a woman",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NTkwMjk0OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "review-author-4",
+      "description": "Portrait of a family",
+      "imageUrl": "https://images.unsplash.com/photo-1588979355313-6711a095465f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYW1pbHklMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjU4ODMzNTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "family portrait"
+    },
+    {
+      "id": "review-author-5",
+      "description": "Portrait of a woman smiling",
+      "imageUrl": "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d29tYW4lMjBzbWlsaW5nfGVufDB8fHx8MTc2NTk2MjY3MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "partner-tanapa",
+      "description": "TANAPA Logo",
+      "imageUrl": "https://images.unsplash.com/photo-1728406970272-1b68f161df6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0YW5hcGElMjBsb2dvfGVufDB8fHx8MTc2NTk4NjI1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tanapa logo"
+    },
+    {
+      "id": "partner-wwf",
+      "description": "WWF Logo",
+      "imageUrl": "https://images.unsplash.com/photo-1680128371628-57eaf9bc2c4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d3dmJTIwbG9nb3xlbnwwfHx8fDE3NjU5ODYyNTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wwf logo"
+    },
+    {
+      "id": "partner-tnc",
+      "description": "The Nature Conservancy Logo",
+      "imageUrl": "https://images.unsplash.com/photo-1643481437860-22f5a5e8fa58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx0bmMlMjBsb2dvfGVufDB8fHx8MTc2NTk4NjI1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tnc logo"
+    },
+    {
+      "id": "partner-awf",
+      "description": "African Wildlife Foundation Logo",
+      "imageUrl": "https://images.unsplash.com/photo-1653499676737-becf2c9562c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhd2YlMjBsb2dvfGVufDB8fHx8MTc2NTk4NjI1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "awf logo"
     }
   ]
 }

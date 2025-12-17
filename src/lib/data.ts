@@ -40,6 +40,31 @@ export type ValueProposition = {
     description: string;
 }
 
+export type BlogPost = {
+    slug: string;
+    title: string;
+    excerpt: string;
+    image: string;
+    author: string;
+    date: string;
+    readTime: number;
+    category: string;
+}
+
+export type Review = {
+    author: string;
+    country: string;
+    authorImage: string;
+    rating: number;
+    comment: string;
+    safariTaken: string;
+}
+
+export type Faq = {
+    question: string;
+    answer: string;
+}
+
 export const safariPackages: SafariPackage[] = [
   {
     slug: "classic-serengeti-ngorongoro",
@@ -149,12 +174,12 @@ export const safariPackages: SafariPackage[] = [
 ];
 
 export const destinations: Destination[] = [
-  { slug: "serengeti", name: "Serengeti National Park", description: "Home to the Great Migration, the Serengeti's vast plains teem with wildlife.", image: "destination-serengeti", attractions: ["Great Migration", "Big Five", "Hot Air Balloon Safaris"] },
-  { slug: "ngorongoro", name: "Ngorongoro Conservation Area", description: "A self-contained ecosystem within a massive volcanic caldera, often called 'The Garden of Eden'.", image: "destination-ngorongoro", attractions: ["Dense Wildlife Population", "Crater Views", "Maasai Culture"] },
-  { slug: "tarangire", name: "Tarangire National Park", description: "Famous for its huge elephant herds and iconic baobab trees.", image: "destination-tarangire", attractions: ["Elephants", "Baobab Trees", "Bird Watching"] },
-  { slug: "manyara", name: "Lake Manyara National Park", description: "Known for its tree-climbing lions and vast flocks of flamingos.", image: "destination-manyara", attractions: ["Tree-Climbing Lions", "Flamingos", "Diverse Scenery"] },
-  { slug: "zanzibar", name: "Zanzibar Island", description: "An archipelago with a rich history and stunning white-sand beaches.", image: "destination-zanzibar", attractions: ["Beaches", "Stone Town", "Spice Farms"] },
-  { slug: "kilimanjaro", name: "Mount Kilimanjaro", description: "Africa's highest peak and the world's tallest free-standing mountain.", image: "destination-kilimanjaro", attractions: ["Climbing Expeditions", "Stunning Views", "Unique Ecosystems"] },
+  { slug: "serengeti", name: "Serengeti National Park", description: "Home to the Great Migration, the Serengeti's vast plains teem with wildlife, offering arguably the most quintessential African safari experience.", image: "destination-serengeti", attractions: ["Lion", "Leopard", "Elephant", "Zebra"] },
+  { slug: "ngorongoro", name: "Ngorongoro Crater", description: "A self-contained ecosystem within a massive volcanic caldera, often called 'The Garden of Eden' for its density of wildlife.", image: "destination-ngorongoro", attractions: ["Rhino", "Hippo", "Flamingo", "Hyena"] },
+  { slug: "tarangire", name: "Tarangire National Park", description: "Famous for its huge elephant herds that gather along the Tarangire River and the iconic, ancient baobab trees that dot the landscape.", image: "destination-tarangire", attractions: ["Elephant", "Baobab", "Giraffe", "Wildebeest"] },
+  { slug: "manyara", name: "Lake Manyara", description: "Known for its tree-climbing lions, vast flocks of pink flamingos, and diverse scenery ranging from forest to soda lake.", image: "destination-manyara", attractions: ["Tree-climbing Lions", "Flamingo", "Baboon", "Buffalo"] },
+  { slug: "zanzibar", name: "Zanzibar Island", description: "An archipelago with a rich Swahili history, spice-scented air, and stunning white-sand beaches bordering turquoise waters.", image: "destination-zanzibar", attractions: ["Beaches", "Stone Town", "Spice Farms", "Dolphins"] },
+  { slug: "kilimanjaro", name: "Mount Kilimanjaro", description: "Africa's highest peak and the world's tallest free-standing mountain, offering a challenging and rewarding climb through multiple ecosystems.", image: "destination-kilimanjaro", attractions: ["Climbing", "Views", "Glaciers", "Alpine Desert"] },
 ];
 
 export const teamMembers: TeamMember[] = [
@@ -185,4 +210,38 @@ export const whyChooseUs: ValueProposition[] = [
     title: "Responsible Tourism",
     description: "We are committed to preserving Tanzania's natural heritage. We practice sustainable tourism and support local communities."
   }
-]
+];
+
+export const blogPosts: BlogPost[] = [
+    { slug: "serengeti-migration-guide", title: "A Guide to Witnessing the Great Migration in the Serengeti", excerpt: "The Great Migration is one of nature's most awe-inspiring spectacles. Here's how and when to see it.", image: "blog-post-1", author: "Juma Khamis", date: "June 15, 2024", readTime: 8, category: "Safari Tips" },
+    { slug: "packing-for-safari", title: "The Ultimate Safari Packing List: What to Bring to Tanzania", excerpt: "Packing for a safari can be tricky. We've compiled the ultimate list to ensure you're prepared for your adventure.", image: "blog-post-2", author: "Aisha Mchumo", date: "May 22, 2024", readTime: 6, category: "Safari Tips" },
+    { slug: "photographing-the-big-five", title: "Tips for Photographing the Big Five", excerpt: "Capture stunning photos of Africa's most iconic animals with these expert tips from our guides.", image: "blog-post-3", author: "David Molel", date: "April 30, 2024", readTime: 7, category: "Wildlife Spotting" },
+    { slug: "tarangire-hidden-gem", title: "Tarangire: Tanzania's Hidden Gem", excerpt: "Why Tarangire National Park should be on every safari-goer's list, especially for its elephant population.", image: "blog-post-4", author: "Juma Khamis", date: "April 10, 2024", readTime: 5, category: "Destination Guides" }
+];
+
+export const blogCategories: string[] = ["Safari Tips", "Wildlife Spotting", "Destination Guides", "Travel Stories", "Conservation News"];
+
+export const reviews: Review[] = [
+    { author: "Emily & John", country: "USA", authorImage: "review-author-1", rating: 5, comment: "An absolutely magical experience. Juma was an incredible guide, his knowledge was encyclopedic. We saw the Big Five and so much more. The lodges were breathtaking. Couldn't recommend Elysora more!", safariTaken: "Luxury Tanzania Experience" },
+    { author: "Hans Schmidt", country: "Germany", authorImage: "review-author-2", rating: 4.5, comment: "The whole trip was organized perfectly. From the airport pickup to the final drop-off, everything was seamless. The camping was authentic but comfortable. Only downside was the rain on one day, but that's nature!", safariTaken: "Budget Camping Adventure" },
+    { author: "Sophie Dubois", country: "France", authorImage: "review-author-3", rating: 5, comment: "I went on the 10-day safari and Zanzibar trip for my honeymoon and it was the trip of a lifetime. The contrast between the wild Serengeti and the calm beaches of Zanzibar was perfect. Thank you Aisha and team!", safariTaken: "Ultimate Safari & Zanzibar Beach" },
+    { author: "Chen Wei", country: "China", authorImage: "review-author-4", rating: 5, comment: "Our family had an amazing time. The guide was so patient with our children and made it fun for them. We felt safe and well-cared-for throughout. The memories we made are priceless.", safariTaken: "Tanzania Wildlife Explorer" },
+    { author: "Maria Garcia", country: "Spain", authorImage: "review-author-5", rating: 4.5, comment: "Seeing the Ngorongoro Crater was a dream come true. The density of wildlife is unbelievable. The vehicle was comfortable and our guide, David, was fantastic.", safariTaken: "Classic Serengeti & Ngorongoro" },
+];
+
+export const faqs = {
+  "Booking & Payments": [
+    { question: "How do I book a safari?", answer: "You can book by contacting us through our website, email, or phone. We will then send you a detailed itinerary and booking form." },
+    { question: "What is the payment schedule?", answer: "A 30% deposit is required to confirm your booking. The final balance is due 60 days before your safari starts." },
+    { question: "What payment methods do you accept?", answer: "We accept bank transfers and major credit cards (Visa, MasterCard). Please note that credit card payments may incur a small processing fee." }
+  ],
+  "Health & Safety": [
+    { question: "What vaccinations do I need?", answer: "We recommend consulting your doctor for the most up-to-date advice. Common recommendations include Yellow Fever, Tetanus, and Hepatitis A. Anti-malarial medication is also highly recommended." },
+    { question: "Is Tanzania safe for tourists?", answer: "Yes, Tanzania is a very safe country for tourists. We take every precaution to ensure your safety and well-being throughout your trip. Always listen to your guide's instructions, especially concerning wildlife." }
+  ],
+  "On Safari": [
+    { question: "What kind of vehicle will we be in?", answer: "You will be in a 4x4 Toyota Land Cruiser, specially converted for safaris with a pop-up roof for optimal wildlife viewing and photography." },
+    { question: "What is the accommodation like?", answer: "Accommodation varies based on your chosen safari style, ranging from budget-friendly public campsites to luxurious lodges and tented camps with all modern amenities." },
+    { question: "What should I pack?", answer: "We recommend packing lightweight, neutral-colored clothing, a warm jacket for early mornings, comfortable shoes, a hat, sunglasses, sunscreen, insect repellent, and of course, a good camera and binoculars." }
+  ]
+};
