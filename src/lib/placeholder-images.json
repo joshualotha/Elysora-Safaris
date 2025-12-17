@@ -1,3 +1,130 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-home",
+      "description": "A majestic elephant walks across the Serengeti plains at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1693045625402-545cf309c5b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzYWZhcmklMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari landscape"
+    },
+    {
+      "id": "safari-card-1",
+      "description": "A lion resting under a tree in the Serengeti.",
+      "imageUrl": "https://images.unsplash.com/photo-1547516358-84a69cdda97f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxsaW9uJTIwd2lsZGxpZmV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lion wildlife"
+    },
+    {
+      "id": "safari-card-2",
+      "description": "A herd of zebras grazing in Ngorongoro Crater.",
+      "imageUrl": "https://images.unsplash.com/photo-1707761195908-6a96d50beaed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx6ZWJyYSUyMGhlcmR8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "zebra herd"
+    },
+    {
+      "id": "safari-card-3",
+      "description": "A giraffe eating leaves from an acacia tree.",
+      "imageUrl": "https://images.unsplash.com/photo-1657298446503-752bc4ebfb40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnaXJhZmZlJTIwd2lsZGxpZmV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "giraffe wildlife"
+    },
+    {
+      "id": "safari-card-4",
+      "description": "A group of people on a safari in a 4x4 vehicle watching elephants.",
+      "imageUrl": "https://images.unsplash.com/photo-1535940587896-3a4e0ce292f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzYWZhcmklMjB2ZWhpY2xlfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari vehicle"
+    },
+    {
+      "id": "safari-card-5",
+      "description": "A luxurious safari tent under the stars.",
+      "imageUrl": "https://images.unsplash.com/photo-1636297073236-5c01ecaf3dd0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzYWZhcmklMjBjYW1wfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari camp"
+    },
+    {
+      "id": "destination-serengeti",
+      "description": "The vast, open plains of the Serengeti.",
+      "imageUrl": "https://images.unsplash.com/photo-1704699980617-2c6459eee6f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzZXJlbmdldGklMjBwbGFpbnN8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "serengeti plains"
+    },
+    {
+      "id": "destination-ngorongoro",
+      "description": "An aerial view of the Ngorongoro Crater.",
+      "imageUrl": "https://images.unsplash.com/photo-1615209635653-52e675012cdd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxuZ29yb25nb3JvJTIwY3JhdGVyfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ngorongoro crater"
+    },
+    {
+      "id": "destination-tarangire",
+      "description": "Baobab trees in Tarangire National Park.",
+      "imageUrl": "https://images.unsplash.com/photo-1578203429997-7e508d4bcc86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxiYW9iYWIlMjB0cmVlc3xlbnwwfHx8fDE3NjU5Nzg2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "baobab trees"
+    },
+    {
+      "id": "destination-manyara",
+      "description": "Flamingos in Lake Manyara.",
+      "imageUrl": "https://images.unsplash.com/photo-1615917018845-f705f7ec1388?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmbGFtaW5nb3MlMjBsYWtlfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "flamingos lake"
+    },
+    {
+      "id": "destination-zanzibar",
+      "description": "A pristine white sand beach in Zanzibar.",
+      "imageUrl": "https://images.unsplash.com/photo-1688807274851-87f0f8a5d39a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8emFuemliYXIlMjBiZWFjaHxlbnwwfHx8fDE3NjU5Nzg2MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "zanzibar beach"
+    },
+    {
+      "id": "destination-kilimanjaro",
+      "description": "Mount Kilimanjaro with its snow-capped peak.",
+      "imageUrl": "https://images.unsplash.com/photo-1535075303792-2c5c8d2aa7f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb3VudCUyMGtpbGltYW5qYXJvfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mount kilimanjaro"
+    },
+    {
+      "id": "about-hero",
+      "description": "A group of friendly safari guides smiling.",
+      "imageUrl": "https://images.unsplash.com/photo-1638237082267-29b237a89ec4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzYWZhcmklMjBndWlkZXN8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari guides"
+    },
+    {
+      "id": "team-member-1",
+      "description": "Portrait of a safari guide.",
+      "imageUrl": "https://images.unsplash.com/photo-1604397616041-684aa2139540?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxndWlkZSUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "guide portrait"
+    },
+    {
+      "id": "team-member-2",
+      "description": "Portrait of another safari guide.",
+      "imageUrl": "https://images.unsplash.com/photo-1661376069661-98cee1ce025b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxndWlkZSUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "guide portrait"
+    },
+    {
+      "id": "team-member-3",
+      "description": "Portrait of a company staff member.",
+      "imageUrl": "https://images.unsplash.com/photo-1644269444230-c6d1f2722e10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzdGFmZiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NTkzMTI5M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "staff portrait"
+    },
+    {
+      "id": "tanzania-map",
+      "description": "A stylized map of Tanzania showing national parks.",
+      "imageUrl": "https://picsum.photos/seed/117/1200/900",
+      "imageHint": "tanzania map"
+    },
+    {
+      "id": "contact-hero",
+      "description": "A safari jeep driving through a river.",
+      "imageUrl": "https://images.unsplash.com/photo-1685222311021-baa54aa3ff23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzYWZhcmklMjBhY3Rpb258ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari action"
+    },
+    {
+      "id": "safari-gallery-1",
+      "description": "Cheetah on a rock.",
+      "imageUrl": "https://images.unsplash.com/photo-1638292597251-6fe6b2ba50f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjaGVldGFoJTIwd2lsZGxpZmV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cheetah wildlife"
+    },
+    {
+      "id": "safari-gallery-2",
+      "description": "Hippo in the water.",
+      "imageUrl": "https://images.unsplash.com/photo-1574140382911-098171183d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxoaXBwbyUyMHdpbGRsaWZlfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hippo wildlife"
+    },
+    {
+      "id": "safari-gallery-3",
+      "description": "Maasai people in traditional dress.",
+      "imageUrl": "https://images.unsplash.com/photo-1640119259111-acc19f7c38f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYWFzYWklMjBwZW9wbGV8ZW58MHx8fHwxNzY1OTc4NjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "maasai people"
+    }
+  ]
 }
