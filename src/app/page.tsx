@@ -7,6 +7,14 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import SafariCard from "@/components/shared/SafariCard";
 import IconText from "@/components/shared/IconText";
 import PersonalizedRecommendations from "@/components/ai/PersonalizedRecommendations";
+import { ArrowRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(p => p.id === 'hero-home');
@@ -14,32 +22,72 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center">
+      <section className="relative w-full h-[100vh] min-h-[700px] flex items-center justify-center overflow-hidden">
         {heroImage && (
           <Image
-            src={heroImage.imageUrl}
-            alt={heroImage.description}
+            src="https://images.unsplash.com/photo-1525381824767-e0705c519a70?q=80&w=2070&auto=format&fit=crop"
+            alt="Vast desert landscape"
             fill
             className="object-cover object-center"
             priority
-            data-ai-hint={heroImage.imageHint}
+            data-ai-hint="desert landscape"
           />
         )}
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 container mx-auto px-4 md:px-6 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tighter mb-4 text-shadow">
-            Discover the Magic of Tanzania
-          </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-stone-200 mb-8">
-            Experience authentic African safaris with expert local guides
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="font-bold text-base">
-              <Link href="/safaris">Explore Safari Packages</Link>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+        <div className="relative z-10 container mx-auto px-4 md:px-6 h-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-8">
+          <div className="text-center md:text-left text-white max-w-lg">
+            <h1 className="text-6xl md:text-8xl font-headline font-black tracking-tighter mb-4 text-shadow">
+              Africa
+            </h1>
+            <p className="max-w-md mx-auto md:mx-0 text-lg md:text-xl text-stone-200 mb-8">
+              There's nowhere on the planet for wild lands and rich traditions that endure. Prepare to fall in love.
+            </p>
+            <Button asChild size="lg" className="font-bold text-base bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20">
+              <Link href="/custom-safari">Explore <ArrowRight className="ml-2"/></Link>
             </Button>
-            <Button asChild size="lg" variant="secondary" className="font-bold text-base">
-              <Link href="/custom-safari">Plan Your Safari</Link>
-            </Button>
+          </div>
+          <div className="w-full max-w-lg lg:max-w-xl">
+             <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {featuredPackages.map((pkg) => {
+                  const image = PlaceHolderImages.find(p => p.id === pkg.image);
+                  return (
+                     <CarouselItem key={pkg.slug} className="pl-4 basis-2/3 md:basis-1/2">
+                       <div className="p-1">
+                          <Card className="overflow-hidden bg-black/30 backdrop-blur-lg border-white/10 group">
+                            <CardContent className="relative aspect-[3/4] p-0">
+                              {image && (
+                                <Image 
+                                  src={image.imageUrl}
+                                  alt={pkg.name}
+                                  fill
+                                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                  data-ai-hint={image.imageHint}
+                                />
+                              )}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                              <div className="absolute bottom-0 left-0 p-4 text-white">
+                                <h3 className="font-bold text-lg">{pkg.destinations[0]}</h3>
+                                <p className="text-sm text-stone-300">{pkg.name}</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                       </div>
+                    </CarouselItem>
+                  )
+                })}
+              </CarouselContent>
+              <div className="absolute -bottom-12 right-0 flex items-center gap-4">
+                <CarouselPrevious className="static -translate-x-0 -translate-y-0 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"/>
+                <CarouselNext className="static -translate-x-0 -translate-y-0 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"/>
+              </div>
+            </Carousel>
           </div>
         </div>
       </section>
