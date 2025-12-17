@@ -1,10 +1,10 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-home",
-      "description": "A majestic elephant walks across the Serengeti plains at sunset, with Mount Kilimanjaro in the background.",
-      "imageUrl": "https://images.unsplash.com/photo-1547471080-7cc2d5d88e93?q=80&w=2070&auto=format&fit=crop",
-      "imageHint": "safari kilimanjaro"
+      "id": "hero-home-luxury",
+      "description": "A luxury safari tent overlooking a vast savanna at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1532089032488-999b9a65b4e8?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "luxury safari"
     },
     {
       "id": "safari-card-1",

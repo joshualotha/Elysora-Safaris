@@ -37,14 +37,14 @@ export default function Header() {
   return (
     <header className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-white/80 backdrop-blur-lg border-b border-black/5" : "bg-transparent",
+        isScrolled ? "bg-white/90 backdrop-blur-lg border-b border-black/5" : "bg-transparent",
     )}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className={cn(
           "flex items-center gap-2 transition-colors",
            headerTextColor
         )}>
-          <Mountain className="h-8 w-8 text-primary" />
+          <Mountain className="h-8 w-8 text-sahara-gold" />
           <span className="font-headline text-2xl font-bold">Elysora</span>
         </Link>
         <nav className="hidden lg:flex items-center gap-8">
@@ -53,8 +53,8 @@ export default function Header() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-semibold transition-colors hover:text-primary relative after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full hover:after:left-0",
-                pathname.startsWith(link.href) ? "text-primary after:w-full after:left-0" : headerTextColor
+                "text-sm font-semibold transition-colors hover:text-sahara-gold relative after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sahara-gold after:transition-all after:duration-300 hover:after:w-full hover:after:left-0",
+                pathname.startsWith(link.href) ? "text-sahara-gold after:w-full after:left-0" : headerTextColor
               )}
             >
               {link.label}
@@ -76,7 +76,7 @@ export default function Header() {
           <SheetContent side="right" className="bg-ivory w-full sm:max-w-sm p-0">
              <div className="flex justify-between items-center p-4 border-b">
                  <Link href="/" className="flex items-center gap-2 text-charcoal" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Mountain className="h-6 w-6 text-primary" />
+                    <Mountain className="h-6 w-6 text-sahara-gold" />
                     <span className="font-headline text-xl font-bold">Elysora</span>
                   </Link>
                 <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
@@ -91,9 +91,9 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
-                      "text-2xl font-semibold transition-colors hover:text-primary",
+                      "text-2xl font-semibold transition-colors hover:text-sahara-gold",
                       pathname.startsWith(link.href)
-                        ? "text-primary"
+                        ? "text-sahara-gold"
                         : "text-charcoal"
                     )}
                   >
