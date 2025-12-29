@@ -65,6 +65,22 @@ export type Faq = {
     answer: string;
 }
 
+export type HeroCarouselItem = {
+    id: number;
+    title: string;
+    subtitle: string;
+    image: string;
+}
+
+export const heroCarouselItems: HeroCarouselItem[] = [
+    { id: 1, title: "Tanzania", subtitle: "Nowhere like it on the planet for wildlife, wild lands and rich traditions.", image: "hero-home-luxury" },
+    { id: 2, title: "Serengeti", subtitle: "Witness the great migration in the endless plains.", image: "destination-serengeti" },
+    { id: 3, title: "Ngorongoro", subtitle: "Explore the self-contained world of the 'Garden of Eden'.", image: "destination-ngorongoro" },
+    { id: 4, title: "Kilimanjaro", subtitle: "Conquer the roof of Africa.", image: "destination-kilimanjaro" },
+    { id: 5, title: "Zanzibar", subtitle: "Relax on the spice island's pristine beaches.", image: "destination-zanzibar" },
+    { id: 6, title: "Tarangire", subtitle: "Discover the land of giants - elephants and baobabs.", image: "destination-tarangire" },
+];
+
 export const safariPackages: SafariPackage[] = [
   {
     slug: "classic-serengeti-ngorongoro",

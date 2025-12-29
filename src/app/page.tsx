@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { safariPackages, whyChooseUs, destinations, blogPosts } from "@/lib/data";
+import { whyChooseUs, destinations, blogPosts } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import SafariCard from "@/components/shared/SafariCard";
 import IconText from "@/components/shared/IconText";
 import { ArrowRight, MoveRight } from "lucide-react";
 import TestimonialCarousel from "@/components/shared/TestimonialCarousel";
 import { reviews } from "@/lib/data";
-import HeroSafariCarousel from "@/components/shared/HeroSafariCarousel";
+import InteractiveHero from "@/components/shared/InteractiveHero";
 
 
 const TrustStat = ({ value, label }: { value: string; label: string }) => (
@@ -19,46 +19,12 @@ const TrustStat = ({ value, label }: { value: string; label: string }) => (
 );
 
 export default function Home() {
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-home-luxury');
-  const featuredPackages = safariPackages.slice(0, 3);
   const featuredDestinations = destinations.slice(0, 4);
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full h-[100vh] min-h-[700px] flex items-center justify-center overflow-hidden">
-        {heroImage && (
-          <Image
-            src={heroImage.imageUrl}
-            alt={heroImage.description}
-            fill
-            className="object-cover object-center"
-            priority
-            data-ai-hint={heroImage.imageHint}
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
-        
-        <div className="relative z-10 container mx-auto px-4 md:px-6 w-full h-full">
-           <div className="grid md:grid-cols-2 items-center h-full">
-                <div className="text-white text-left">
-                    <h1 className="text-6xl md:text-8xl font-headline font-bold mb-4 text-shadow tracking-tight">
-                        Africa
-                    </h1>
-                    <p className="max-w-md text-lg md:text-xl text-stone-100 mb-8 font-body">
-                        Africa. There's nowhere like it on the planet for wildlife, wild lands and rich traditions that endure. Prepare to fall in love.
-                    </p>
-                    <Button asChild size="lg">
-                        <Link href="/safaris">Explore <MoveRight className="ml-2 h-5 w-5" /></Link>
-                    </Button>
-                </div>
-
-                <div className="relative">
-                    <HeroSafariCarousel safaris={featuredPackages} />
-                </div>
-           </div>
-        </div>
-      </section>
+      <InteractiveHero />
 
       <section id="why-us" className="py-20 md:py-32 bg-ivory">
         <div className="container mx-auto px-4 md:px-6">
