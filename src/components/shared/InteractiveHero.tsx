@@ -108,18 +108,17 @@ export default function InteractiveHero() {
                         <div 
                             key={item.id} 
                             className={cn(
-                                "flex-shrink-0 w-2/3 md:w-[70%] pl-4 transition-all duration-300",
-                                index === 0 && "w-[80%] md:w-[70%]",
-                                index === 1 && "w-[70%] md:w-[60%]",
-                                index === 2 && "w-[60%] md:w-[50%]"
+                                "flex-shrink-0 w-2/3 md:w-1/2 pl-4 transition-all duration-300",
                             )}
                         >
                             <button onClick={() => handleCardClick(item.id)} className="w-full text-left">
                                 <div className={cn(
                                     "relative aspect-[3/4] rounded-2xl overflow-hidden group bg-black/30 backdrop-blur-sm border border-white/20 shadow-2xl transition-all duration-500 ease-in-out",
-                                    index === 0 && "scale-100",
-                                    index === 1 && "scale-90",
-                                    index === 2 && "scale-80"
+                                     {
+                                        'scale-100 opacity-100': index === 0,
+                                        'scale-90 opacity-80': index === 1,
+                                        'scale-80 opacity-60': index === 2,
+                                     }
                                 )}>
                                 {image && (
                                     <Image
