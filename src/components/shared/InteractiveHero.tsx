@@ -13,24 +13,26 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, MoveRight, Star } from "lucide-react";
 
 export default function InteractiveHero() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeItem, setActiveItem] = useState(heroCarouselItems[0]);
+  const [carouselQueue, setCarouselQueue] = useState(heroCarouselItems.slice(1));
+  
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: "start",
     containScroll: "trimSnaps",
   });
 
-  const activeItem = heroCarouselItems[activeIndex];
-  const carouselQueue = heroCarouselItems.filter((item, index) => index !== activeIndex);
   const activeImage = PlaceHolderImages.find(p => p.id === activeItem.image);
 
-  const handleCardClick = (id: number) => {
-    const realIndex = heroCarouselItems.findIndex(item => item.id === id);
-    if (realIndex !== -1) {
-      setActiveIndex(realIndex);
-      emblaApi?.scrollTo(0); 
+  const handleCardClick = useCallback((id: number) => {
+    const clickedItem = carouselQueue.find(item => item.id === id);
+    if (clickedItem) {
+        setActiveItem(clickedItem);
+        setCarouselQueue(prevQueue => [...prevQueue.filter(item => item.id !== id), activeItem]);
+        emblaApi?.scrollTo(0, true);
     }
-  };
+  }, [carouselQueue, activeItem, emblaApi]);
+
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -38,10 +40,12 @@ export default function InteractiveHero() {
 
   const handleNextClick = useCallback(() => {
     if (carouselQueue.length > 0) {
-      const nextItemId = carouselQueue[0].id;
-      handleCardClick(nextItemId);
+      const nextItem = carouselQueue[0];
+      setActiveItem(nextItem);
+      setCarouselQueue(prevQueue => [...prevQueue.slice(1), activeItem]);
+      emblaApi?.scrollTo(0, true);
     }
-  }, [carouselQueue, handleCardClick]);
+  }, [carouselQueue, activeItem, emblaApi]);
 
 
   return (
