@@ -27,8 +27,8 @@ export default function InteractiveHero() {
   const handleCardClick = useCallback((id: number) => {
     const clickedItem = carouselQueue.find(item => item.id === id);
     if (clickedItem) {
-        setActiveItem(clickedItem);
         setCarouselQueue(prevQueue => [...prevQueue.filter(item => item.id !== id), activeItem]);
+        setActiveItem(clickedItem);
         emblaApi?.scrollTo(0, true);
     }
   }, [carouselQueue, activeItem, emblaApi]);
@@ -41,8 +41,8 @@ export default function InteractiveHero() {
   const handleNextClick = useCallback(() => {
     if (carouselQueue.length > 0) {
       const nextItem = carouselQueue[0];
+       setCarouselQueue(prevQueue => [...prevQueue.slice(1), activeItem]);
       setActiveItem(nextItem);
-      setCarouselQueue(prevQueue => [...prevQueue.slice(1), activeItem]);
       emblaApi?.scrollTo(0, true);
     }
   }, [carouselQueue, activeItem, emblaApi]);
@@ -99,15 +99,28 @@ export default function InteractiveHero() {
             </div>
 
             {/* Right side carousel */}
-            <div className="relative">
-                <div className="overflow-hidden" ref={emblaRef}>
+            <div className="relative h-full flex items-center justify-center">
+                <div className="overflow-hidden w-full" ref={emblaRef}>
                     <div className="flex -ml-4">
-                    {carouselQueue.map((item) => {
+                    {carouselQueue.map((item, index) => {
                         const image = PlaceHolderImages.find(p => p.id === item.image);
                         return (
-                        <div key={item.id} className="flex-shrink-0 w-full md:w-[60%] lg:w-[50%] pl-4">
+                        <div 
+                            key={item.id} 
+                            className={cn(
+                                "flex-shrink-0 w-2/3 md:w-[70%] pl-4 transition-all duration-300",
+                                index === 0 && "w-[80%] md:w-[70%]",
+                                index === 1 && "w-[70%] md:w-[60%]",
+                                index === 2 && "w-[60%] md:w-[50%]"
+                            )}
+                        >
                             <button onClick={() => handleCardClick(item.id)} className="w-full text-left">
-                                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden group bg-black/30 backdrop-blur-sm border border-white/20 shadow-2xl transition-all duration-300 hover:border-white/50">
+                                <div className={cn(
+                                    "relative aspect-[3/4] rounded-2xl overflow-hidden group bg-black/30 backdrop-blur-sm border border-white/20 shadow-2xl transition-all duration-500 ease-in-out",
+                                    index === 0 && "scale-100",
+                                    index === 1 && "scale-90",
+                                    index === 2 && "scale-80"
+                                )}>
                                 {image && (
                                     <Image
                                         src={image.imageUrl}
@@ -127,16 +140,16 @@ export default function InteractiveHero() {
                     })}
                     </div>
                 </div>
-                 <div className="absolute -bottom-16 right-0 flex gap-2">
-                    <Button size="icon" variant="outline" className="rounded-full h-12 w-12 bg-white/10 text-white backdrop-blur-sm border-white/20 hover:bg-white/20" onClick={scrollPrev}>
-                        <ArrowLeft className="h-5 w-5"/>
-                    </Button>
-                    <Button size="icon" variant="outline" className="rounded-full h-12 w-12 bg-white/10 text-white backdrop-blur-sm border-white/20 hover:bg-white/20" onClick={handleNextClick}>
-                        <ArrowRight className="h-5 w-5"/>
-                    </Button>
-                </div>
             </div>
+        </div>
 
+         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4">
+            <Button size="icon" variant="outline" className="rounded-full h-12 w-12 bg-white/10 text-white backdrop-blur-sm border-white/20 hover:bg-white/20" onClick={scrollPrev}>
+                <ArrowLeft className="h-5 w-5"/>
+            </Button>
+            <Button size="icon" variant="outline" className="rounded-full h-12 w-12 bg-white/10 text-white backdrop-blur-sm border-white/20 hover:bg-white/20" onClick={handleNextClick}>
+                <ArrowRight className="h-5 w-5"/>
+            </Button>
         </div>
       </div>
     </section>
