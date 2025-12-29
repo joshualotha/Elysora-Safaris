@@ -24,8 +24,8 @@ export default function InteractiveHero() {
   const carouselQueue = heroCarouselItems.filter((item, index) => index !== activeIndex);
   const activeImage = PlaceHolderImages.find(p => p.id === activeItem.image);
 
-  const handleCardClick = (index: number) => {
-    const realIndex = heroCarouselItems.findIndex(item => item.id === index);
+  const handleCardClick = (id: number) => {
+    const realIndex = heroCarouselItems.findIndex(item => item.id === id);
     if (realIndex !== -1) {
       setActiveIndex(realIndex);
       emblaApi?.scrollTo(0); 
@@ -36,9 +36,12 @@ export default function InteractiveHero() {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
 
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+  const handleNextClick = useCallback(() => {
+    if (carouselQueue.length > 0) {
+      const nextItemId = carouselQueue[0].id;
+      handleCardClick(nextItemId);
+    }
+  }, [carouselQueue, handleCardClick]);
 
 
   return (
@@ -124,7 +127,7 @@ export default function InteractiveHero() {
                     <Button size="icon" variant="outline" className="rounded-full h-12 w-12 bg-white/10 text-white backdrop-blur-sm border-white/20 hover:bg-white/20" onClick={scrollPrev}>
                         <ArrowLeft className="h-5 w-5"/>
                     </Button>
-                    <Button size="icon" variant="outline" className="rounded-full h-12 w-12 bg-white/10 text-white backdrop-blur-sm border-white/20 hover:bg-white/20" onClick={scrollNext}>
+                    <Button size="icon" variant="outline" className="rounded-full h-12 w-12 bg-white/10 text-white backdrop-blur-sm border-white/20 hover:bg-white/20" onClick={handleNextClick}>
                         <ArrowRight className="h-5 w-5"/>
                     </Button>
                 </div>
