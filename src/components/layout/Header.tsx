@@ -33,13 +33,14 @@ export default function Header() {
 
   const isHome = pathname === '/';
   const headerTextColor = isScrolled || !isHome ? 'text-charcoal' : 'text-white';
+  const headerBg = isScrolled ? "bg-white/80 backdrop-blur-lg border-b border-black/10" : "bg-transparent";
 
   return (
     <header className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-white/90 backdrop-blur-lg border-b border-black/5" : "bg-transparent",
+        headerBg
     )}>
-      <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
+      <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
         <Link href="/" className={cn(
           "flex items-center gap-2 transition-colors",
            headerTextColor
@@ -74,7 +75,7 @@ export default function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="bg-ivory w-full sm:max-w-sm p-0">
-             <div className="flex justify-between items-center p-4 border-b">
+             <div className="flex justify-between items-center p-6 border-b">
                  <Link href="/" className="flex items-center gap-2 text-charcoal" onClick={() => setIsMobileMenuOpen(false)}>
                     <Mountain className="h-6 w-6 text-sahara-gold" />
                     <span className="font-headline text-xl font-bold">Elysora</span>
