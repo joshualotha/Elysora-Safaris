@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -27,7 +27,7 @@ export default function InteractiveHero() {
   const handleCardClick = useCallback((id: number) => {
     const clickedItem = carouselQueue.find(item => item.id === id);
     if (clickedItem) {
-        setCarouselQueue(prevQueue => [...prevQueue.filter(item => item.id !== id), activeItem]);
+        setCarouselQueue(prevQueue => [...prevQueue.filter(item => item.id !== id), activeItem].sort((a,b) => a.id - b.id));
         setActiveItem(clickedItem);
         emblaApi?.scrollTo(0, true);
     }
@@ -41,7 +41,7 @@ export default function InteractiveHero() {
   const handleNextClick = useCallback(() => {
     if (carouselQueue.length > 0) {
       const nextItem = carouselQueue[0];
-       setCarouselQueue(prevQueue => [...prevQueue.slice(1), activeItem]);
+       setCarouselQueue(prevQueue => [...prevQueue.slice(1), activeItem].sort((a, b) => a.id - b.id));
       setActiveItem(nextItem);
       emblaApi?.scrollTo(0, true);
     }
@@ -118,7 +118,6 @@ export default function InteractiveHero() {
                                         'scale-100 opacity-100': index === 0,
                                         'scale-90 opacity-80': index === 1,
                                         'scale-80 opacity-60': index === 2,
-                                        'scale-70 opacity-40': index === 3,
                                      }
                                 )}>
                                 {image && (
