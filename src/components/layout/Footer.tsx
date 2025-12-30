@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Mountain, Facebook, Instagram, Twitter } from "lucide-react";
+import Image from "next/image";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -11,8 +12,7 @@ export default function Footer() {
           {/* Column 1: Logo & Social */}
           <div className="flex flex-col gap-4 items-start">
             <Link href="/" className="flex items-center gap-2">
-              <Mountain className="h-8 w-8 text-sahara-gold" />
-              <span className="font-headline text-2xl font-bold text-white">Elysora</span>
+              <Image src="/elysora-logo.png" alt="Elysora Logo" width={150} height={150} className="object-contain" />
             </Link>
             <p className="text-sm max-w-xs">
               Experience the magic of Tanzania with authentic African safaris by expert local guides.

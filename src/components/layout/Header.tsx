@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, Mountain, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -37,16 +38,15 @@ export default function Header() {
 
   return (
     <header className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-300",
-        headerBg
+      "fixed top-0 z-50 w-full transition-all duration-300",
+      headerBg
     )}>
-      <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className={cn(
-          "flex items-center gap-2 transition-colors",
-           headerTextColor
+          "relative flex items-center justify-center w-[150px] h-full transition-colors",
+          headerTextColor
         )}>
-          <Mountain className="h-8 w-8 text-sahara-gold" />
-          <span className="font-headline text-2xl font-bold">Elysora</span>
+          <Image src="/elysora-logo.png" alt="Elysora Logo" width={150} height={150} className="object-contain absolute top-2 left-0" />
         </Link>
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
@@ -63,7 +63,7 @@ export default function Header() {
           ))}
         </nav>
         <div className="hidden lg:flex items-center gap-2">
-           <Button asChild>
+          <Button asChild>
             <Link href="/custom-safari">Book Now</Link>
           </Button>
         </div>
@@ -75,15 +75,14 @@ export default function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="bg-ivory w-full sm:max-w-sm p-0">
-             <div className="flex justify-between items-center p-6 border-b">
-                 <Link href="/" className="flex items-center gap-2 text-charcoal" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Mountain className="h-6 w-6 text-sahara-gold" />
-                    <span className="font-headline text-xl font-bold">Elysora</span>
-                  </Link>
-                <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                    <X className="h-6 w-6 text-charcoal"/>
-                </Button>
-             </div>
+            <div className="flex justify-between items-center p-6 border-b">
+              <Link href="/" className="flex items-center gap-2 text-charcoal" onClick={() => setIsMobileMenuOpen(false)}>
+                <Image src="/elysora-logo.png" alt="Elysora Logo" width={80} height={80} className="object-contain" />
+              </Link>
+              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                <X className="h-6 w-6 text-charcoal" />
+              </Button>
+            </div>
             <div className="flex flex-col gap-6 p-6">
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (

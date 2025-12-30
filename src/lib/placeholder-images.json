@@ -3,25 +3,25 @@
     {
       "id": "hero-home-luxury",
       "description": "A luxury safari tent overlooking a vast savanna at sunset.",
-      "imageUrl": "https://images.unsplash.com/photo-1532089032488-999b9a65b4e8?q=80&w=2070&auto=format&fit=crop",
+      "imageUrl": "/tanzania-hero.jpg",
       "imageHint": "luxury safari"
     },
     {
       "id": "safari-card-1",
       "description": "A lion resting under a tree in the Serengeti.",
-      "imageUrl": "https://images.unsplash.com/photo-1589903739535-22b0a992e541?q=80&w=2070&auto=format&fit=crop",
+      "imageUrl": "https://images.unsplash.com/photo-1694694897979-a5fec36566bd?fm=jpg&q=80&w=2070",
       "imageHint": "lion wildlife"
     },
     {
       "id": "safari-card-2",
       "description": "A herd of zebras grazing in Ngorongoro Crater.",
-      "imageUrl": "https://images.unsplash.com/photo-1563914224-383561919598?q=80&w=2070&auto=format&fit=crop",
+      "imageUrl": "https://images.unsplash.com/photo-1707761196118-fc5389f95f56?fm=jpg&q=80&w=2070",
       "imageHint": "zebra herd"
     },
     {
       "id": "safari-card-3",
       "description": "A giraffe eating leaves from an acacia tree.",
-      "imageUrl": "https://images.unsplash.com/photo-1529429617124-95b102e59DF5?q=80&w=2070&auto=format&fit=crop",
+      "imageUrl": "https://images.unsplash.com/photo-1738701243287-df5b46011c2f?fm=jpg&q=80&w=2070",
       "imageHint": "giraffe wildlife"
     },
     {
@@ -33,25 +33,25 @@
     {
       "id": "safari-card-5",
       "description": "A luxurious safari tent under the stars.",
-      "imageUrl": "https://images.unsplash.com/photo-1603525282548-81d39e73d38b?q=80&w=2070&auto=format&fit=crop",
+      "imageUrl": "https://images.unsplash.com/photo-1596790133876-73e292c227d0?fm=jpg&q=80&w=2070",
       "imageHint": "safari camp"
     },
     {
       "id": "destination-serengeti",
       "description": "The vast, open plains of the Serengeti with wildebeest.",
-      "imageUrl": "https://images.unsplash.com/photo-1588981206266-01c82e663559?q=80&w=2070&auto=format&fit=crop",
+      "imageUrl": "/serengeti-hero.jpg",
       "imageHint": "serengeti plains"
     },
     {
       "id": "destination-ngorongoro",
       "description": "An aerial view of the Ngorongoro Crater.",
-      "imageUrl": "https://images.unsplash.com/photo-1615209635653-52e675012cdd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxuZ29yb25nb3JvJTIwY3JhdGVyfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/ngorngoro-hero.jpg",
       "imageHint": "ngorongoro crater"
     },
     {
       "id": "destination-tarangire",
       "description": "Elephants and baobab trees in Tarangire National Park.",
-      "imageUrl": "https://images.unsplash.com/photo-1617936195345-3801a613253c?q=80&w=2070&auto=format&fit=crop",
+      "imageUrl": "/tarangire-hero.jpg",
       "imageHint": "tarangire elephant"
     },
     {
@@ -63,13 +63,13 @@
     {
       "id": "destination-zanzibar",
       "description": "A traditional Dhow boat on a pristine white sand beach in Zanzibar.",
-      "imageUrl": "https://images.unsplash.com/photo-1582255590924-4b4f53c9c43a?q=80&w=1974&auto=format&fit=crop",
+      "imageUrl": "/zanzibar-hero.jpg",
       "imageHint": "zanzibar beach"
     },
     {
       "id": "destination-kilimanjaro",
       "description": "Mount Kilimanjaro with its snow-capped peak above the clouds.",
-      "imageUrl": "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=1974&auto=format&fit=crop",
+      "imageUrl": "/kilimanjaro-hero copy.jpg",
       "imageHint": "mount kilimanjaro"
     },
     {
