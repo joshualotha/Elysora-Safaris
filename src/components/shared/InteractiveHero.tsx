@@ -70,9 +70,9 @@ export default function InteractiveHero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 w-full h-full pointer-events-none">
-        <div className="grid md:grid-cols-2 items-center h-full gap-8">
+        <div className="grid md:grid-cols-2 items-start md:items-center h-full gap-8 pt-32 md:pt-0 md:pb-0">
           {/* Left side content */}
-          <div className="text-white text-left pointer-events-auto">
+          <div className="text-white text-center md:text-left pointer-events-auto">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeItem.id}
@@ -81,10 +81,10 @@ export default function InteractiveHero() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               >
-                <h1 className="text-6xl md:text-8xl font-headline font-bold mb-4 text-shadow tracking-tight">
+                <h1 className="text-4xl md:text-6xl lg:text-8xl font-headline font-bold mb-4 text-shadow tracking-tight">
                   {activeItem.title}
                 </h1>
-                <p className="max-w-md text-lg md:text-xl text-stone-100 mb-8 font-body">
+                <p className="max-w-md mx-auto md:mx-0 text-lg md:text-xl text-stone-100 mb-8 font-body">
                   {activeItem.subtitle}
                 </p>
               </motion.div>
@@ -99,22 +99,33 @@ export default function InteractiveHero() {
       </div>
 
       {/* Right side carousel - Absolute on desktop to touch edge */}
-      <div className="absolute top-0 right-0 h-full w-full md:w-[55%] lg:w-[50%] flex items-center justify-center md:justify-start z-10 pointer-events-none">
+      <div className="absolute bottom-12 md:bottom-auto md:top-0 right-0 w-full md:h-full md:w-[55%] lg:w-[50%] flex items-end md:items-center justify-start z-10 pointer-events-none pb-8 md:pb-0">
         <div className="overflow-hidden w-full pointer-events-auto pl-4 md:pl-0">
-          <div className="flex gap-4 relative items-center">
+          <motion.div
+            className="flex gap-4 relative items-center touch-pan-y"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = offset.x;
+              if (swipe < -50) {
+                handleNextClick();
+              } else if (swipe > 50) {
+                handlePrevClick();
+              }
+            }}
+          >
             <AnimatePresence mode="popLayout" initial={false}>
               {carouselQueue.map((item, index) => {
                 const image = PlaceHolderImages.find(p => p.id === item.image);
 
                 // Determine classes based on index for true smooth resizing
-                // Index 0: Base size (60% mobile, 38% desktop)
-                // Index 1: ~90% size (54% mobile, 34% desktop)
-                // Index 2: ~75% size (45% mobile, 28% desktop)
-                // Index >2: ~50% size (30% mobile, 19% desktop)
-                let widthClass = "w-[60%] md:w-[38%] opacity-100 z-30";
-                if (index === 1) widthClass = "w-[54%] md:w-[34%] opacity-100 z-20";
-                if (index === 2) widthClass = "w-[45%] md:w-[28%] opacity-100 z-10";
-                if (index > 2) widthClass = "w-[30%] md:w-[19%] opacity-0 z-0";
+                // Index 0: Base size (60% mobile -> 45% mobile, 38% desktop)
+                // Index 1: ~90% size
+                let widthClass = "w-[45%] md:w-[38%] opacity-100 z-30";
+                if (index === 1) widthClass = "w-[40%] md:w-[34%] opacity-100 z-20";
+                if (index === 2) widthClass = "w-[35%] md:w-[28%] opacity-100 z-10";
+                if (index > 2) widthClass = "w-[20%] md:w-[19%] opacity-0 z-0";
 
                 return (
                   <motion.div
@@ -152,11 +163,11 @@ export default function InteractiveHero() {
                 );
               })}
             </AnimatePresence>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex gap-4 z-20">
         <Button size="icon" variant="outline" className="rounded-full h-12 w-12 bg-white/10 text-white backdrop-blur-sm border-white/20 hover:bg-white/20" onClick={handlePrevClick}>
           <ArrowLeft className="h-5 w-5" />
         </Button>
