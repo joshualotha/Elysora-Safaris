@@ -37,27 +37,45 @@
       "imageHint": "safari camp"
     },
     {
+      "id": "hero-serengeti",
+      "description": "The vast Serengeti plains for hero carousel.",
+      "imageUrl": "/serengeti-hero.jpg",
+      "imageHint": "serengeti hero"
+    },
+    {
+      "id": "hero-ngorongoro",
+      "description": "Ngorongoro Crater for hero carousel.",
+      "imageUrl": "/ngorngoro-hero.jpg",
+      "imageHint": "ngorongoro hero"
+    },
+    {
+      "id": "hero-tarangire",
+      "description": "Tarangire National Park for hero carousel.",
+      "imageUrl": "/tarangire-hero.jpg",
+      "imageHint": "tarangire hero"
+    },
+    {
       "id": "destination-serengeti",
       "description": "The vast, open plains of the Serengeti with wildebeest.",
-      "imageUrl": "/serengeti-hero.jpg",
+      "imageUrl": "/Discover-Tanzania-serengeti.jpg",
       "imageHint": "serengeti plains"
     },
     {
       "id": "destination-ngorongoro",
       "description": "An aerial view of the Ngorongoro Crater.",
-      "imageUrl": "/ngorngoro-hero.jpg",
+      "imageUrl": "/Discover-Tanzania-ngorongoro.jpg",
       "imageHint": "ngorongoro crater"
     },
     {
       "id": "destination-tarangire",
       "description": "Elephants and baobab trees in Tarangire National Park.",
-      "imageUrl": "/tarangire-hero.jpg",
+      "imageUrl": "/Discover-Tanzania-tarangire.jpg",
       "imageHint": "tarangire elephant"
     },
     {
       "id": "destination-manyara",
       "description": "Flamingos in Lake Manyara.",
-      "imageUrl": "https://images.unsplash.com/photo-1615917018845-f705f7ec1388?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmbGFtaW5nb3MlMjBsYWtlfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/Discover-Tanzania-Manyara.jpg",
       "imageHint": "flamingos lake"
     },
     {
