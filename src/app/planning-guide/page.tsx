@@ -1,8 +1,12 @@
+
+"use client";
+
 import PageHeader from "@/components/shared/PageHeader";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, CloudSun, DollarSign, FerrisWheel, HeartPulse, Luggage, Plane, ShieldCheck } from "lucide-react";
+import { Calendar, CloudSun, DollarSign, FerrisWheel, HeartPulse, Luggage, Plane, ShieldCheck, Sun, Cloud, Briefcase, Camera, FirstAidKit, Map } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const planningSections = [
     { value: "best-time", label: "Best Time to Visit", icon: Calendar },
@@ -11,6 +15,16 @@ const planningSections = [
     { value: "visa-entry", label: "Visa & Entry", icon: Plane },
     { value: "money-matters", label: "Money Matters", icon: DollarSign },
 ];
+
+const TabContentWrapper = ({ children }: { children: React.ReactNode }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
+        {children}
+    </motion.div>
+);
 
 export default function PlanningGuidePage() {
   return (
@@ -35,92 +49,200 @@ export default function PlanningGuidePage() {
 
                     <div className="md:col-span-3">
                         <TabsContent value="best-time">
-                            <Card className="p-8">
-                                <h2 className="text-3xl font-headline font-bold mb-4">Best Time to Visit Tanzania</h2>
-                                <div className="prose max-w-none text-muted-foreground">
-                                    <p>The best time to visit Tanzania depends on what you want to see. The country offers incredible wildlife viewing year-round, but there are distinct seasons.</p>
-                                    
-                                    <h3 className="flex items-center gap-2"><CloudSun className="text-primary"/> Dry Season (June to October)</h3>
-                                    <p>This is the peak season for safaris. The weather is pleasant, and the vegetation is sparse, making wildlife easier to spot as they congregate around rivers and waterholes.</p>
-                                    <ul>
-                                        <li><strong>Great for:</strong> General wildlife viewing, seeing the Great Migration river crossings in the Serengeti (June-July).</li>
-                                        <li><strong>Weather:</strong> Sunny, clear skies, and cooler temperatures.</li>
-                                    </ul>
-                                    
-                                    <h3 className="flex items-center gap-2"><FerrisWheel className="text-primary"/> Green Season (November to May)</h3>
-                                    <p>This season offers lush, green landscapes, fewer crowds, and lower prices. It's a fantastic time for birdwatching and seeing newborn animals.</p>
-                                    <ul>
-                                        <li><strong>Great for:</strong> Birdwatching, photography of vibrant landscapes, seeing the wildebeest calving season in the Southern Serengeti (January-March).</li>
-                                        <li><strong>Weather:</strong> Short rains in Nov/Dec, long rains in April/May. Often sunny periods between showers.</li>
-                                    </ul>
-                                </div>
-                            </Card>
+                            <TabContentWrapper>
+                                <Card className="overflow-hidden">
+                                    <CardHeader className="p-0">
+                                        <div className="relative h-60 w-full">
+                                            <Image src="https://picsum.photos/seed/season/1200/400" alt="Serengeti landscape showing changing seasons" fill className="object-cover" data-ai-hint="serengeti seasons"/>
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                                            <div className="absolute bottom-0 left-0 p-8">
+                                                <h2 className="text-3xl font-headline font-bold text-white text-shadow">Best Time to Visit Tanzania</h2>
+                                            </div>
+                                        </div>
+                                    </CardHeader>
+                                    <CardContent className="p-8">
+                                        <div className="prose max-w-none text-muted-foreground">
+                                            <p className="text-lg">Deciding when to visit Tanzania depends entirely on what you want to see and do. The country's wildlife viewing is excellent year-round, but distinct seasons offer different experiences.</p>
+                                            
+                                            <div className="grid md:grid-cols-2 gap-8 items-center my-8">
+                                                <div className="relative h-64 rounded-lg overflow-hidden">
+                                                    <Image src="https://picsum.photos/seed/dryseason/600/400" alt="Wildebeest at a waterhole during dry season" fill className="object-cover" data-ai-hint="wildebeest waterhole"/>
+                                                </div>
+                                                <div>
+                                                    <h3 className="flex items-center gap-2 font-bold text-xl"><Sun className="text-sahara-gold"/> Dry Season (June to October)</h3>
+                                                    <p>This is the most popular time for a safari. With less vegetation and diminishing water sources, animals congregate around rivers and waterholes, making them easier to spot. The weather is generally sunny and pleasant.</p>
+                                                    <ul>
+                                                        <li><strong>Great Migration:</strong> Witness the dramatic river crossings in the Northern Serengeti (July-August).</li>
+                                                        <li><strong>Wildlife Viewing:</strong> Excellent in all parks, especially Tarangire and Serengeti.</li>
+                                                        <li><strong>Weather:</strong> Clear skies, sunny days, and cool evenings.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div className="grid md:grid-cols-2 gap-8 items-center my-8">
+                                                 <div>
+                                                    <h3 className="flex items-center gap-2 font-bold text-xl"><Cloud className="text-safari-green"/> Green Season (November to May)</h3>
+                                                    <p>The landscape transforms into a lush, green paradise. This season brings newborn animals, spectacular birdwatching, and fewer tourists. While there are rains, they are often short afternoon showers that clear up for sunny skies.</p>
+                                                    <ul>
+                                                        <li><strong>Calving Season:</strong> See thousands of wildebeest give birth in the Southern Serengeti (January-March).</li>
+                                                        <li><strong>Photography:</strong> Dramatic skies and vibrant green landscapes make for stunning photos.</li>
+                                                        <li><strong>Value:</strong> Often lower prices and more availability at lodges.</li>
+                                                    </ul>
+                                                </div>
+                                                <div className="relative h-64 rounded-lg overflow-hidden">
+                                                    <Image src="https://picsum.photos/seed/greenseason/600/400" alt="Zebra with a newborn foal in lush green grass" fill className="object-cover" data-ai-hint="zebra foal"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </TabContentWrapper>
                         </TabsContent>
                          <TabsContent value="what-to-pack">
-                            <Card className="p-8">
-                                <h2 className="text-3xl font-headline font-bold mb-4">Essential Safari Packing List</h2>
-                                <div className="prose max-w-none text-muted-foreground">
-                                    <p>Packing for a safari is all about comfortable, lightweight, and neutral-colored clothing. Layers are key as early mornings can be cool and afternoons warm.</p>
-                                    <h4>Clothing</h4>
-                                    <ul>
-                                        <li>Neutral-colored clothing (khaki, tan, olive green). Avoid bright colors and camouflage.</li>
-                                        <li>Long-sleeved shirts and trousers for sun and insect protection.</li>
-                                        <li>A warm fleece or jacket for early morning and evening game drives.</li>
-                                        <li>Comfortable walking shoes.</li>
-                                        <li>A hat with a wide brim and sunglasses.</li>
-                                    </ul>
-                                    <h4>Gear & Essentials</h4>
-                                    <ul>
-                                        <li>Binoculars (very important!).</li>
-                                        <li>Camera with extra batteries and memory cards.</li>
-                                        <li>A good insect repellent containing DEET.</li>
-                                        <li>Sunscreen (SPF 30+).</li>
-                                        <li>Personal first-aid kit.</li>
-                                    </ul>
-                                </div>
-                            </Card>
+                            <TabContentWrapper>
+                                <Card>
+                                     <CardHeader>
+                                        <CardTitle className="text-3xl font-headline font-bold">Essential Safari Packing List</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-lg text-muted-foreground mb-8">Packing for a safari is all about comfort, practicality, and layers. Neutral colors are best. Avoid bright colors, white, and camouflage patterns.</p>
+                                        <div className="space-y-12">
+                                            <div className="flex items-center gap-8">
+                                                <div className="w-32 h-32 flex-shrink-0 flex items-center justify-center rounded-lg bg-sand">
+                                                    <Briefcase className="w-16 h-16 text-sahara-gold"/>
+                                                </div>
+                                                <div>
+                                                    <h3 className="font-bold text-xl mb-2">Clothing</h3>
+                                                    <ul className="list-disc list-inside text-muted-foreground">
+                                                        <li>Lightweight, neutral-colored shirts (long and short-sleeved)</li>
+                                                        <li>Comfortable trousers and shorts</li>
+                                                        <li>A warm fleece or jacket for cool mornings and evenings</li>
+                                                        <li>Waterproof/windproof jacket</li>
+                                                        <li>Swimsuit for lodges with pools</li>
+                                                        <li>Comfortable, broken-in walking shoes or boots</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                             <div className="flex items-center gap-8">
+                                                <div className="w-32 h-32 flex-shrink-0 flex items-center justify-center rounded-lg bg-sand">
+                                                    <Camera className="w-16 h-16 text-sahara-gold"/>
+                                                </div>
+                                                <div>
+                                                    <h3 className="font-bold text-xl mb-2">Gear & Electronics</h3>
+                                                    <ul className="list-disc list-inside text-muted-foreground">
+                                                        <li>Binoculars (essential!)</li>
+                                                        <li>Camera with extra batteries and memory cards</li>
+                                                        <li>Portable power bank</li>
+                                                        <li>Universal travel adapter</li>
+                                                        <li>Headlamp or small flashlight</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-8">
+                                                <div className="w-32 h-32 flex-shrink-0 flex items-center justify-center rounded-lg bg-sand">
+                                                    <FirstAidKit className="w-16 h-16 text-sahara-gold"/>
+                                                </div>
+                                                <div>
+                                                    <h3 className="font-bold text-xl mb-2">Health & Documents</h3>
+                                                    <ul className="list-disc list-inside text-muted-foreground">
+                                                        <li>Personal first-aid kit (painkillers, plasters, antihistamines)</li>
+                                                        <li>Insect repellent with DEET</li>
+                                                        <li>High-SPF sunscreen and after-sun lotion</li>
+                                                        <li>Passport, visa, and travel insurance documents</li>
+                                                        <li>Copy of flight tickets and itinerary</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </TabContentWrapper>
                         </TabsContent>
                         <TabsContent value="health-safety">
-                            <Card className="p-8">
-                                <h2 className="text-3xl font-headline font-bold mb-4">Health & Safety on Safari</h2>
-                                <div className="prose max-w-none text-muted-foreground">
-                                    <h3 className="flex items-center gap-2"><ShieldCheck className="text-primary"/> Vaccinations & Health</h3>
-                                    <p>Consult your doctor or a travel clinic 4-6 weeks before your departure. Recommended vaccinations often include Yellow Fever (required if coming from a risk area), Tetanus, Diphtheria, and Hepatitis A.</p>
-                                    <p>Malaria is present in many parts of Tanzania. Your doctor will advise on the best anti-malarial medication for you.</p>
+                            <TabContentWrapper>
+                                 <Card>
+                                    <CardHeader>
+                                        <CardTitle className="text-3xl font-headline font-bold">Health & Safety on Safari</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="prose max-w-none text-muted-foreground">
+                                        <p className="text-lg">Your health and safety are our top priorities. Tanzania is a safe country to travel in, and by following some simple guidelines, you can ensure a worry-free adventure.</p>
+                                        
+                                        <h3 className="flex items-center gap-2"><ShieldCheck className="text-primary"/> Medical Preparations</h3>
+                                        <p>We strongly recommend you consult your doctor or a specialized travel clinic 4-6 weeks before your trip to discuss vaccinations and preventative measures.</p>
+                                        <ul>
+                                            <li><strong>Vaccinations:</strong> Your doctor can advise on necessary immunizations. A Yellow Fever certificate is required if you are arriving from a country with risk of yellow fever transmission.</li>
+                                            <li><strong>Malaria:</strong> Malaria is present in Tanzania. Prophylactic medication is highly recommended. Your doctor will prescribe the best option for you.</li>
+                                            <li><strong>Travel Insurance:</strong> Comprehensive travel insurance is mandatory for all our guests. It must cover medical emergencies, evacuation, and trip cancellation.</li>
+                                        </ul>
+                                        
+                                        <div className="relative h-64 rounded-lg overflow-hidden my-8">
+                                            <Image src="https://picsum.photos/seed/guide/800/400" alt="Safari guide pointing something out to guests in a vehicle" fill className="object-cover" data-ai-hint="safari guide"/>
+                                        </div>
 
-                                    <h3 className="flex items-center gap-2"><ShieldCheck className="text-primary"/> Safety</h3>
-                                    <p>Tanzania is a safe country for tourists. On safari, your most important guide is your guide! Always listen to their instructions, especially regarding wildlife. Do not leave your vehicle on game drives except in designated areas, and don't walk around unescorted at your lodge at night.</p>
-                                </div>
-                            </Card>
+                                        <h3 className="flex items-center gap-2"><ShieldCheck className="text-primary"/> On-Safari Safety</h3>
+                                        <ul>
+                                            <li><strong>Listen to Your Guide:</strong> Your professional guide is an expert in animal behavior and safety protocols. Their instructions are for your protection.</li>
+                                            <li><strong>Stay in the Vehicle:</strong> Do not exit the safari vehicle during game drives, except in designated picnic or restroom areas.</li>
+                                            <li><strong>Respect Wildlife:</strong> Maintain a safe distance from animals and avoid making loud noises that could startle them. Never attempt to feed any wildlife.</li>
+                                            <li><strong>At Camp/Lodge:</strong> Wildlife can and does wander through unfenced camps. Do not walk alone at night; always request an escort from a staff member.</li>
+                                            <li><strong>Hydration:</strong> Drink plenty of bottled water to stay hydrated in the African sun. We provide unlimited water in our vehicles.</li>
+                                        </ul>
+                                    </CardContent>
+                                </Card>
+                            </TabContentWrapper>
                         </TabsContent>
                         <TabsContent value="visa-entry">
-                            <Card className="p-8">
-                                <h2 className="text-3xl font-headline font-bold mb-4">Visa & Entry Requirements</h2>
-                                <div className="prose max-w-none text-muted-foreground">
-                                    <p>Most nationalities require a tourist visa to enter Tanzania. It's recommended to apply for an e-visa online in advance to save time at the airport.</p>
-                                    <ul>
-                                        <li>Your passport must be valid for at least six months from your date of entry.</li>
-                                        <li>The standard tourist visa is typically valid for 90 days.</li>
-                                        <li>Check the official Tanzania Immigration website for the most up-to-date information and to apply for your e-visa.</li>
-                                    </ul>
-                                </div>
-                            </Card>
+                             <TabContentWrapper>
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle className="text-3xl font-headline font-bold">Visa & Entry Requirements</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="prose max-w-none text-muted-foreground">
+                                        <div className="grid md:grid-cols-2 gap-8 items-center">
+                                            <div>
+                                                <p>Most travelers require a tourist visa to enter Tanzania. The process is straightforward, but it's essential to prepare in advance.</p>
+                                                <ul>
+                                                    <li><strong>Passport Validity:</strong> Your passport must be valid for at least six months from your intended date of entry into Tanzania. It must also have at least two blank pages.</li>
+                                                    <li><strong>E-Visa Recommended:</strong> To streamline your arrival, we highly recommend applying for an e-visa online through the official Tanzania Immigration Services website before you travel.</li>
+                                                    <li><strong>Visa on Arrival:</strong> While possible for some nationalities, getting a visa on arrival can involve long queues. The e-visa is the preferred method.</li>
+                                                    <li><strong>Cost:</strong> A standard single-entry tourist visa typically costs $50 USD for most nationalities, or $100 USD for US citizens.</li>
+                                                </ul>
+                                            </div>
+                                            <div className="relative h-80 rounded-lg overflow-hidden">
+                                                <Image src="https://picsum.photos/seed/passport/600/800" alt="Passport and flight tickets" fill className="object-cover" data-ai-hint="passport tickets"/>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </TabContentWrapper>
                         </TabsContent>
                         <TabsContent value="money-matters">
-                            <Card className="p-8">
-                                <h2 className="text-3xl font-headline font-bold mb-4">Money Matters in Tanzania</h2>
-                                <div className="prose max-w-none text-muted-foreground">
-                                    <p>The official currency is the Tanzanian Shilling (TZS), but US Dollars (USD) are widely accepted, especially in tourist areas and for safari payments. Bills should be printed in 2009 or later.</p>
-                                    <h4>Tipping</h4>
-                                    <p>Tipping is customary and greatly appreciated. A general guideline is:</p>
-                                    <ul>
-                                        <li><strong>Safari Guide:</strong> $10-15 per person, per day.</li>
-                                        <li><strong>Lodge/Camp Staff:</strong> $10-15 per group, per day (usually placed in a communal tip box).</li>
-                                    </ul>
-                                     <h4>Credit Cards & ATMs</h4>
-                                    <p>Credit cards are accepted at larger hotels and lodges but often incur a surcharge. ATMs are available in major cities like Arusha and Stone Town, but can be unreliable. It's best to carry a mix of USD cash and have a credit/debit card for backup.</p>
-                                </div>
-                            </Card>
+                            <TabContentWrapper>
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle className="text-3xl font-headline font-bold">Money Matters in Tanzania</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="prose max-w-none text-muted-foreground">
+                                        <h3 className="flex items-center gap-2"><DollarSign className="text-primary"/> Currency</h3>
+                                        <p>The official currency is the <strong>Tanzanian Shilling (TZS)</strong>. However, <strong>US Dollars (USD)</strong> are widely accepted in all tourist areas, lodges, and for park fees. It's best to carry USD notes that are printed in 2009 or later, as older bills are often not accepted.</p>
+                                        
+                                        <h3 className="flex items-center gap-2"><HeartPulse className="text-primary"/> Tipping</h3>
+                                        <p>Tipping is not mandatory but is a customary way to show appreciation for good service. It is a significant part of the income for many in the service industry. Here are some general guidelines:</p>
+                                        <ul>
+                                            <li><strong>Safari Guide/Driver:</strong> $10 - $15 USD per person, per day.</li>
+                                            <li><strong>Lodge/Camp Staff:</strong> Use the communal "tip box" often found at reception. We recommend $10 - $20 USD per group, per day.</li>
+                                            <li><strong>Porters & Hotel Staff:</strong> $1 - $2 USD for carrying luggage.</li>
+                                        </ul>
+
+                                         <div className="relative h-64 rounded-lg overflow-hidden my-8">
+                                            <Image src="https://picsum.photos/seed/money/800/400" alt="Tanzanian Shillings and US Dollars" fill className="object-cover" data-ai-hint="tanzania money"/>
+                                        </div>
+
+                                        <h3 className="flex items-center gap-2"><Map className="text-primary"/> Credit Cards & ATMs</h3>
+                                        <p>ATMs are available in major cities and towns like Arusha, Dar es Salaam, and Stone Town, but they are scarce in remote areas and inside national parks. They dispense Tanzanian Shillings. Visa and MasterCard are the most widely accepted credit cards at larger hotels, lodges, and souvenir shops, but they often come with a 5-10% surcharge. It's best to have enough cash (primarily USD) for tips, smaller purchases, and as a backup.</p>
+                                    </CardContent>
+                                </Card>
+                            </TabContentWrapper>
                         </TabsContent>
                     </div>
                 </Tabs>
@@ -130,3 +252,6 @@ export default function PlanningGuidePage() {
     </div>
   );
 }
+
+
+    
