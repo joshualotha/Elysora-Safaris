@@ -37,7 +37,7 @@ const monthlyGuide = [
     { month: "Mar", weather: "Green Season", wildlife: "Calving continues. Great birding. Rains begin.", price: "Mid" },
     { month: "Apr-May", weather: "Long Rains", wildlife: "Lush landscapes. Fewer crowds. Some lodges close.", price: "Low" },
     { month: "Jun-Jul", weather: "Cool & Dry", wildlife: "Migration moves north. River crossings begin in Grumeti.", price: "High" },
-    { month: "Aug-Sep", weather: "Dry & Sunny", wildlife: "Peak of Mara River crossings in Northern Serengeti.", price: "Peak" },
+    { month: "Aug-Sep", weather: "Dry & Sunny", wildlife: "Peak of Mara River crossings in Northern Serengeti.", price: "High" },
     { month: "Oct", weather: "Dry & Warm", wildlife: "Good, less crowded game viewing before the rains.", price: "High" },
     { month: "Nov-Dec", weather: "Short Rains", wildlife: "Migration moves south to fresh pastures. Green landscapes return.", price: "Mid/High" },
 ]
@@ -108,7 +108,7 @@ export default function SafariGuidePage() {
                                 <TableCell>{item.weather}</TableCell>
                                 <TableCell>{item.wildlife}</TableCell>
                                 <TableCell className="text-right">
-                                     <Badge variant={item.price === 'Peak' || item.price === 'High' ? 'destructive' : item.price === 'Mid' ? 'secondary' : 'default'}>
+                                     <Badge variant={item.price === 'High' ? 'destructive' : item.price === 'Mid' || item.price === 'Mid/High' ? 'secondary' : 'default'}>
                                         {item.price}
                                     </Badge>
                                 </TableCell>
@@ -118,7 +118,7 @@ export default function SafariGuidePage() {
                 </Table>
             </div>
              <p className="text-sm text-muted-foreground mt-4 text-center">
-                <strong>Peak Season:</strong> June-October. <strong>Low Season:</strong> April-May.
+                <strong>High Season:</strong> June-October. <strong>Low Season:</strong> April-May.
             </p>
           </div>
         </div>
