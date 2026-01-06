@@ -1,21 +1,12 @@
 import PageHeader from "@/components/shared/PageHeader";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Image from "next/image";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Image from "next/image";
 import {
-  Sun,
-  CloudRain,
   Car,
   Users,
   Plane,
@@ -28,6 +19,8 @@ import {
   HeartPulse,
   FileText,
 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, Sun, CloudRain } from "lucide-react";
 
 export default function SafariGuidePage() {
   return (
@@ -38,286 +31,286 @@ export default function SafariGuidePage() {
         imageId="hero-serengeti"
       />
 
-      {/* Best Time to Visit Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-headline font-bold mb-4">
+                Best Time to Visit
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Tanzania is a year-round destination, but the experience shifts
+                dramatically with the seasons. Whether you dream of vast, dry
+                plains teeming with wildlife or lush, green landscapes full of
+                new life, there’s a perfect time for your adventure.
+              </p>
+            </div>
+
+            {/* Dry Season */}
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-20">
+              <div className="relative h-96 rounded-2xl overflow-hidden">
+                <Image
+                  src="https://picsum.photos/seed/river-crossing/800/600"
+                  alt="Wildebeest crossing the Mara River"
+                  fill
+                  className="object-cover"
+                  data-ai-hint="wildebeest river"
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <Sun className="h-8 w-8 text-sahara-gold" />
+                  <h3 className="font-headline text-3xl font-bold">
+                    The Dry Season (June - October)
+                  </h3>
+                </div>
+                <p className="text-muted-foreground mb-6">
+                  This is the classic safari season. With less water available,
+                  animals congregate around rivers and waterholes, making them
+                  easier to find. The vegetation is thinner, which helps in
+                  spotting elusive predators. Days are sunny and bright, with
+                  cool evenings perfect for a campfire.
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-safari-green mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold">Peak Wildlife Viewing</h4>
+                      <p className="text-sm text-muted-foreground">
+                        The highlight is the Great Migration river crossings in
+                        the Northern Serengeti (July-August).
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-safari-green mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold">Pleasant Weather</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Expect clear blue skies and plenty of sunshine, though it
+                        can be dusty.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Green Season */}
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="relative h-96 rounded-2xl overflow-hidden md:order-last">
+                <Image
+                  src="https://picsum.photos/seed/green-season/800/600"
+                  alt="Zebra with a newborn foal in lush green grass"
+                  fill
+                  className="object-cover"
+                  data-ai-hint="zebra foal"
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <CloudRain className="h-8 w-8 text-safari-green" />
+                  <h3 className="font-headline text-3xl font-bold">
+                    The Green Season (Nov - May)
+                  </h3>
+                </div>
+                <p className="text-muted-foreground mb-6">
+                  Known as the 'emerald season', the rains transform the brown
+                  plains into a vibrant, green paradise. This is the time for
+                  newborns, and the landscape is alive with baby animals. It's
+                  also a haven for birdwatchers, with migratory species
+                  arriving in droves.
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-safari-green mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold">Fewer Crowds & Lower Prices</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Enjoy a more intimate safari experience without the peak
+                        season crowds.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-safari-green mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold">Calving Season</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Witness thousands of wildebeest giving birth in the
+                        Southern Serengeti (Jan-March).
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 md:py-24 bg-sand">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-4xl font-headline font-bold mb-4">
-              Best Time to Visit
+              Find Your Safari Style
             </h2>
             <p className="text-lg text-muted-foreground">
-              Tanzania offers incredible wildlife viewing year-round, but the
-              experience changes with the seasons. Use our guide to find the
-              perfect time for your adventure.
+              From ultimate flexibility to budget-friendly adventures, we craft
+              experiences that match your travel dreams.
             </p>
           </div>
-          <Tabs defaultValue="dry-season" className="w-full max-w-4xl mx-auto">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="dry-season">
-                <Sun className="mr-2 h-4 w-4" /> Dry Season (June - Oct)
-              </TabsTrigger>
-              <TabsTrigger value="green-season">
-                <CloudRain className="mr-2 h-4 w-4" /> Green Season (Nov - May)
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="dry-season">
-              <Card>
-                <div className="grid md:grid-cols-2">
-                  <CardContent className="p-6 md:p-8">
-                    <h3 className="font-headline text-2xl font-bold mb-4">
-                      The Dry Season
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      This is the most popular time for a safari for a reason.
-                      Animals are easier to spot as they congregate around
-                      dwindling water sources and the vegetation thins out.
-                    </p>
-                    <div className="space-y-4 text-sm">
-                      <div>
-                        <h4 className="font-bold text-lg text-primary">Highlight</h4>
-                        <p className="text-muted-foreground">
-                          The Great Migration's dramatic river crossings in the
-                          Northern Serengeti (July to August).
-                        </p>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg text-green-700">Pros</h4>
-                        <ul className="list-disc list-inside text-muted-foreground">
-                          <li>Peak wildlife viewing conditions.</li>
-                          <li>Sunny, clear skies and pleasant weather.</li>
-                          <li>Less mud, more accessible roads.</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg text-red-700">Cons</h4>
-                        <ul className="list-disc list-inside text-muted-foreground">
-                          <li>Parks can be more crowded.</li>
-                          <li>Higher prices for accommodation and tours.</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                  <div className="relative min-h-[300px] md:min-h-0">
-                    <Image
-                      src="https://picsum.photos/seed/river-crossing/800/600"
-                      alt="Wildebeest crossing the Mara River"
-                      fill
-                      className="object-cover md:rounded-r-2xl"
-                      data-ai-hint="wildebeest river"
-                    />
-                  </div>
-                </div>
-              </Card>
-            </TabsContent>
-            <TabsContent value="green-season">
-              <Card>
-                <div className="grid md:grid-cols-2">
-                  <div className="relative min-h-[300px] md:min-h-0 order-last md:order-first">
-                    <Image
-                      src="https://picsum.photos/seed/green-season/800/600"
-                      alt="Zebra with a newborn foal in lush green grass"
-                      fill
-                      className="object-cover md:rounded-l-2xl"
-                      data-ai-hint="zebra foal"
-                    />
-                  </div>
-                   <CardContent className="p-6 md:p-8">
-                    <h3 className="font-headline text-2xl font-bold mb-4">
-                      The Green Season
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      Also known as the "emerald season," this period sees the landscape transform into a vibrant, green paradise, offering unique safari experiences.
-                    </p>
-                    <div className="space-y-4 text-sm">
-                      <div>
-                        <h4 className="font-bold text-lg text-primary">Highlight</h4>
-                        <p className="text-muted-foreground">
-                          Wildebeest calving season in the Southern Serengeti (Ndutu region) from January to March.
-                        </p>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg text-green-700">Pros</h4>
-                        <ul className="list-disc list-inside text-muted-foreground">
-                          <li>Fewer tourists and lower prices.</li>
-                          <li>Stunning, lush landscapes perfect for photography.</li>
-                          <li>See migratory birds and lots of baby animals.</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg text-red-700">Cons</h4>
-                        <ul className="list-disc list-inside text-muted-foreground">
-                          <li>Occasional heavy rains (especially March-May).</li>
-                          <li>Some roads may become impassable.</li>
-                           <li>Thicker vegetation can make wildlife spotting harder.</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </div>
-              </Card>
-            </TabsContent>
-          </Tabs>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="flex flex-col items-center text-center">
+              <Car className="h-10 w-10 text-primary mb-4" />
+              <h3 className="font-headline text-xl font-bold mb-2">
+                Private Safari
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Your own vehicle and guide. Total flexibility to start and stop
+                when you want. Ideal for photographers and families.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <Users className="h-10 w-10 text-primary mb-4" />
+              <h3 className="font-headline text-xl font-bold mb-2">
+                Group Joining Safari
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Share the vehicle with other travelers on a fixed departure. A
+                budget-friendly way to meet new people.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <Plane className="h-10 w-10 text-primary mb-4" />
+              <h3 className="font-headline text-xl font-bold mb-2">
+                Luxury / Fly-In
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Maximize your time by flying between parks. Stay in top-tier
+                lodges with premium amenities and exclusive access.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <Tent className="h-10 w-10 text-primary mb-4" />
+              <h3 className="font-headline text-xl font-bold mb-2">
+                Budget Camping
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Sleep in dome tents under the stars. A raw, authentic adventure
+                that brings you closer to nature.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Safari Types Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-4xl font-headline font-bold mb-4">
-              Safari Types Explained
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Every traveler is different. Find the safari style that best
-              suits your dreams and budget.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card>
-              <CardHeader>
-                <Car className="h-10 w-10 text-primary mb-2" />
-                <CardTitle className="font-headline">Private Safari</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Your own vehicle and guide. Total flexibility to start and
-                  stop when you want. Ideal for photographers and families.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Users className="h-10 w-10 text-primary mb-2" />
-                <CardTitle className="font-headline">
-                  Group Joining Safari
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Share the vehicle with other travelers. Fixed departure
-                  dates. A budget-friendly way to meet new people.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Plane className="h-10 w-10 text-primary mb-2" />
-                <CardTitle className="font-headline">Luxury / Fly-In</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Maximize your time by flying between parks. Stay in top-tier
-                  lodges with premium amenities.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Tent className="h-10 w-10 text-primary mb-2" />
-                <CardTitle className="font-headline">Budget Camping</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Sleep under the stars in dome tents. A raw, authentic
-                  adventure close to nature.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-      
-      {/* Photography & Packing Section */}
-      <section className="py-16 md:py-24 bg-ivory">
-        <div className="container mx-auto px-4 md:px-6">
-            <div className="grid md:grid-cols-2 gap-12">
-                 {/* Photography Tips */}
-                <div>
-                     <h2 className="text-3xl font-headline font-bold mb-6">Photography Tips</h2>
-                     <div className="space-y-6">
-                         <div className="flex items-start gap-4">
-                            <ZoomIn className="h-8 w-8 text-primary flex-shrink-0 mt-1"/>
-                            <div>
-                                <h4 className="font-bold text-lg">Bring a Zoom Lens</h4>
-                                <p className="text-muted-foreground text-sm">A lens with at least a 300mm reach is recommended to get close-up shots of wildlife without disturbing them.</p>
-                            </div>
-                         </div>
-                          <div className="flex items-start gap-4">
-                            <Car className="h-8 w-8 text-primary flex-shrink-0 mt-1"/>
-                            <div>
-                                <h4 className="font-bold text-lg">Use a Bean Bag</h4>
-                                <p className="text-muted-foreground text-sm">Bean bags are more stable and practical than tripods for resting your camera on the vehicle's window sills or roof.</p>
-                            </div>
-                         </div>
-                          <div className="flex items-start gap-4">
-                            <Shield className="h-8 w-8 text-primary flex-shrink-0 mt-1"/>
-                            <div>
-                                <h4 className="font-bold text-lg">Protect from Dust</h4>
-                                <p className="text-muted-foreground text-sm">Safari roads can be very dusty. Bring a dust cover, or even a simple pillowcase, to protect your gear between shots.</p>
-                            </div>
-                         </div>
-                         <div className="flex items-start gap-4">
-                            <BookUser className="h-8 w-8 text-primary flex-shrink-0 mt-1"/>
-                            <div>
-                                <h4 className="font-bold text-lg">Cultural Etiquette</h4>
-                                <p className="text-muted-foreground text-sm">Always ask your guide for permission before photographing local people, such as the Maasai. It's a matter of respect.</p>
-                            </div>
-                         </div>
-                     </div>
-                </div>
-
-                {/* Packing List */}
-                <div>
-                     <h2 className="text-3xl font-headline font-bold mb-6">Packing List Essentials</h2>
-                     <Accordion type="single" collapsible defaultValue="item-1">
-                        <AccordionItem value="item-1">
-                            <AccordionTrigger className="font-bold text-lg"><Shirt className="mr-2 h-5 w-5"/>Clothing</AccordionTrigger>
-                            <AccordionContent>
-                                <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                                    <li>Neutral colors (khaki, green, brown).</li>
-                                    <li>Avoid dark blue/black (attracts tsetse flies).</li>
-                                    <li>Light fleece or jacket for cool mornings/evenings.</li>
-                                    <li>Comfortable walking shoes.</li>
-                                    <li>Hat, sunglasses, and swimsuit.</li>
-                                </ul>
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-2">
-                            <AccordionTrigger className="font-bold text-lg"><Camera className="mr-2 h-5 w-5"/>Gadgets</AccordionTrigger>
-                            <AccordionContent>
-                                <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                                    <li>Binoculars are essential!</li>
-                                    <li>Camera with extra batteries and memory cards.</li>
-                                    <li>Portable power bank.</li>
-                                    <li>Universal travel adapter.</li>
-                                </ul>
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-3">
-                            <AccordionTrigger className="font-bold text-lg"><HeartPulse className="mr-2 h-5 w-5"/>Health & Toiletries</AccordionTrigger>
-                             <AccordionContent>
-                                <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                                    <li>High-SPF sunscreen.</li>
-                                    <li>Strong insect repellent (with DEET).</li>
-                                    <li>Personal medications and a small first-aid kit.</li>
-                                    <li>Hand sanitizer.</li>
-                                </ul>
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-4">
-                            <AccordionTrigger className="font-bold text-lg"><FileText className="mr-2 h-5 w-5"/>Documents</AccordionTrigger>
-                             <AccordionContent>
-                                <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                                    <li>Passport (valid for at least 6 months).</li>
-                                    <li>Printed copy of your Tanzanian e-visa.</li>
-                                    <li>Yellow Fever vaccination card (if required).</li>
-                                    <li>Travel insurance details.</li>
-                                </ul>
-                            </AccordionContent>
-                        </AccordionItem>
-                     </Accordion>
-                </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-headline font-bold mb-4">
+                Be Prepared
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                A little preparation goes a long way. Here are our top tips for
+                packing and photography to make your safari unforgettable.
+              </p>
             </div>
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="font-headline text-2xl font-bold mb-6">
+                  Photography Tips
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-4">
+                    <ZoomIn className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-bold">Bring a Zoom Lens</h4>
+                      <p className="text-muted-foreground text-sm">
+                        A lens with at least a 300mm reach is recommended to get
+                        close-up shots of wildlife.
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <Car className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-bold">Use a Bean Bag</h4>
+                      <p className="text-muted-foreground text-sm">
+                        More stable and practical than tripods for resting your
+                        camera on the vehicle's open roof.
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <Shield className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-bold">Protect From Dust</h4>
+                      <p className="text-muted-foreground text-sm">
+                        African roads can be dusty. Bring a simple dust cover
+                        (or even a pillowcase) for your gear.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-headline text-2xl font-bold mb-6">
+                  Essential Packing List
+                </h3>
+                <Accordion
+                  type="single"
+                  collapsible
+                  defaultValue="item-1"
+                  className="w-full"
+                >
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger className="font-bold text-lg">
+                      <Shirt className="mr-2 h-5 w-5" />
+                      Clothing
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ul className="list-disc list-inside text-muted-foreground space-y-1 pl-2">
+                        <li>Neutral colors (khaki, green, brown).</li>
+                        <li>Avoid dark blue/black (attracts tsetse flies).</li>
+                        <li>Warm fleece or jacket for cool mornings/evenings.</li>
+                        <li>Comfortable, broken-in walking shoes.</li>
+                        <li>Hat and sunglasses.</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger className="font-bold text-lg">
+                      <Camera className="mr-2 h-5 w-5" />
+                      Gear
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ul className="list-disc list-inside text-muted-foreground space-y-1 pl-2">
+                        <li>Binoculars are essential!</li>
+                        <li>Camera with extra batteries and memory cards.</li>
+                        <li>Portable power bank & universal travel adapter.</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger className="font-bold text-lg">
+                      <FileText className="mr-2 h-5 w-5" />
+                      Documents & Health
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ul className="list-disc list-inside text-muted-foreground space-y-1 pl-2">
+                        <li>Passport (valid for at least 6 months).</li>
+                        <li>Printed copy of your Tanzanian e-visa.</li>
+                        <li>High-SPF sunscreen and insect repellent (with DEET).</li>
+                        <li>Any personal medications needed.</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
