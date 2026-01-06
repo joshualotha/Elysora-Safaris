@@ -2,7 +2,6 @@ import PageHeader from "@/components/shared/PageHeader";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -19,18 +18,16 @@ import {
   CloudRain,
   Car,
   Users,
-  PlaneFly,
+  Plane,
   Tent,
   ZoomIn,
   Shield,
   Camera,
   BookUser,
   Shirt,
-  Sparkles,
   HeartPulse,
   FileText,
 } from "lucide-react";
-import IconText from "@/components/shared/IconText";
 
 export default function SafariGuidePage() {
   return (
@@ -204,7 +201,7 @@ export default function SafariGuidePage() {
             </Card>
             <Card>
               <CardHeader>
-                <PlaneFly className="h-10 w-10 text-primary mb-2" />
+                <Plane className="h-10 w-10 text-primary mb-2" />
                 <CardTitle className="font-headline">Luxury / Fly-In</CardTitle>
               </CardHeader>
               <CardContent>
