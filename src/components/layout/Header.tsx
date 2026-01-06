@@ -4,16 +4,31 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 
 const navLinks = [
   { href: "/safaris", label: "Safaris" },
   { href: "/destinations", label: "Destinations" },
-  { href: "/planning-guide", label: "Planning Guide" },
+  {
+    label: "Planning",
+    isDropdown: true,
+    items: [
+      { href: "/planning/safari-guide", label: "Safari Planning Guide" },
+      { href: "/planning/accommodation", label: "Accommodation" },
+      { href: "/planning/practical-information", label: "Practical Information" },
+    ],
+  },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
@@ -49,18 +64,41 @@ export default function Header() {
           <Image src="/elysora-logo.png" alt="Elysora Logo" width={150} height={150} className="object-contain absolute top-2 left-0" />
         </Link>
         <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "text-sm font-semibold transition-colors hover:text-sahara-gold relative after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sahara-gold after:transition-all after:duration-300 hover:after:w-full hover:after:left-0",
-                pathname.startsWith(link.href) ? "text-sahara-gold after:w-full after:left-0" : headerTextColor
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.isDropdown && link.items ? (
+              <DropdownMenu key={link.label}>
+                <DropdownMenuTrigger
+                  className={cn(
+                    "flex items-center gap-1 text-sm font-semibold transition-colors hover:text-sahara-gold outline-none",
+                    pathname.startsWith("/planning")
+                      ? "text-sahara-gold"
+                      : headerTextColor
+                  )}
+                >
+                  {link.label}
+                  <ChevronDown className="h-4 w-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  {link.items.map((item) => (
+                    <DropdownMenuItem key={item.href} asChild>
+                      <Link href={item.href}>{item.label}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href!}
+                className={cn(
+                  "text-sm font-semibold transition-colors hover:text-sahara-gold relative after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sahara-gold after:transition-all after:duration-300 hover:after:w-full hover:after:left-0",
+                  pathname.startsWith(link.href!) ? "text-sahara-gold after:w-full after:left-0" : headerTextColor
+                )}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
         <div className="hidden lg:flex items-center gap-2">
           <Button asChild>
@@ -85,21 +123,44 @@ export default function Header() {
             </div>
             <div className="flex flex-col gap-6 p-6">
               <nav className="flex flex-col gap-4">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={cn(
-                      "text-2xl font-semibold transition-colors hover:text-sahara-gold",
-                      pathname.startsWith(link.href)
-                        ? "text-sahara-gold"
-                        : "text-charcoal"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {navLinks.map((link) =>
+                  link.isDropdown && link.items ? (
+                    <div key={link.label}>
+                      <p className="text-2xl font-semibold text-charcoal">{link.label}</p>
+                      <div className="flex flex-col gap-2 mt-2 pl-4 border-l-2 border-sand">
+                        {link.items.map((item) => (
+                           <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={cn(
+                              "text-xl font-semibold transition-colors hover:text-sahara-gold",
+                              pathname.startsWith(item.href)
+                                ? "text-sahara-gold"
+                                : "text-charcoal"
+                            )}
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      key={link.href}
+                      href={link.href!}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={cn(
+                        "text-2xl font-semibold transition-colors hover:text-sahara-gold",
+                        pathname.startsWith(link.href!)
+                          ? "text-sahara-gold"
+                          : "text-charcoal"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
               </nav>
               <Button asChild size="lg" className="mt-8" onClick={() => setIsMobileMenuOpen(false)}>
                 <Link href="/custom-safari">Book Your Safari</Link>

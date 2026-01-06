@@ -123,7 +123,7 @@
     {
       "id": "tanzania-map",
       "description": "A stylized map of Tanzania showing national parks.",
-      "imageUrl": "https://picsum.photos/seed/117/1200/900",
+      "imageUrl": "https://images.unsplash.com/photo-1766073229584-546125c9ba54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0YW56YW5pYSUyMG1hcHxlbnwwfHx8fDE3Njc3MDQ3ODh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "tanzania map"
     },
     {
@@ -185,6 +185,18 @@
       "description": "A map of Africa with a compass and binoculars.",
       "imageUrl": "https://images.unsplash.com/photo-1519974749222-634241604d59?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "safari planning"
+    },
+    {
+      "id": "accommodation-hero",
+      "description": "A luxury safari lodge interior.",
+      "imageUrl": "https://images.unsplash.com/photo-1607712617949-8c993d290809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzYWZhcmklMjBsb2RnZXxlbnwwfHx8fDE3Njc3MDQ3ODh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari lodge"
+    },
+    {
+      "id": "practical-info-hero",
+      "description": "Safari essentials laid out on a map.",
+      "imageUrl": "https://images.unsplash.com/photo-1709403108621-66fe97132946?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzYWZhcmklMjBlc3NlbnRpYWxzfGVufDB8fHx8MTc2NzcwNDc4OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "safari essentials"
     },
     {
       "id": "reviews-hero",
