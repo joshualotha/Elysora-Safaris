@@ -7,7 +7,6 @@ import {
   Plane,
   Tent,
   ZoomIn,
-  Shield,
   Camera,
   BookUserIcon,
   Shirt,
@@ -15,7 +14,7 @@ import {
   FileText,
   Briefcase,
   FirstAidKit,
-  CreditCard,
+  CreditCard as CreditCardIcon,
   ShieldCheck,
   DollarSign,
 } from "lucide-react";
@@ -216,7 +215,7 @@ export default function SafariGuidePage() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3"><Shirt className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Pack light, layered clothing in neutral colors.</span></li>
                     <li className="flex items-start gap-3"><DollarSign className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Bring US Dollars (printed 2009 or later) for tips.</span></li>
-                    <li className="flex items-start gap-3"><CreditCard className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Have a Visa/Mastercard as a backup.</span></li>
+                    <li className="flex items-start gap-3"><CreditCardIcon className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Have a Visa/Mastercard as a backup.</span></li>
                   </ul>
                 </CardContent>
               </Card>
