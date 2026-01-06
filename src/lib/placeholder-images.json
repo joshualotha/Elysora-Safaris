@@ -311,6 +311,30 @@
       "description": "African Wildlife Foundation Logo",
       "imageUrl": "https://images.unsplash.com/photo-1653499676737-becf2c9562c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhd2YlMjBsb2dvfGVufDB8fHx8MTc2NTk4NjI1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "awf logo"
+    },
+    {
+      "id": "private-safari-hero",
+      "description": "A safari vehicle alone in the vast Serengeti plains.",
+      "imageUrl": "https://images.unsplash.com/photo-1617932938343-a0792b9e1944?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "private safari"
+    },
+    {
+      "id": "group-safari-hero",
+      "description": "A group of diverse travelers enjoying a safari together.",
+      "imageUrl": "https://images.unsplash.com/photo-1581594580437-a17834400f53?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "safari group"
+    },
+    {
+      "id": "luxury-safari-hero",
+      "description": "A beautiful infinity pool at a luxury safari lodge overlooking the wilderness.",
+      "imageUrl": "https://images.unsplash.com/photo-1617835158679-16597a7e3240?q=80&w=1934&auto=format&fit=crop",
+      "imageHint": "luxury lodge"
+    },
+    {
+      "id": "camping-safari-hero",
+      "description": "A campfire burning brightly at a safari campsite at night.",
+      "imageUrl": "https://images.unsplash.com/photo-1543358120-7f41530182c5?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "safari campfire"
     }
   ]
 }
