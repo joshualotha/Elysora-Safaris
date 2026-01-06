@@ -46,28 +46,24 @@ const safariStyles = [
     title: "Private Safari",
     description: "Your own vehicle and guide. Total flexibility to start and stop when you want. Ideal for photographers and families.",
     image: "https://images.unsplash.com/photo-1535940587896-3a4e0ce292f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzYWZhcmklMjB2ZWhpY2xlfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
-    imageHint: "private safari",
     href: "/planning/private-safari"
   },
   {
     title: "Group Joining Safari",
     description: "Share the vehicle with other travelers on a fixed departure. A budget-friendly way to meet new people.",
     image: "https://images.unsplash.com/photo-1631121592926-b7642af441c5?q=80&w=2070&auto=format&fit=crop",
-    imageHint: "safari group",
     href: "/planning/group-safari"
   },
   {
     title: "Luxury / Fly-In",
     description: "Maximize your time by flying between parks. Stay in top-tier lodges with premium amenities and exclusive access.",
     image: "https://images.unsplash.com/photo-1607712617949-8c993d290809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzYWZhcmklMjBsb2RnZXxlbnwwfHx8fDE3Njc3MDQ3ODh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    imageHint: "luxury lodge",
     href: "/planning/luxury-safari"
   },
   {
     title: "Budget Camping",
     description: "Sleep in dome tents under the stars. A raw, authentic adventure that brings you closer to nature.",
     image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop",
-    imageHint: "safari camping",
     href: "/planning/camping-safari"
   }
 ];
@@ -147,7 +143,6 @@ export default function SafariGuidePage() {
                     alt={style.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    data-ai-hint={style.imageHint}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                   <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
