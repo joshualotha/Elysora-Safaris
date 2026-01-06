@@ -13,6 +13,11 @@ import {
   Shirt,
   HeartPulse,
   FileText,
+  Briefcase,
+  FirstAidKit,
+  CreditCard,
+  ShieldCheck,
+  DollarSign,
 } from "lucide-react";
 import {
   Table,
@@ -23,8 +28,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import Link from "next/link";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 
 const monthlyGuide = [
@@ -156,11 +167,11 @@ export default function SafariGuidePage() {
           </div>
         </div>
       </section>
-
+      
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
               <h2 className="text-4xl font-headline font-bold mb-4">
                 Be Prepared: A Quick Checklist
               </h2>
@@ -169,101 +180,57 @@ export default function SafariGuidePage() {
                 a seamless and unforgettable safari.
               </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-12">
-              <div>
-                <h3 className="font-headline text-2xl font-bold mb-6 flex items-center gap-3"><Camera className="h-6 w-6 text-primary"/> Photography Tips</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-4">
-                    <ZoomIn className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h4 className="font-bold">Bring a Zoom Lens</h4>
-                      <p className="text-muted-foreground text-sm">
-                        A lens with at least a 300mm reach is recommended to get
-                        great shots of distant wildlife.
-                      </p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <Car className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h4 className="font-bold">Use a Bean Bag</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Far more stable and practical than tripods for resting your
-                        camera on the vehicle's open roof.
-                      </p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <Shield className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h4 className="font-bold">Protect From Dust</h4>
-                      <p className="text-muted-foreground text-sm">
-                        African roads are dusty. Bring a simple dust cover
-                        (or even a pillowcase) for your camera gear.
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-headline text-2xl font-bold mb-6">
-                  Essential Packing List
-                </h3>
-                <Accordion
-                  type="single"
-                  collapsible
-                  defaultValue="item-1"
-                  className="w-full"
-                >
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger className="font-bold text-lg">
-                      <Shirt className="mr-2 h-5 w-5" />
-                      Clothing
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <ul className="list-disc list-inside text-muted-foreground space-y-1 pl-2">
-                        <li>Neutral colors (khaki, green, brown).</li>
-                        <li>Avoid dark blue/black (attracts tsetse flies).</li>
-                        <li>Warm fleece or jacket for cool mornings/evenings.</li>
-                        <li>Comfortable, broken-in walking shoes.</li>
-                        <li>Hat and sunglasses.</li>
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger className="font-bold text-lg">
-                      <HeartPulse className="mr-2 h-5 w-5" />
-                      Health & Documents
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <ul className="list-disc list-inside text-muted-foreground space-y-1 pl-2">
-                        <li>Passport (valid for at least 6 months).</li>
-                        <li>Printed copy of your Tanzanian e-visa.</li>
-                        <li>High-SPF sunscreen and insect repellent (with DEET).</li>
-                        <li>Any personal medications and a basic first-aid kit.</li>
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger className="font-bold text-lg">
-                      <Camera className="mr-2 h-5 w-5" />
-                      Gear & Extras
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <ul className="list-disc list-inside text-muted-foreground space-y-1 pl-2">
-                        <li>Binoculars are essential!</li>
-                        <li>Camera with extra batteries and memory cards.</li>
-                        <li>Portable power bank & universal travel adapter.</li>
-                         <li>A good book for siesta time.</li>
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <Camera className="h-6 w-6 text-primary" />
+                    Photography
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-muted-foreground">
+                    <li className="flex items-start gap-3"><ZoomIn className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>A zoom lens (300mm+) is key for wildlife.</span></li>
+                    <li className="flex items-start gap-3"><Car className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Use a beanbag to stabilize your camera in the vehicle.</span></li>
+                    <li className="flex items-start gap-3"><Shield className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Bring a dust cover to protect your gear.</span></li>
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <FirstAidKit className="h-6 w-6 text-primary" />
+                    Health & Documents
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-muted-foreground">
+                    <li className="flex items-start gap-3"><ShieldCheck className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Consult a doctor about malaria pills and vaccines.</span></li>
+                    <li className="flex items-start gap-3"><FileText className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Keep your passport, visa, and flight info handy.</span></li>
+                    <li className="flex items-start gap-3"><HeartPulse className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Pack sunscreen and a quality insect repellent.</span></li>
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <Briefcase className="h-6 w-6 text-primary" />
+                    Gear & Money
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-muted-foreground">
+                    <li className="flex items-start gap-3"><Shirt className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Pack light, layered clothing in neutral colors.</span></li>
+                    <li className="flex items-start gap-3"><DollarSign className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Bring US Dollars (printed 2009 or later) for tips.</span></li>
+                    <li className="flex items-start gap-3"><CreditCard className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Have a Visa/Mastercard as a backup.</span></li>
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 }
