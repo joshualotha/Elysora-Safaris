@@ -1,4 +1,4 @@
-import { Leaf, ShieldCheck, Smile, Users } from "lucide-react";
+import { LayoutGrid, BookOpen, Star, Leaf, ShieldCheck, Smile, Users, Compass, Bed, Info, Plane, Group, HandHeart } from "lucide-react";
 import type { Icon } from "lucide-react"
 
 export type SafariPackage = {
@@ -71,6 +71,62 @@ export type HeroCarouselItem = {
   subtitle: string;
   image: string;
 }
+
+export type NavItem = {
+    title: string;
+    href: string;
+    description: string;
+    icon: Icon;
+}
+
+export const planningNavItems: NavItem[] = [
+    {
+        title: "Safari Planning Guide",
+        href: "/planning/safari-guide",
+        description: "Your complete guide to choosing the right safari, packing essentials, and best times to visit.",
+        icon: Compass,
+    },
+    {
+        title: "Accommodation Styles",
+        href: "/planning/accommodation",
+        description: "Explore the differences between lodges, tented camps, and budget options.",
+        icon: Bed,
+    },
+    {
+        title: "Practical Information",
+        href: "/planning/practical-information",
+        description: "Essential details on visas, health, money, and what to expect on a typical safari day.",
+        icon: Info,
+    }
+];
+
+export const safariStyleNavItems: NavItem[] = [
+    {
+        title: "Private Safaris",
+        href: "/planning/private-safari",
+        description: "Total flexibility with your own vehicle and guide. Perfect for families and photographers.",
+        icon: Star,
+    },
+    {
+        title: "Group Safaris",
+        href: "/planning/group-safari",
+        description: "A budget-friendly and social way to explore, sharing the adventure with new friends.",
+        icon: Group,
+    },
+    {
+        title: "Luxury & Fly-In Safaris",
+        href: "/planning/luxury-safari",
+        description: "Experience ultimate comfort and convenience, flying between remote, exclusive lodges.",
+        icon: Plane,
+    },
+     {
+        title: "Camping Safaris",
+        href: "/planning/camping-safari",
+        description: "A raw and authentic adventure, sleeping under the stars and close to nature.",
+        icon: HandHeart,
+    }
+];
+
 
 export const heroCarouselItems: HeroCarouselItem[] = [
   { id: 1, title: "Tanzania", subtitle: "Experience an unparalleled journey through vast savannas, ancient cultures, and diverse ecosystems. From the snow-capped Kilimanjaro to the turquoise waters of Zanzibar, Tanzania offers a safari adventure that touches the soul and ignites the spirit of exploration.", image: "hero-home-luxury" },
