@@ -10,11 +10,11 @@ import {
   Camera,
   BookUserIcon,
   Shirt,
-  HeartPulse,
+  HeartPulseIcon,
   FileText,
   Briefcase,
   FirstAidKit,
-  CreditCard as CreditCardIcon,
+  CreditCardIcon,
   ShieldCheck,
   DollarSign,
 } from "lucide-react";
@@ -200,7 +200,7 @@ export default function SafariGuidePage() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3"><ShieldCheck className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Consult a doctor about malaria pills and vaccines.</span></li>
                     <li className="flex items-start gap-3"><FileText className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Keep your passport, visa, and flight info handy.</span></li>
-                    <li className="flex items-start gap-3"><HeartPulse className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Pack sunscreen and a quality insect repellent.</span></li>
+                    <li className="flex items-start gap-3"><HeartPulseIcon className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Pack sunscreen and a quality insect repellent.</span></li>
                   </ul>
                 </CardContent>
               </Card>
