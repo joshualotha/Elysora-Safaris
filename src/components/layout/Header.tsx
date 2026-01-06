@@ -69,14 +69,14 @@ export default function Header() {
               <DropdownMenu key={link.label}>
                 <DropdownMenuTrigger
                   className={cn(
-                    "flex items-center gap-1 text-sm font-semibold transition-colors hover:text-sahara-gold outline-none",
+                    "flex items-center gap-2 text-base font-semibold transition-colors hover:text-sahara-gold outline-none",
                     pathname.startsWith("/planning")
                       ? "text-sahara-gold"
                       : headerTextColor
                   )}
                 >
                   {link.label}
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-5 w-5" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   {link.items.map((item) => (
@@ -91,7 +91,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href!}
                 className={cn(
-                  "text-sm font-semibold transition-colors hover:text-sahara-gold relative after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sahara-gold after:transition-all after:duration-300 hover:after:w-full hover:after:left-0",
+                  "text-base font-semibold transition-colors hover:text-sahara-gold relative after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sahara-gold after:transition-all after:duration-300 hover:after:w-full hover:after:left-0",
                   pathname.startsWith(link.href!) ? "text-sahara-gold after:w-full after:left-0" : headerTextColor
                 )}
               >
