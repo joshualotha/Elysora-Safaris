@@ -9,7 +9,7 @@ import {
   ZoomIn,
   Shield,
   Camera,
-  BookUser,
+  BookUserIcon,
   Shirt,
   HeartPulse,
   FileText,
@@ -28,12 +28,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
@@ -180,7 +174,7 @@ export default function SafariGuidePage() {
                 a seamless and unforgettable safari.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
@@ -192,7 +186,7 @@ export default function SafariGuidePage() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3"><ZoomIn className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>A zoom lens (300mm+) is key for wildlife.</span></li>
                     <li className="flex items-start gap-3"><Car className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Use a beanbag to stabilize your camera in the vehicle.</span></li>
-                    <li className="flex items-start gap-3"><Shield className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Bring a dust cover to protect your gear.</span></li>
+                    <li className="flex items-start gap-3"><BookUserIcon className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Always ask permission before photographing local people.</span></li>
                   </ul>
                 </CardContent>
               </Card>
