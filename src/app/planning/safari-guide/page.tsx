@@ -1,5 +1,4 @@
 
-
 import PageHeader from "@/components/shared/PageHeader";
 import Image from "next/image";
 import {
@@ -118,7 +117,7 @@ export default function SafariGuidePage() {
                 </Table>
             </div>
              <p className="text-sm text-muted-foreground mt-4 text-center">
-                <strong>High Season:</strong> June-October. <strong>Low Season:</strong> April-May.
+                <strong>High Season:</strong> June-October & Jan-Feb. <strong>Low Season:</strong> April-May.
             </p>
           </div>
         </div>
@@ -223,7 +222,3 @@ export default function SafariGuidePage() {
     </div>
   );
 }
-
-
-
-    
