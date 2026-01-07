@@ -3,7 +3,7 @@
 import PageHeader from "@/components/shared/PageHeader";
 import Image from "next/image";
 import {
-  CarIcon,
+  Car,
   Users,
   Plane,
   Tent,
@@ -11,11 +11,11 @@ import {
   Camera,
   BookUser,
   Shirt,
-  HeartPulseIcon,
+  HeartPulse,
   FileText,
   Briefcase,
   FirstAidKit,
-  CreditCardIcon,
+  CreditCard,
   ShieldCheck,
   DollarSign,
 } from "lucide-react";
@@ -180,7 +180,7 @@ export default function SafariGuidePage() {
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3"><ZoomIn className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>A zoom lens (300mm+) is key for wildlife.</span></li>
-                    <li className="flex items-start gap-3"><CarIcon className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Use a beanbag to stabilize your camera in the vehicle.</span></li>
+                    <li className="flex items-start gap-3"><Car className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Use a beanbag to stabilize your camera in the vehicle.</span></li>
                     <li className="flex items-start gap-3"><BookUser className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Always ask permission before photographing local people.</span></li>
                   </ul>
                 </CardContent>
@@ -196,7 +196,7 @@ export default function SafariGuidePage() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3"><ShieldCheck className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Consult a doctor about malaria pills and vaccines.</span></li>
                     <li className="flex items-start gap-3"><FileText className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Keep your passport, visa, and flight info handy.</span></li>
-                    <li className="flex items-start gap-3"><HeartPulseIcon className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Pack sunscreen and a quality insect repellent.</span></li>
+                    <li className="flex items-start gap-3"><HeartPulse className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Pack sunscreen and a quality insect repellent.</span></li>
                   </ul>
                 </CardContent>
               </Card>
@@ -211,7 +211,7 @@ export default function SafariGuidePage() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3"><Shirt className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Pack light, layered clothing in neutral colors.</span></li>
                     <li className="flex items-start gap-3"><DollarSign className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Bring US Dollars (printed 2009 or later) for tips.</span></li>
-                    <li className="flex items-start gap-3"><CreditCardIcon className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Have a Visa/Mastercard as a backup.</span></li>
+                    <li className="flex items-start gap-3"><CreditCard className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" /><span>Have a Visa/Mastercard as a backup.</span></li>
                   </ul>
                 </CardContent>
               </Card>
