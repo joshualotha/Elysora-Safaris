@@ -1,3 +1,4 @@
+
 import { LayoutGrid, BookOpen, Star, Leaf, ShieldCheck, Smile, Users, Compass, Bed, Info, Plane, Group, HandHeart } from "lucide-react";
 import type { Icon } from "lucide-react"
 
@@ -77,7 +78,44 @@ export type NavItem = {
     href: string;
     description: string;
     icon: Icon;
+    label?: string;
 }
+
+export const safariStyles = [
+    {
+        title: "Private Safari",
+        description: "Your adventure, your rules.",
+        href: "/planning/private-safari",
+        image: "https://images.unsplash.com/photo-1535940587896-3a4e0ce292f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzYWZhcmklMjB2ZWhpY2xlfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+    },
+    {
+        title: "Group Safari",
+        description: "Share the cost, double the fun.",
+        href: "/planning/group-safari",
+        image: "https://images.unsplash.com/photo-1631121592926-b7642af441c5?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+        title: "Luxury Safari",
+        description: "Ultimate comfort in the wild.",
+        href: "/planning/luxury-safari",
+        image: "https://images.unsplash.com/photo-1607712617949-8c993d290809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzYWZhcmklMjBsb2RnZXxlbnwwfHx8fDE3Njc3MDQ3ODh8MA&ixlib=rb-4.1.0&q=80&w=1080"
+    },
+    {
+        title: "Camping Safari",
+        description: "A raw, authentic adventure.",
+        href: "/planning/camping-safari",
+        image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop"
+    },
+];
+
+export const monthlyGuide = [
+  { month: 'January-February', weather: 'Dry, warm', wildlife: 'Calving season in Southern Serengeti. Excellent game viewing.', price: 'High' },
+  { month: 'March', weather: 'Start of long rains', wildlife: 'Good game viewing, fewer crowds.', price: 'Mid' },
+  { month: 'April-May', weather: 'Long rains', wildlife: 'Lush green scenery, great for birding. Some lodges close.', price: 'Low' },
+  { month: 'June-July', weather: 'Dry, cool', wildlife: 'Migration moves to Western/Northern Serengeti. River crossings.', price: 'High' },
+  { month: 'August-October', weather: 'Dry, pleasant', wildlife: 'Peak river crossings in Northern Serengeti. Excellent viewing everywhere.', price: 'High' },
+  { month: 'November-December', weather: 'Short rains', wildlife: 'Migration returns to Southern Serengeti. Good for birding.', price: 'Mid/High' },
+];
 
 export const planningNavItems: NavItem[] = [
     {
