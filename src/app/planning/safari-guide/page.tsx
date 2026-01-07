@@ -30,44 +30,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-
-
-const monthlyGuide = [
-    { month: "Jan-Feb", weather: "Hot & Dry", wildlife: "Calving season in Southern Serengeti. Excellent game viewing.", price: "High" },
-    { month: "Mar", weather: "Green Season", wildlife: "Calving continues. Great birding. Rains begin.", price: "Mid" },
-    { month: "Apr-May", weather: "Long Rains", wildlife: "Lush landscapes. Fewer crowds. Some lodges close.", price: "Low" },
-    { month: "Jun-Jul", weather: "Cool & Dry", wildlife: "Migration moves north. River crossings begin in Grumeti.", price: "High" },
-    { month: "Aug-Sep", weather: "Dry & Sunny", wildlife: "Peak of Mara River crossings in Northern Serengeti.", price: "High" },
-    { month: "Oct", weather: "Dry & Warm", wildlife: "Good, less crowded game viewing before the rains.", price: "High" },
-    { month: "Nov-Dec", weather: "Short Rains", wildlife: "Migration moves south to fresh pastures. Green landscapes return.", price: "Mid/High" },
-]
-
-const safariStyles = [
-  {
-    title: "Private Safari",
-    description: "Your own vehicle and guide. Total flexibility to start and stop when you want. Ideal for photographers and families.",
-    image: "https://images.unsplash.com/photo-1535940587896-3a4e0ce292f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzYWZhcmklMjB2ZWhpY2xlfGVufDB8fHx8MTc2NTk3ODYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
-    href: "/planning/private-safari"
-  },
-  {
-    title: "Group Joining Safari",
-    description: "Share the vehicle with other travelers on a fixed departure. A budget-friendly way to meet new people.",
-    image: "https://images.unsplash.com/photo-1631121592926-b7642af441c5?q=80&w=2070&auto=format&fit=crop",
-    href: "/planning/group-safari"
-  },
-  {
-    title: "Luxury / Fly-In",
-    description: "Maximize your time by flying between parks. Stay in top-tier lodges with premium amenities and exclusive access.",
-    image: "https://images.unsplash.com/photo-1607712617949-8c993d290809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzYWZhcmklMjBsb2RnZXxlbnwwfHx8fDE3Njc3MDQ3ODh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    href: "/planning/luxury-safari"
-  },
-  {
-    title: "Budget Camping",
-    description: "Sleep in dome tents under the stars. A raw, authentic adventure that brings you closer to nature.",
-    image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop",
-    href: "/planning/camping-safari"
-  }
-];
+import { monthlyGuide, safariStyles } from "@/lib/data";
 
 
 export default function SafariGuidePage() {
