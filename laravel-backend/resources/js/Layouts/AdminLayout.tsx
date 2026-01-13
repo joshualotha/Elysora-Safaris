@@ -29,6 +29,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         { name: 'Testimonials', href: '/admin/testimonials', icon: MessageSquare, active: component.startsWith('Admin/Testimonials') },
         { name: 'FAQs', href: '/admin/faqs', icon: HelpCircle, active: component.startsWith('Admin/FAQs') },
         { name: 'Contacts', href: '/admin/contacts', icon: Mail, active: component.startsWith('Admin/Contacts') },
+        { name: 'Settings', href: '/admin/settings', icon: Settings, active: component.startsWith('Admin/Settings') },
     ];
 
     return (

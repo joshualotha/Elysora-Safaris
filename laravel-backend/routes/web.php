@@ -79,6 +79,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('testimonials', App\Http\Controllers\Admin\AdminTestimonialController::class);
     Route::resource('faqs', App\Http\Controllers\Admin\AdminFAQController::class);
     Route::resource('contacts', App\Http\Controllers\Admin\AdminContactController::class)->only(['index', 'show', 'update', 'destroy']);
+    Route::get('settings', [App\Http\Controllers\Admin\AdminSettingController::class, 'index'])->name('settings.index');
+    Route::post('settings', [App\Http\Controllers\Admin\AdminSettingController::class, 'update'])->name('settings.update');
     // More resource routes will go here
 });
 

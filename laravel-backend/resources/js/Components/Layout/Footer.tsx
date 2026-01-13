@@ -1,10 +1,12 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { Facebook, Instagram, Twitter, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { Input } from "@/Components/ui/input";
 import { Button } from "@/Components/ui/button";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { props } = usePage();
+  const settings = (props.settings as Record<string, string>) || {};
 
   return (
     <footer className="bg-[#121212] text-stone-300 border-t border-white/5 relative overflow-hidden">
@@ -45,7 +47,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-stone-400 leading-relaxed max-w-sm font-light">
-              Crafting authentic, sustainable, and unforgettable safari experiences in the heart of Tanzania. We believe in travel that transforms.
+              {settings.company_description || "Crafting authentic, sustainable, and unforgettable safari experiences in the heart of Tanzania. We believe in travel that transforms."}
             </p>
 
             {/* Contact Info */}
@@ -54,30 +56,42 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-sahara-gold shrink-0 mt-1" />
-                  <span className="font-light text-sm">Sokoine Road, Arusha,<br />Tanzania, East Africa</span>
+                  <span className="font-light text-sm whitespace-pre-line">
+                    {settings.site_address || "Sokoine Road, Arusha,\nTanzania, East Africa"}
+                  </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-sahara-gold shrink-0" />
-                  <a href="tel:+255754000000" className="font-light text-sm hover:text-white transition-colors">+255 754 000 000</a>
+                  <a href={`tel:${settings.site_phone || "+255754000000"}`} className="font-light text-sm hover:text-white transition-colors">
+                    {settings.site_phone || "+255 754 000 000"}
+                  </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-sahara-gold shrink-0" />
-                  <a href="mailto:info@elysora.com" className="font-light text-sm hover:text-white transition-colors">info@elysora.com</a>
+                  <a href={`mailto:${settings.site_email || "info@elysora.com"}`} className="font-light text-sm hover:text-white transition-colors">
+                    {settings.site_email || "info@elysora.com"}
+                  </a>
                 </li>
               </ul>
             </div>
 
             {/* Social Media */}
             <div className="flex gap-4 pt-2">
-              <a href="#" className="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-sahara-gold hover:border-sahara-gold hover:text-charcoal transition-all duration-300">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-sahara-gold hover:border-sahara-gold hover:text-charcoal transition-all duration-300">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-sahara-gold hover:border-sahara-gold hover:text-charcoal transition-all duration-300">
-                <Twitter className="h-5 w-5" />
-              </a>
+              {settings.social_instagram && (
+                <a href={settings.social_instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-sahara-gold hover:border-sahara-gold hover:text-charcoal transition-all duration-300">
+                  <Instagram className="h-5 w-5" />
+                </a>
+              )}
+              {settings.social_facebook && (
+                <a href={settings.social_facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-sahara-gold hover:border-sahara-gold hover:text-charcoal transition-all duration-300">
+                  <Facebook className="h-5 w-5" />
+                </a>
+              )}
+              {settings.social_twitter && (
+                <a href={settings.social_twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-sahara-gold hover:border-sahara-gold hover:text-charcoal transition-all duration-300">
+                  <Twitter className="h-5 w-5" />
+                </a>
+              )}
             </div>
           </div>
 

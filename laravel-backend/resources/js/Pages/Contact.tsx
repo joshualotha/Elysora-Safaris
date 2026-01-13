@@ -1,4 +1,4 @@
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
@@ -7,6 +7,9 @@ import { Label } from '@/Components/ui/label';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 export default function Contact() {
+    const { props } = usePage();
+    const settings = (props.settings as Record<string, string>) || {};
+
     const { data, setData, post, processing, errors } = useForm({
         name: '',
         email: '',
@@ -135,8 +138,7 @@ export default function Contact() {
                                         </div>
                                         <div>
                                             <h4 className="font-bold text-charcoal mb-1">Email</h4>
-                                            <p className="text-stone-gray">info@elysorasafaris.com</p>
-                                            <p className="text-stone-gray">bookings@elysorasafaris.com</p>
+                                            <p className="text-stone-gray">{settings.site_email || "info@elysora.com"}</p>
                                         </div>
                                     </div>
 
@@ -146,8 +148,7 @@ export default function Contact() {
                                         </div>
                                         <div>
                                             <h4 className="font-bold text-charcoal mb-1">Phone</h4>
-                                            <p className="text-stone-gray">+255 123 456 789</p>
-                                            <p className="text-stone-gray">+255 987 654 321</p>
+                                            <p className="text-stone-gray">{settings.site_phone || "+255 754 000 000"}</p>
                                         </div>
                                     </div>
 
@@ -157,9 +158,8 @@ export default function Contact() {
                                         </div>
                                         <div>
                                             <h4 className="font-bold text-charcoal mb-1">Office</h4>
-                                            <p className="text-stone-gray">
-                                                Arusha, Tanzania<br />
-                                                East Africa
+                                            <p className="text-stone-gray whitespace-pre-line">
+                                                {settings.site_address || "Sokoine Road, Arusha,\nTanzania, East Africa"}
                                             </p>
                                         </div>
                                     </div>
@@ -167,10 +167,8 @@ export default function Contact() {
 
                                 <div className="mt-12 pt-8 border-t border-gray-200">
                                     <h4 className="font-bold text-charcoal mb-4">Office Hours</h4>
-                                    <div className="space-y-2 text-stone-gray">
-                                        <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                                        <p>Saturday: 9:00 AM - 4:00 PM</p>
-                                        <p>Sunday: Closed</p>
+                                    <div className="space-y-2 text-stone-gray whitespace-pre-line">
+                                        {settings.business_hours || "Monday - Friday: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 4:00 PM\nSunday: Closed"}
                                     </div>
                                     <p className="text-sm text-stone-gray mt-4">
                                         (East Africa Time - EAT / GMT+3)
@@ -184,7 +182,7 @@ export default function Contact() {
                 {/* FAQ Note */}
                 <section className="py-16 bg-charcoal">
                     <div className="container mx-auto px-4 md:px-6 text-center">
-                        <h3 className="text-2xl font-headline font-bold text-white mb-4">
+                        <h3 className="text-2xl font-headline font-bold text-charcoal text-white mb-4">
                             Have a Quick Question?
                         </h3>
                         <p className="text-white/80 mb-6">
