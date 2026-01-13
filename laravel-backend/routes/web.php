@@ -27,13 +27,24 @@ Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
 
+// Services Routes
+Route::prefix('services')->group(function () {
+    Route::get('/cultural-tours', [PageController::class, 'servicesCultural'])->name('services.cultural-tours');
+    Route::get('/mountain-hiking', [PageController::class, 'servicesMountain'])->name('services.mountain-hiking');
+    Route::get('/luxury-safari', [PageController::class, 'servicesLuxury'])->name('services.luxury-safari');
+    Route::get('/group-safari', [PageController::class, 'servicesGroup'])->name('services.group-safari');
+    Route::get('/tailor-made-safari', [PageController::class, 'servicesTailorMade'])->name('services.tailor-made-safari');
+    Route::get('/zanzibar-beach-safari', [PageController::class, 'servicesZanzibar'])->name('services.zanzibar-beach-safari');
+});
+
 // Planning Routes
 Route::get('/planning', [PageController::class, 'planning'])->name('planning.index');
 Route::get('/planning/safari-guide', [PageController::class, 'safariGuide'])->name('planning.safari-guide');
 Route::get('/planning/accommodation', [PageController::class, 'accommodation'])->name('planning.accommodation');
-Route::get('/planning/luxury-safari', [PageController::class, 'luxurySafari'])->name('planning.luxury-safari');
-Route::get('/planning/group-safari', [PageController::class, 'groupSafari'])->name('planning.group-safari');
-Route::get('/planning/private-safari', [PageController::class, 'privateSafari'])->name('planning.private-safari');
+// Migrated to Services
+Route::get('/planning/luxury-safari', function() { return redirect()->route('services.luxury-safari'); });
+Route::get('/planning/group-safari', function() { return redirect()->route('services.group-safari'); });
+Route::get('/planning/private-safari', function() { return redirect()->route('services.tailor-made-safari'); }); // Renamed
 Route::get('/planning/camping-safari', [PageController::class, 'campingSafari'])->name('planning.camping-safari');
 Route::get('/planning/practical-information', [PageController::class, 'practicalInformation'])->name('planning.practical-information');
 
@@ -52,3 +63,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Admin Routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('dashboard');
+    Route::resource('destinations', App\Http\Controllers\Admin\AdminDestinationController::class);
+    Route::resource('safaris', App\Http\Controllers\Admin\AdminSafariController::class);
+    Route::resource('blog', App\Http\Controllers\Admin\AdminBlogController::class);
+    // More resource routes will go here
+});
+

@@ -17,7 +17,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/Components/ui/navigation-menu";
-import { planningNavItems, safariStyleNavItems } from "@/lib/data";
+import { planningNavItems, safariStyleNavItems, servicesNavItems } from "@/lib/data";
 
 
 const navLinks = [
@@ -58,7 +58,7 @@ export default function Header() {
           <img src="/elysora-logo.png" alt="Elysora Logo" width={150} height={150} className="object-contain absolute top-2 left-0" />
         </Link>
         <nav className="hidden lg:flex items-center gap-2">
-          {navLinks.slice(0, 2).map((link) => (
+          {navLinks.slice(0, 1).map((link) => (
             <Link
               key={link.href}
               href={link.href!}
@@ -72,6 +72,33 @@ export default function Header() {
           ))}
           <NavigationMenu>
             <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={cn(
+                  "text-base font-semibold transition-colors hover:text-sahara-gold outline-none",
+                  pathname.startsWith("/services")
+                    ? "text-sahara-gold"
+                    : headerTextColor
+                )}>Services</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid w-[600px] grid-cols-2 gap-4 p-4">
+                    <div className="flex flex-col justify-center rounded-lg bg-sand p-6">
+                      <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=2071&auto=format&fit=crop" alt="Services" width={400} height={400} className="rounded-lg object-cover mb-4 aspect-video" />
+                      <h3 className="font-headline text-lg font-bold">Curated Adventures</h3>
+                      <p className="text-sm text-stone-gray mt-1 mb-4">Discover the myriad ways to experience the magic of Tanzania.</p>
+                      <Button variant="link" asChild className="p-0 justify-start h-auto">
+                        <Link href="/custom-safari">Start Planning &rarr;</Link>
+                      </Button>
+                    </div>
+                    <ul className="flex flex-col gap-2">
+                      {servicesNavItems.map((item) => (
+                        <ListItem key={item.title} title={item.title} href={item.href} icon={item.icon}>
+                          {item.description}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(
                   "text-base font-semibold transition-colors hover:text-sahara-gold outline-none",
@@ -101,6 +128,18 @@ export default function Header() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+          {navLinks.slice(1, 2).map((link) => (
+            <Link
+              key={link.href}
+              href={link.href!}
+              className={cn(
+                "text-base font-semibold transition-colors hover:text-sahara-gold relative after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-sahara-gold after:transition-all after:duration-300 hover:after:w-full hover:after:left-0 px-4 py-2",
+                pathname.startsWith(link.href!) ? "text-sahara-gold after:w-full after:left-0" : headerTextColor
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
           {navLinks.slice(2).map((link) => (
             <Link
               key={link.href}

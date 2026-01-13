@@ -1,5 +1,5 @@
 
-import { LayoutGrid, BookOpen, Star, Leaf, ShieldCheck, Smile, Users, Compass, Bed, Info, Plane, Group, HandHeart, Globe, type LucideIcon } from "lucide-react";
+import { LayoutGrid, BookOpen, Star, Leaf, ShieldCheck, Smile, Users, Compass, Bed, Info, Plane, Group, HandHeart, Globe, Mountain, Palmtree, type LucideIcon } from "lucide-react";
 
 export type SafariPackage = {
   slug: string;
@@ -179,6 +179,45 @@ export const safariStyleNavItems: NavItem[] = [
     href: "/planning/camping-safari",
     description: "A raw and authentic adventure, sleeping under the stars and close to nature.",
     icon: HandHeart,
+  }
+];
+
+export const servicesNavItems: NavItem[] = [
+  {
+    title: "Cultural Tours",
+    href: "/services/cultural-tours",
+    description: "Engage with local tribes, visit Maasai bomas, and learn about Tanzania's rich heritage.",
+    icon: HandHeart,
+  },
+  {
+    title: "Mountain Hiking",
+    href: "/services/mountain-hiking",
+    description: "Challenge yourself on Mount Kilimanjaro or Mount Meru with expert climbing guides.",
+    icon: Mountain,
+  },
+  {
+    title: "Luxury Safaris",
+    href: "/services/luxury-safari",
+    description: "Stay in exclusive lodges and enjoy private game drives for the ultimate comfort.",
+    icon: Star,
+  },
+  {
+    title: "Tailor Made Safaris",
+    href: "/services/tailor-made-safari",
+    description: "Design your perfect itinerary. You choose the dates, destinations, and pace.",
+    icon: Compass,
+  },
+  {
+    title: "Zanzibar Beach Safari",
+    href: "/services/zanzibar-beach-safari",
+    description: "Relax on pristine white sands and explore the historic Stone Town.",
+    icon: Palmtree,
+  },
+  {
+    title: "Group Safaris",
+    href: "/services/group-safari",
+    description: "Join small groups for a shared adventure. Perfect for solo travelers and new friends.",
+    icon: Users,
   }
 ];
 

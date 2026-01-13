@@ -66,19 +66,35 @@ class PageController extends Controller
         return Inertia::render('Planning/Accommodation');
     }
 
-    public function luxurySafari(): Response
+    // Services Pages
+    public function servicesCultural(): Response
     {
-        return Inertia::render('Planning/LuxurySafari');
+        return Inertia::render('Services/CulturalTours');
     }
 
-    public function groupSafari(): Response
+    public function servicesMountain(): Response
     {
-        return Inertia::render('Planning/GroupSafari');
+        return Inertia::render('Services/MountainHiking');
     }
 
-    public function privateSafari(): Response
+    public function servicesLuxury(): Response
     {
-        return Inertia::render('Planning/PrivateSafari');
+        return Inertia::render('Services/LuxurySafari');
+    }
+
+    public function servicesGroup(): Response
+    {
+        return Inertia::render('Services/GroupSafari');
+    }
+
+    public function servicesTailorMade(): Response
+    {
+        return Inertia::render('Services/TailorMadeSafari');
+    }
+
+    public function servicesZanzibar(): Response
+    {
+        return Inertia::render('Services/ZanzibarBeachSafari');
     }
 
     public function campingSafari(): Response
