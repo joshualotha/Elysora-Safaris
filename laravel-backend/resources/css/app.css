@@ -84,18 +84,26 @@
   }
 
   body {
-    @apply bg-ivory text-charcoal;
+    @apply bg-ivory text-charcoal font-body;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
   h2,
-  h3,
+  h3 {
+    @apply font-headline font-bold text-charcoal normal-case;
+  }
+
   h4,
   h5,
-  h6 {
-    @apply font-headline tracking-wide;
+  h6,
+  .sub-header {
+    @apply font-body font-light uppercase tracking-[3px];
+  }
+
+  .accent-script {
+    @apply font-handwriting lowercase text-sahara-gold;
   }
 
   h1 {

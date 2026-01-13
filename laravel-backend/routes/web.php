@@ -27,6 +27,23 @@ Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
 
+// Planning Routes
+Route::get('/planning', [PageController::class, 'planning'])->name('planning.index');
+Route::get('/planning/safari-guide', [PageController::class, 'safariGuide'])->name('planning.safari-guide');
+Route::get('/planning/accommodation', [PageController::class, 'accommodation'])->name('planning.accommodation');
+Route::get('/planning/luxury-safari', [PageController::class, 'luxurySafari'])->name('planning.luxury-safari');
+Route::get('/planning/group-safari', [PageController::class, 'groupSafari'])->name('planning.group-safari');
+Route::get('/planning/private-safari', [PageController::class, 'privateSafari'])->name('planning.private-safari');
+Route::get('/planning/camping-safari', [PageController::class, 'campingSafari'])->name('planning.camping-safari');
+Route::get('/planning/practical-information', [PageController::class, 'practicalInformation'])->name('planning.practical-information');
+
+Route::get('/planning/visa', [PageController::class, 'planningVisa'])->name('planning.visa');
+Route::get('/planning/health', [PageController::class, 'planningHealth'])->name('planning.health');
+Route::get('/planning/money', [PageController::class, 'planningMoney'])->name('planning.money');
+Route::get('/planning/packing', [PageController::class, 'planningPacking'])->name('planning.packing');
+Route::get('/planning/culture', [PageController::class, 'planningCulture'])->name('planning.culture');
+Route::get('/planning/connectivity', [PageController::class, 'planningConnectivity'])->name('planning.connectivity');
+
 // Auth routes (from Breeze)
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

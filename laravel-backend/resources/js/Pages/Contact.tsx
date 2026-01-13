@@ -30,10 +30,13 @@ export default function Contact() {
                         <img src="/Welcome-to-the-Wild.png" alt="Contact" className="w-full h-full object-cover" />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center text-white">
-                        <span className="text-sahara-gold font-bold tracking-wider uppercase text-sm">Get In Touch</span>
-                        <h1 className="text-5xl md:text-7xl font-headline font-bold mt-4 mb-6">
-                            Contact Us
-                        </h1>
+                        <span className="text-sahara-gold font-bold tracking-wider uppercase text-sm block mb-4">Get In Touch</span>
+                        <div className="relative inline-block">
+                            <span className="accent-script text-6xl md:text-8xl absolute -top-12 -left-10 text-white/20 transform -rotate-6 select-none pointer-events-none z-0">Let's Connect</span>
+                            <h1 className="relative z-10 text-5xl md:text-7xl font-headline font-bold mb-6">
+                                Contact Us
+                            </h1>
+                        </div>
                         <p className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90">
                             We're here to answer your questions and help plan your dream safari
                         </p>

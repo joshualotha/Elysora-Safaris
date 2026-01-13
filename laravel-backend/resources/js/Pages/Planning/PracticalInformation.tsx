@@ -1,42 +1,96 @@
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
+import { Card, CardContent } from '@/Components/ui/card';
+import { Button } from '@/Components/ui/button';
+import { Globe, ShieldCheck, DollarSign, Smartphone, Briefcase, HandHeart, ArrowRight } from 'lucide-react';
 
 export default function PracticalInformation() {
+    const sections = [
+        {
+            title: "Visa & Entry",
+            description: "E-Visa portal links, passport requirements, and fees.",
+            icon: Globe,
+            href: route('planning.visa'),
+            color: "bg-charcoal text-sahara-gold"
+        },
+        {
+            title: "Health & Safety",
+            description: "Yellow Fever, Malaria prophylaxis, and general safety.",
+            icon: ShieldCheck,
+            href: route('planning.health'),
+            color: "bg-safari-green text-white"
+        },
+        {
+            title: "Currency & Tipping",
+            description: "Cash requirements, USD bill rules, and tipping guides.",
+            icon: DollarSign,
+            href: route('planning.money'),
+            color: "bg-sahara-gold text-charcoal"
+        },
+        {
+            title: "Packing List",
+            description: "Comprehensive checklist for clothing and gadgets.",
+            icon: Briefcase,
+            href: route('planning.packing'),
+            color: "bg-sand text-charcoal"
+        },
+        {
+            title: "Connectivity",
+            description: "Wi-Fi availability and buying local SIM cards.",
+            icon: Smartphone,
+            href: route('planning.connectivity'),
+            color: "bg-blue-600 text-white"
+        },
+        {
+            title: "Cultural Etiquette",
+            description: "Photography rules, dress codes, and greetings.",
+            icon: HandHeart,
+            href: route('planning.culture'),
+            color: "bg-charcoal text-white"
+        }
+    ];
+
     return (
         <MainLayout title="Practical Information - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
-                <section className="py-20 md:py-32 bg-white">
-                    <div className="container mx-auto px-4 md:px-6 max-w-4xl prose prose-lg">
-                        <h1 className="text-5xl font-headline font-bold text-charcoal mb-8">Practical Travel Information</h1>
+                {/* Hero */}
+                <section className="relative h-[50vh] flex items-center justify-center overflow-hidden bg-charcoal">
+                    <div className="absolute inset-0 opacity-20">
+                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-10">
+                        <span className="text-sahara-gold font-bold tracking-widest uppercase mb-4 block">Travel Essentials</span>
+                        <h1 className="text-5xl md:text-7xl font-headline font-bold text-white mb-6">
+                            Practical Information
+                        </h1>
+                        <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto">
+                            Everything you need to know before you go. Select a topic below to explore in detail.
+                        </p>
+                    </div>
+                </section>
 
-                        <h2>Visa & Entry Requirements</h2>
-                        <p>Most visitors can obtain a tourist visa on arrival ($50 USD) or apply online. Passport must be valid for 6 months beyond travel dates with at least 2 blank pages.</p>
-
-                        <h2>Health & Vaccinations</h2>
-                        <p>Yellow fever vaccination required if traveling from affected countries. Malaria prophylaxis recommended for safari areas. Consult your doctor 6-8 weeks before departure. Travel insurance with medical evacuation coverage strongly recommended.</p>
-
-                        <h2>Currency & Money</h2>
-                        <p>Tanzanian Shilling (TZS) is local currency, but USD widely accepted. ATMs available in major towns. Credit cards accepted at most lodges. Bring small USD bills ($1, $5, $10) for tips.</p>
-
-                        <h2>Best Time to Visit</h2>
-                        <p>Dry season (June-October) best for wildlife viewing. Wet season (November-May) offers lush landscapes, fewer tourists, and lower prices. Great Migration timing varies by location.</p>
-
-                        <h2>What to Pack</h2>
-                        <ul>
-                            <li>Neutral-colored clothing (beige, khaki, olive green)</li>
-                            <li>Comfortable walking shoes</li>
-                            <li>Sun protection (hat, sunglasses, SPF 50+)</li>
-                            <li>Insect repellent (DEET-based)</li>
-                            <li>Binoculars and camera with telephoto lens</li>
-                            <li>Light jacket for early morning game drives</li>
-                            <li>Personal medications and first aid</li>
-                        </ul>
-
-                        <h2>Connectivity</h2>
-                        <p>Mobile coverage available in major towns and some lodges. Wi-Fi available at most accommodations but may be slow. Consider purchasing a local SIM card at the airport.</p>
-
-                        <h2>Tipping Guidelines</h2>
-                        <p>Safari guide: $15-20 per person per day. Lodge staff: $10-15 per person per day. Camp crew: $5-10 per person per day. Tips usually pooled and shared among staff.</p>
+                <section className="py-24 bg-stone-50">
+                    <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {sections.map((section) => (
+                                <Link key={section.title} href={section.href} className="group">
+                                    <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-stone-100 h-full flex flex-col items-start group-hover:-translate-y-1">
+                                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${section.color}`}>
+                                            <section.icon className="h-7 w-7" />
+                                        </div>
+                                        <h3 className="text-2xl font-headline font-bold text-charcoal mb-3 group-hover:text-sahara-gold transition-colors">
+                                            {section.title}
+                                        </h3>
+                                        <p className="text-stone-600 mb-6 flex-grow">
+                                            {section.description}
+                                        </p>
+                                        <div className="flex items-center text-sm font-bold text-charcoal uppercase tracking-wider">
+                                            Read More <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
                     </div>
                 </section>
             </div>

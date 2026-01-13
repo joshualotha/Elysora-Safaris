@@ -49,4 +49,75 @@ class PageController extends Controller
     {
         return Inertia::render('Terms');
     }
+
+    // Planning Pages
+    public function planning(): Response
+    {
+        return Inertia::render('Planning/Index');
+    }
+
+    public function safariGuide(): Response
+    {
+        return Inertia::render('Planning/SafariGuide');
+    }
+
+    public function accommodation(): Response
+    {
+        return Inertia::render('Planning/Accommodation');
+    }
+
+    public function luxurySafari(): Response
+    {
+        return Inertia::render('Planning/LuxurySafari');
+    }
+
+    public function groupSafari(): Response
+    {
+        return Inertia::render('Planning/GroupSafari');
+    }
+
+    public function privateSafari(): Response
+    {
+        return Inertia::render('Planning/PrivateSafari');
+    }
+
+    public function campingSafari(): Response
+    {
+        return Inertia::render('Planning/CampingSafari');
+    }
+
+    public function practicalInformation(): Response
+    {
+        return Inertia::render('Planning/PracticalInformation');
+    }
+
+    public function planningVisa(): Response
+    {
+        return Inertia::render('Planning/Practical/Visa');
+    }
+
+    public function planningHealth(): Response
+    {
+        return Inertia::render('Planning/Practical/Health');
+    }
+
+    public function planningMoney(): Response
+    {
+        return Inertia::render('Planning/Practical/Money');
+    }
+
+    public function planningPacking(): Response
+    {
+        return Inertia::render('Planning/Practical/Packing');
+    }
+
+    public function planningCulture(): Response
+    {
+        return Inertia::render('Planning/Practical/Culture');
+    }
+
+    public function planningConnectivity(): Response
+    {
+        return Inertia::render('Planning/Practical/Connectivity');
+    }
 }

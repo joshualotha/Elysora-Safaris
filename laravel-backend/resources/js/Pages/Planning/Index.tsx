@@ -54,9 +54,12 @@ export default function PlanningIndex() {
             <div className="flex flex-col min-h-screen">
                 <section className="relative py-32 md:py-40 bg-gradient-to-br from-charcoal to-safari-green">
                     <div className="relative container mx-auto px-4 md:px-6 text-center text-white">
-                        <h1 className="text-5xl md:text-7xl font-headline font-bold mb-6">
-                            Plan Your Safari
-                        </h1>
+                        <div className="relative inline-block">
+                            <span className="accent-script text-6xl md:text-8xl absolute -top-12 -left-10 text-white/20 transform -rotate-6 select-none pointer-events-none z-0">Start</span>
+                            <h1 className="relative z-10 text-5xl md:text-7xl font-headline font-bold mb-6">
+                                Plan Your Safari
+                            </h1>
+                        </div>
                         <p className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90">
                             Expert guides and resources to help you prepare for your adventure
                         </p>

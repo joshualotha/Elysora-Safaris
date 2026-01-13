@@ -1,5 +1,5 @@
 
-import { LayoutGrid, BookOpen, Star, Leaf, ShieldCheck, Smile, Users, Compass, Bed, Info, Plane, Group, HandHeart, type LucideIcon } from "lucide-react";
+import { LayoutGrid, BookOpen, Star, Leaf, ShieldCheck, Smile, Users, Compass, Bed, Info, Plane, Group, HandHeart, Globe, type LucideIcon } from "lucide-react";
 
 export type SafariPackage = {
   slug: string;
@@ -120,20 +120,38 @@ export const planningNavItems: NavItem[] = [
   {
     title: "Safari Planning Guide",
     href: "/planning/safari-guide",
-    description: "Your complete guide to choosing the right safari, packing essentials, and best times to visit.",
+    description: "Your complete guide to choosing the right safari, seasons, and what to expect.",
     icon: Compass,
   },
   {
     title: "Accommodation Styles",
     href: "/planning/accommodation",
-    description: "Explore the differences between lodges, tented camps, and budget options.",
+    description: "Explore the differences between luxury lodges, tented camps, and camping.",
     icon: Bed,
   },
   {
-    title: "Practical Information",
-    href: "/planning/practical-information",
-    description: "Essential details on visas, health, money, and what to expect on a typical safari day.",
+    title: "Visa & Entry",
+    href: "/planning/visa",
+    description: "Essential requirements, E-Visa links, and passport rules.",
     icon: Info,
+  },
+  {
+    title: "Health & Safety",
+    href: "/planning/health",
+    description: "Vaccination advice (Yellow Fever, Malaria) and staying safe.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Packing List",
+    href: "/planning/packing",
+    description: "The ultimate checklist: what to bring and what to leave behind.",
+    icon: Group, // Using Group as a placeholder for Luggage/Bag if unavailable, or stick to simple icons
+  },
+  {
+    title: "Cultural Etiquette",
+    href: "/planning/culture",
+    description: "Insights on local customs, greetings, and respectful interactions.",
+    icon: Globe,
   }
 ];
 

@@ -22,8 +22,9 @@ export default {
         },
         extend: {
             fontFamily: {
-                headline: ['Playfair Display', 'serif'],
-                body: ['Inter', 'sans-serif'],
+                headline: ['Cormorant Garamond', 'serif'],
+                handwriting: ['Pinyon Script', 'cursive'],
+                body: ['Montserrat', 'sans-serif'],
             },
             colors: {
                 'sahara-gold': '#C9A875',

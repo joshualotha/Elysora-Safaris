@@ -38,11 +38,14 @@ export default function Home({
                                 <div className="absolute inset-0 bg-black/10" />
                             </div>
                             <div className="flex flex-col gap-6">
-                                <div className="inline-block">
-                                    <span className="text-sahara-gold font-bold tracking-wider uppercase text-sm">Welcome to the Wild</span>
-                                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold text-charcoal mt-2 leading-tight">
-                                        A Safari with <span className="text-sahara-gold">Elysora Safaris</span>
-                                    </h2>
+                                <div className="inline-block relative">
+                                    <span className="text-sahara-gold font-bold tracking-wider uppercase text-sm mb-2 block">Welcome to the Wild</span>
+                                    <div className="relative">
+                                        <span className="accent-script text-6xl md:text-8xl absolute -top-8 -left-6 text-sahara-gold/30 transform -rotate-12 select-none pointer-events-none z-0">Experience</span>
+                                        <h2 className="relative z-10 text-4xl md:text-5xl lg:text-6xl font-headline font-bold text-charcoal leading-tight">
+                                            A Safari with <span className="text-sahara-gold">Elysora Safaris</span>
+                                        </h2>
+                                    </div>
                                 </div>
                                 <p className="text-lg text-stone-gray leading-relaxed">
                                     Embark on a journey beyond the ordinary. At Elysora Safaris, we don't just show you nature; we immerse you in it. From the thundering herds of the Serengeti to the silent majesty of Kilimanjaro, our expert guides lead you through the untold stories of the wild.

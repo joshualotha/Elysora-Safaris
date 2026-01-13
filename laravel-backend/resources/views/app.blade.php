@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=playfair-display:600,700|inter:400,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=cormorant-garamond:600,700|pinyon-script:400|montserrat:300,400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
         @routes
