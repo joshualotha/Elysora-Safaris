@@ -61,8 +61,8 @@ export default function BlogIndex({ blogPosts }: BlogIndexProps) {
                                     key={category}
                                     onClick={() => setSelectedCategory(category)}
                                     className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 border ${selectedCategory === category
-                                            ? 'bg-sahara-gold text-white border-sahara-gold shadow-md transform scale-105'
-                                            : 'bg-transparent text-stone-600 border-stone-300 hover:border-sahara-gold hover:text-sahara-gold'
+                                        ? 'bg-sahara-gold text-white border-sahara-gold shadow-md transform scale-105'
+                                        : 'bg-transparent text-stone-600 border-stone-300 hover:border-sahara-gold hover:text-sahara-gold'
                                         }`}
                                 >
                                     {category}
@@ -81,7 +81,7 @@ export default function BlogIndex({ blogPosts }: BlogIndexProps) {
                                     <div className="relative h-72 overflow-hidden">
                                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                                         <img
-                                            src={`/images/${post.image}.jpg`}
+                                            src={post.image.startsWith('uploads/') ? `/storage/${post.image}` : `/images/${post.image}.jpg`}
                                             alt={post.title}
                                             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                                         />

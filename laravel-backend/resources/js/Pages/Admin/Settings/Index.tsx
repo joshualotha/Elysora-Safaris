@@ -1,4 +1,4 @@
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, usePage } from '@inertiajs/react';
 import AdminLayout from '@/Layouts/AdminLayout';
 import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
@@ -6,6 +6,8 @@ import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/Components/ui/tabs';
+import { CheckCircle2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 interface Setting {
     id: number;
@@ -24,6 +26,10 @@ interface Props {
 }
 
 export default function Index({ settings }: Props) {
+    const { props } = usePage();
+    const flash = props.flash as { success?: string };
+    const [showSuccess, setShowSuccess] = useState(false);
+
     // Flatten settings for form data
     const initialData = Object.values(settings).flat().reduce((acc, setting) => {
         acc[setting.key] = setting.value || '';
@@ -39,6 +45,15 @@ export default function Index({ settings }: Props) {
             value
         }))
     }));
+
+    // Show success message when flash.success changes
+    useEffect(() => {
+        if (flash?.success) {
+            setShowSuccess(true);
+            const timer = setTimeout(() => setShowSuccess(false), 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [flash?.success]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -79,6 +94,14 @@ export default function Index({ settings }: Props) {
             <Head title="Site Settings" />
 
             <div className="space-y-6">
+                {/* Success Message */}
+                {showSuccess && flash?.success && (
+                    <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                        <CheckCircle2 className="h-5 w-5" />
+                        <p className="font-medium">{flash.success}</p>
+                    </div>
+                )}
+
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight">Site Settings</h1>
                     <p className="text-muted-foreground mt-2">

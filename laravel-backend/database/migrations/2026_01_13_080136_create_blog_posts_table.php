@@ -15,8 +15,8 @@ return new class extends Migration
             $table->text('excerpt');
             $table->string('image');
             $table->string('author');
-            $table->date('date');
-            $table->integer('read_time');
+            $table->date('date')->nullable()->default(now());
+            $table->string('read_time');
             $table->string('category');
             $table->longText('content')->nullable();
             $table->timestamps();

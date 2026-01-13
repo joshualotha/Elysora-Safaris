@@ -16,7 +16,7 @@ export default function BlogShow({ post, relatedPosts }: BlogShowProps) {
                 {/* Immersive Hero */}
                 <div className="relative h-[85vh] w-full overflow-hidden">
                     <img
-                        src={`/images/${post.image}.jpg`}
+                        src={post.image.startsWith('uploads/') ? `/storage/${post.image}` : `/images/${post.image}.jpg`}
                         alt={post.title}
                         className="w-full h-full object-cover"
                     />
@@ -110,7 +110,7 @@ export default function BlogShow({ post, relatedPosts }: BlogShowProps) {
                                         <div className="relative h-64 overflow-hidden">
                                             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10" />
                                             <img
-                                                src={`/images/${related.image}.jpg`}
+                                                src={related.image.startsWith('uploads/') ? `/storage/${related.image}` : `/images/${related.image}.jpg`}
                                                 alt={related.title}
                                                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                                             />
