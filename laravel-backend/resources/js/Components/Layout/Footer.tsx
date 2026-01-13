@@ -88,11 +88,9 @@ export default function Footer() {
               <li><Link href="/about" className="hover:text-sahara-gold transition-colors block w-fit">Our Story</Link></li>
               <li><Link href="/destinations" className="hover:text-sahara-gold transition-colors block w-fit">Destinations</Link></li>
               <li><Link href="/safaris" className="hover:text-sahara-gold transition-colors block w-fit">Safari Packages</Link></li>
-              <li><Link href="/blog" className="hover:text-sahara-gold transition-colors block w-fit">Journal</Link></li>
               <li><Link href="/gallery" className="hover:text-sahara-gold transition-colors block w-fit">Gallery</Link></li>
               <li><Link href="/reviews" className="hover:text-sahara-gold transition-colors block w-fit">Reviews</Link></li>
               <li><Link href="/faq" className="hover:text-sahara-gold transition-colors block w-fit">FAQ</Link></li>
-              <li><Link href="/contact" className="hover:text-sahara-gold transition-colors block w-fit">Contact</Link></li>
             </ul>
           </div>
 
@@ -107,16 +105,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Useful Links Column */}
+          {/* Useful Resources Column */}
           <div className="lg:col-span-3 space-y-6">
-            <h3 className="text-white font-bold uppercase tracking-widest text-sm">Useful Links</h3>
+            <h3 className="text-white font-bold uppercase tracking-widest text-sm">Useful Resources</h3>
             <ul className="space-y-4 font-light">
+              <li><a href="https://eservices.immigration.go.tz/visa/" target="_blank" rel="noopener noreferrer" className="hover:text-sahara-gold transition-colors block w-fit">Tanzania eVisa Application</a></li>
               <li><Link href="/planning/visa" className="hover:text-sahara-gold transition-colors block w-fit">Visa Information</Link></li>
               <li><Link href="/planning/health" className="hover:text-sahara-gold transition-colors block w-fit">Health & Vaccinations</Link></li>
               <li><Link href="/planning/packing" className="hover:text-sahara-gold transition-colors block w-fit">Packing Guide</Link></li>
               <li><Link href="/planning/safari-guide" className="hover:text-sahara-gold transition-colors block w-fit">Safari Guide</Link></li>
-              <li><Link href="/planning/practical-information" className="hover:text-sahara-gold transition-colors block w-fit">Practical Info</Link></li>
-              <li><Link href="/conservation" className="hover:text-sahara-gold transition-colors block w-fit">Conservation</Link></li>
             </ul>
           </div>
         </div>
@@ -127,7 +124,6 @@ export default function Footer() {
           <div className="flex gap-8">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms Conditions</Link>
-            <Link href="#" className="hover:text-white transition-colors">Sitemap</Link>
           </div>
         </div>
       </div>
