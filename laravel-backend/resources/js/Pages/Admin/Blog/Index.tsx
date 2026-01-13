@@ -10,6 +10,7 @@ interface BlogPost {
     slug: string;
     category: string;
     author: string;
+    image: string;
     published_at: string;
 }
 
@@ -37,6 +38,7 @@ export default function Index({ posts }: { posts: BlogPost[] }) {
                 <table className="w-full text-left">
                     <thead className="bg-stone-50 border-b border-stone-200">
                         <tr>
+                            <th className="px-6 py-4 font-semibold text-stone-600 text-sm">Image</th>
                             <th className="px-6 py-4 font-semibold text-stone-600 text-sm">Title</th>
                             <th className="px-6 py-4 font-semibold text-stone-600 text-sm">Category</th>
                             <th className="px-6 py-4 font-semibold text-stone-600 text-sm">Author</th>
@@ -46,6 +48,16 @@ export default function Index({ posts }: { posts: BlogPost[] }) {
                     <tbody className="divide-y divide-stone-100">
                         {posts.map((post) => (
                             <tr key={post.id} className="hover:bg-stone-50 transition-colors">
+                                <td className="px-6 py-4">
+                                    <div className="h-12 w-20 rounded-md overflow-hidden bg-stone-200">
+                                        <img
+                                            src={post.image.startsWith('uploads/') ? `/storage/${post.image}` : `/images/${post.image}`}
+                                            alt={post.title}
+                                            className="w-full h-full object-cover"
+                                            onError={(e) => { e.currentTarget.src = 'https://placehold.co/80x48?text=No+Img' }}
+                                        />
+                                    </div>
+                                </td>
                                 <td className="px-6 py-4 font-medium text-charcoal">{post.title}</td>
                                 <td className="px-6 py-4">
                                     <span className="px-2 py-1 bg-stone-100 rounded-full text-xs font-semibold text-stone-600 uppercase">

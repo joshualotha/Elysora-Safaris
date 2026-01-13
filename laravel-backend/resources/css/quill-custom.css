@@ -1,0 +1,117 @@
+/* Quill Editor Styles */
+.ql-container {
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.ql-editor {
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.ql-editor p,
+.ql-editor ol,
+.ql-editor ul,
+.ql-editor pre,
+.ql-editor blockquote,
+.ql-editor h1,
+.ql-editor h2,
+.ql-editor h3 {
+    margin-bottom: 0.5em;
+}
+
+.ql-editor h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.ql-editor h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.ql-editor h3 {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.ql-toolbar {
+    background: #f9fafb;
+    border-color: #e5e7eb !important;
+    border-radius: 0.375rem 0.375rem 0 0;
+}
+
+.ql-container {
+    border-color: #e5e7eb !important;
+    border-radius: 0 0 0.375rem 0.375rem;
+}
+
+.ql-editor:focus {
+    outline: none;
+}
+
+.rich-text-editor .ql-snow.ql-toolbar button:hover,
+.rich-text-editor .ql-snow .ql-toolbar button:hover,
+.rich-text-editor .ql-snow.ql-toolbar button:focus,
+.rich-text-editor .ql-snow .ql-toolbar button:focus,
+.rich-text-editor .ql-snow.ql-toolbar button.ql-active,
+.rich-text-editor .ql-snow .ql-toolbar button.ql-active,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-label:hover,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-label:hover,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-label.ql-active,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-label.ql-active,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-item:hover,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-item:hover,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+    color: #d4a574;
+}
+
+.rich-text-editor .ql-snow.ql-toolbar button:hover .ql-stroke,
+.rich-text-editor .ql-snow .ql-toolbar button:hover .ql-stroke,
+.rich-text-editor .ql-snow.ql-toolbar button:focus .ql-stroke,
+.rich-text-editor .ql-snow .ql-toolbar button:focus .ql-stroke,
+.rich-text-editor .ql-snow.ql-toolbar button.ql-active .ql-stroke,
+.rich-text-editor .ql-snow .ql-toolbar button.ql-active .ql-stroke,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+.rich-text-editor .ql-snow.ql-toolbar button:hover .ql-stroke-miter,
+.rich-text-editor .ql-snow .ql-toolbar button:hover .ql-stroke-miter,
+.rich-text-editor .ql-snow.ql-toolbar button:focus .ql-stroke-miter,
+.rich-text-editor .ql-snow .ql-toolbar button:focus .ql-stroke-miter,
+.rich-text-editor .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,
+.rich-text-editor .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+    stroke: #d4a574;
+}
+
+.rich-text-editor .ql-snow.ql-toolbar button:hover .ql-fill,
+.rich-text-editor .ql-snow .ql-toolbar button:hover .ql-fill,
+.rich-text-editor .ql-snow.ql-toolbar button:focus .ql-fill,
+.rich-text-editor .ql-snow .ql-toolbar button:focus .ql-fill,
+.rich-text-editor .ql-snow.ql-toolbar button.ql-active .ql-fill,
+.rich-text-editor .ql-snow .ql-toolbar button.ql-active .ql-fill,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill,
+.rich-text-editor .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+.rich-text-editor .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill {
+    fill: #d4a574;
+}

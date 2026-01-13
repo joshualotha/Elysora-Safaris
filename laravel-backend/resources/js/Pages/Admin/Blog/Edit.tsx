@@ -5,14 +5,23 @@ import { Input } from '@/Components/ui/input';
 import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
 import { ArrowLeft, Save } from 'lucide-react';
+import RichTextEditor from '@/Components/RichTextEditor';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/Components/ui/select"
 
 export default function Edit({ post }: { post: any }) {
-    const { data, setData, put, processing, errors } = useForm({
+    const { data, setData, post: submitPost, processing, errors } = useForm({
+        _method: 'put',
         title: post.title,
         slug: post.slug,
         excerpt: post.excerpt,
         content: post.content,
-        image: post.image,
+        image: null as File | null,
         category: post.category,
         author: post.author,
         read_time: post.read_time,
@@ -20,7 +29,7 @@ export default function Edit({ post }: { post: any }) {
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
-        put(route('admin.blog.update', post.id));
+        submitPost(route('admin.blog.update', post.id));
     };
 
     return (
@@ -65,12 +74,19 @@ export default function Edit({ post }: { post: any }) {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="space-y-2">
                             <Label htmlFor="category">Category</Label>
-                            <Input
-                                id="category"
-                                value={data.category}
-                                onChange={e => setData('category', e.target.value)}
-                                required
-                            />
+                            <Select onValueChange={(value) => setData('category', value)} defaultValue={data.category}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a category" />
+                                </SelectTrigger>
+                                <SelectContent className="bg-white">
+                                    <SelectItem value="Wildlife">Wildlife</SelectItem>
+                                    <SelectItem value="Culture">Culture</SelectItem>
+                                    <SelectItem value="Travel Tips">Travel Tips</SelectItem>
+                                    <SelectItem value="News">News</SelectItem>
+                                    <SelectItem value="Conservation">Conservation</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            {errors.category && <p className="text-red-500 text-sm">{errors.category}</p>}
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="author">Author</Label>
@@ -93,13 +109,14 @@ export default function Edit({ post }: { post: any }) {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="image">Image Filename</Label>
+                        <Label htmlFor="image">Update Image (Optional)</Label>
                         <Input
                             id="image"
-                            value={data.image}
-                            onChange={e => setData('image', e.target.value)}
-                            required
+                            type="file"
+                            onChange={e => setData('image', e.target.files ? e.target.files[0] : null)}
+                            accept="image/*"
                         />
+                        {post.image && !data.image && <p className="text-xs text-stone-500">Current: {post.image}</p>}
                         {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
                     </div>
 
@@ -116,13 +133,11 @@ export default function Edit({ post }: { post: any }) {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="content">Content (HTML Supported)</Label>
-                        <Textarea
-                            id="content"
+                        <Label htmlFor="content">Content</Label>
+                        <RichTextEditor
                             value={data.content}
-                            onChange={e => setData('content', e.target.value)}
-                            className="h-96 font-mono text-sm"
-                            required
+                            onChange={(html) => setData('content', html)}
+                            className="min-h-[400px]"
                         />
                         {errors.content && <p className="text-red-500 text-sm">{errors.content}</p>}
                     </div>

@@ -3,31 +3,28 @@ import MainLayout from '@/Layouts/MainLayout';
 import { useState } from 'react';
 import { X, ZoomIn } from 'lucide-react';
 
-// Using actual images we have in the project
-const galleryImages = [
-    { id: 1, title: 'Maasai Warrior at Golden Hour', category: 'Culture', image: 'culture-maasai-portrait.png', size: 'large' },
-    { id: 2, title: 'Kilimanjaro Summit', category: 'Landscape', image: 'mountain-kilimanjaro-hiker.png', size: 'tall' },
-    { id: 3, title: 'Elephant Herd', category: 'Wildlife', image: 'group-safari-vehicle.png', size: 'wide' },
-    { id: 4, title: 'Zanzibar Stone Town', category: 'Culture', image: 'zanzibar-stone-town-street.png', size: 'small' },
-    { id: 5, title: 'Luxury Bush Dinner', category: 'Lifestyle', image: 'tailor-made-bush-dinner.png', size: 'wide' },
-    { id: 6, title: 'Serengeti Plains', category: 'Landscape', image: 'destination-serengeti.jpg', size: 'large' },
-    { id: 7, title: 'Lion Pride', category: 'Wildlife', image: 'blog-post-1.jpg', size: 'tall' },
-    { id: 8, title: 'Zanzibar Beach', category: 'Relaxation', image: 'destination-zanzibar.jpg', size: 'wide' },
-    { id: 9, title: 'Leopard Resting', category: 'Wildlife', image: 'blog-post-2.jpg', size: 'small' },
-    { id: 10, title: 'Ngorongoro Crater', category: 'Landscape', image: 'destination-ngorongoro.jpg', size: 'wide' },
-    { id: 11, title: 'Luxury Tent', category: 'Lifestyle', image: 'luxury_tent.jpg', size: 'tall' },
-    { id: 12, title: 'Tarangire Baobab', category: 'Landscape', image: 'destination-tarangire.jpg', size: 'small' },
-];
+interface GalleryImage {
+    id: number;
+    title: string;
+    category: string;
+    image: string;
+    size: string;
+}
 
-const categories = ['All', 'Wildlife', 'Landscape', 'Culture', 'Lifestyle'];
+interface GalleryProps {
+    images: GalleryImage[];
+    categories: string[];
+}
 
-export default function Gallery() {
+export default function Gallery({ images, categories }: GalleryProps) {
     const [selectedCategory, setSelectedCategory] = useState('All');
-    const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
+    const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+
+    const allCategories = ['All', ...categories];
 
     const filteredImages = selectedCategory === 'All'
-        ? galleryImages
-        : galleryImages.filter(img => img.category === selectedCategory);
+        ? images
+        : images.filter(img => img.category === selectedCategory);
 
     return (
         <MainLayout title="Gallery - Elysora Safaris">
@@ -53,13 +50,13 @@ export default function Gallery() {
                 <section className="py-12 sticky top-0 z-30 bg-ivory/95 backdrop-blur-md border-b border-stone-200">
                     <div className="container mx-auto px-4 overflow-x-auto">
                         <div className="flex justify-center min-w-max gap-4">
-                            {categories.map((cat) => (
+                            {allCategories.map((cat) => (
                                 <button
                                     key={cat}
                                     onClick={() => setSelectedCategory(cat)}
                                     className={`px-6 py-2 rounded-full text-sm uppercase tracking-wider font-bold transition-all duration-300 ${selectedCategory === cat
-                                            ? 'bg-sahara-gold text-white shadow-md transform scale-105'
-                                            : 'bg-white text-charcoal hover:bg-stone-100 border border-stone-100'
+                                        ? 'bg-sahara-gold text-white shadow-md transform scale-105'
+                                        : 'bg-white text-charcoal hover:bg-stone-100 border border-stone-100'
                                         }`}
                                 >
                                     {cat}
@@ -81,7 +78,7 @@ export default function Gallery() {
                                 >
                                     <div className="relative">
                                         <img
-                                            src={`/images/${item.image}`}
+                                            src={item.image.startsWith('uploads/') ? `/storage/${item.image}` : `/images/${item.image}`}
                                             alt={item.title}
                                             className="w-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                             loading="lazy"
@@ -116,7 +113,7 @@ export default function Gallery() {
 
                         <div className="relative max-w-7xl max-h-[90vh] w-full flex flex-col items-center">
                             <img
-                                src={`/images/${selectedImage.image}`}
+                                src={selectedImage.image.startsWith('uploads/') ? `/storage/${selectedImage.image}` : `/images/${selectedImage.image}`}
                                 alt={selectedImage.title}
                                 className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
                             />

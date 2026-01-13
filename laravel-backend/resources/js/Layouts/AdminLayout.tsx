@@ -9,7 +9,10 @@ import {
     Menu,
     X,
     Settings,
-    Image as ImageIcon
+    Image as ImageIcon,
+    MessageSquare,
+    HelpCircle,
+    Mail
 } from 'lucide-react';
 import { Button } from '@/Components/ui/button';
 
@@ -22,6 +25,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         { name: 'Destinations', href: '/admin/destinations', icon: MapPin, active: component.startsWith('Admin/Destinations') },
         { name: 'Safaris', href: '/admin/safaris', icon: Tent, active: component.startsWith('Admin/Safaris') },
         { name: 'Blog', href: '/admin/blog', icon: Newspaper, active: component.startsWith('Admin/Blog') },
+        { name: 'Gallery', href: '/admin/gallery', icon: ImageIcon, active: component.startsWith('Admin/Gallery') },
+        { name: 'Testimonials', href: '/admin/testimonials', icon: MessageSquare, active: component.startsWith('Admin/Testimonials') },
+        { name: 'FAQs', href: '/admin/faqs', icon: HelpCircle, active: component.startsWith('Admin/FAQs') },
+        { name: 'Contacts', href: '/admin/contacts', icon: Mail, active: component.startsWith('Admin/Contacts') },
     ];
 
     return (

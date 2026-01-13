@@ -28,12 +28,17 @@ class AdminBlogController extends Controller
             'slug' => 'required|string|max:255|unique:blog_posts',
             'excerpt' => 'required|string',
             'content' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'required|image|max:2048', // Validate image
             'category' => 'required|string',
             'author' => 'required|string',
             'read_time' => 'required|string',
             'published_at' => 'nullable|date',
         ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('uploads', 'public');
+            $validated['image'] = $path;
+        }
 
         BlogPost::create($validated);
 
@@ -57,12 +62,19 @@ class AdminBlogController extends Controller
             'slug' => 'required|string|max:255|unique:blog_posts,slug,' . $post->id,
             'excerpt' => 'required|string',
             'content' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'nullable|image|max:2048', // Optional
             'category' => 'required|string',
             'author' => 'required|string',
             'read_time' => 'required|string',
             'published_at' => 'nullable|date',
         ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('uploads', 'public');
+            $validated['image'] = $path;
+        } else {
+            unset($validated['image']);
+        }
 
         $post->update($validated);
 

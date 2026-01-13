@@ -5,18 +5,26 @@ import { Input } from '@/Components/ui/input';
 import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
 import { ArrowLeft, Save } from 'lucide-react';
+import RichTextEditor from '@/Components/RichTextEditor';
 
 export default function Edit({ destination }: { destination: any }) {
-    const { data, setData, put, processing, errors } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
+        _method: 'put',
         name: destination.name,
         slug: destination.slug,
+        subtitle: destination.subtitle || '',
         description: destination.description,
-        image: destination.image,
+        image: null as File | null,
+        attractions: destination.attractions ? destination.attractions.join(', ') : '',
+        stats: destination.stats ? JSON.stringify(destination.stats) : '',
+        highlights: destination.highlights ? JSON.stringify(destination.highlights) : '',
+        sections: destination.sections ? JSON.stringify(destination.sections) : '',
     });
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
-        put(route('admin.destinations.update', destination.id));
+        // Use post with _method: put to handle file uploads in Laravel/Inertia
+        post(route('admin.destinations.update', destination.id));
     };
 
     return (
@@ -59,28 +67,79 @@ export default function Edit({ destination }: { destination: any }) {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="image">Image Filename (without extension)</Label>
+                        <Label htmlFor="image">Update Image (Optional)</Label>
                         <Input
                             id="image"
-                            value={data.image}
-                            onChange={e => setData('image', e.target.value)}
-                            placeholder="e.g. destination-serengeti"
-                            required
+                            type="file"
+                            onChange={e => setData('image', e.target.files ? e.target.files[0] : null)}
+                            accept="image/*"
                         />
-                        <p className="text-xs text-stone-500">Currently supports images in /public/images/. No upload support in this demo.</p>
+                        {destination.image && !data.image && (
+                            <p className="text-xs text-stone-500">Current: {destination.image}</p>
+                        )}
                         {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="description">Description</Label>
-                        <Textarea
-                            id="description"
+                        <Label htmlFor="description">Description (Overview & Highlights)</Label>
+                        <RichTextEditor
                             value={data.description}
-                            onChange={e => setData('description', e.target.value)}
-                            className="h-32"
-                            required
+                            onChange={(html) => setData('description', html)}
+                            className="min-h-[300px]"
                         />
                         {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="subtitle">Subtitle/Tagline</Label>
+                        <Input
+                            id="subtitle"
+                            value={data.subtitle}
+                            onChange={e => setData('subtitle', e.target.value)}
+                            placeholder="e.g. Explore the Wild"
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="attractions">Attractions (Tags)</Label>
+                        <Input
+                            id="attractions"
+                            value={data.attractions}
+                            onChange={e => setData('attractions', e.target.value)}
+                            placeholder="Big Five, Migration, Birdwatching"
+                        />
+                        <p className="text-xs text-stone-500">Comma-separated list</p>
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="stats">Stats (JSON)</Label>
+                        <Textarea
+                            id="stats"
+                            value={data.stats}
+                            onChange={e => setData('stats', e.target.value)}
+                            className="h-24 font-mono text-sm"
+                        />
+                        <p className="text-xs text-stone-500">JSON object for sidebar</p>
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="highlights">Highlights (JSON)</Label>
+                        <Textarea
+                            id="highlights"
+                            value={data.highlights}
+                            onChange={e => setData('highlights', e.target.value)}
+                            className="h-32 font-mono text-sm"
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="sections">Additional Sections (JSON)</Label>
+                        <Textarea
+                            id="sections"
+                            value={data.sections}
+                            onChange={e => setData('sections', e.target.value)}
+                            className="h-32 font-mono text-sm"
+                        />
                     </div>
 
                     <div className="pt-4 flex justify-end">

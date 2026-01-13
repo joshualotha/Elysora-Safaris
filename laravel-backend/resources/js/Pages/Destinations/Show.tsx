@@ -99,9 +99,10 @@ export default function DestinationShow({ destination, relatedSafaris }: Destina
                         <article className="lg:col-span-8 space-y-16">
                             {/* Introduction */}
                             <div className="prose prose-lg prose-stone max-w-none">
-                                <p className="text-2xl font-light leading-relaxed text-charcoal/90">
-                                    {content.intro}
-                                </p>
+                                <div
+                                    className="text-2xl font-light leading-relaxed text-charcoal/90"
+                                    dangerouslySetInnerHTML={{ __html: content.intro || destination.description }}
+                                />
                             </div>
 
                             {/* Highlights Grid */}

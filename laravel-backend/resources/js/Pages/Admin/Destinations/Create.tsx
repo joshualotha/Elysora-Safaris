@@ -5,13 +5,19 @@ import { Input } from '@/Components/ui/input';
 import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
 import { ArrowLeft, Plus } from 'lucide-react';
+import RichTextEditor from '@/Components/RichTextEditor';
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
         name: '',
         slug: '',
+        subtitle: '',
         description: '',
-        image: '',
+        image: null as File | null,
+        attractions: '',
+        stats: '',
+        highlights: '',
+        sections: '',
     });
 
     const submit = (e: React.FormEvent) => {
@@ -67,29 +73,89 @@ export default function Create() {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="image">Image Filename (without extension)</Label>
+                        <Label htmlFor="subtitle">Subtitle/Tagline</Label>
+                        <Input
+                            id="subtitle"
+                            value={data.subtitle}
+                            onChange={e => setData('subtitle', e.target.value)}
+                            placeholder="e.g. Explore the Wild"
+                        />
+                        <p className="text-xs text-stone-500">Short tagline for the hero section</p>
+                        {errors.subtitle && <p className="text-red-500 text-sm">{errors.subtitle}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="attractions">Attractions (Tags)</Label>
+                        <Input
+                            id="attractions"
+                            value={data.attractions}
+                            onChange={e => setData('attractions', e.target.value)}
+                            placeholder="Big Five, Migration, Birdwatching"
+                        />
+                        <p className="text-xs text-stone-500">Comma-separated list</p>
+                        {errors.attractions && <p className="text-red-500 text-sm">{errors.attractions}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="image">Featured Image</Label>
                         <Input
                             id="image"
-                            value={data.image}
-                            onChange={e => setData('image', e.target.value)}
-                            placeholder="e.g. destination-serengeti"
+                            type="file"
+                            onChange={e => setData('image', e.target.files ? e.target.files[0] : null)}
                             required
+                            accept="image/*"
                         />
-                        <p className="text-xs text-stone-500">Currently supports images in /public/images/. No upload support in this demo.</p>
+                        <p className="text-xs text-stone-500">Upload a high-quality JPG or PNG.</p>
                         {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="description">Description</Label>
-                        <Textarea
-                            id="description"
+                        <Label htmlFor="description">Description (Overview & Highlights)</Label>
+                        <RichTextEditor
                             value={data.description}
-                            onChange={e => setData('description', e.target.value)}
-                            className="h-32"
-                            required
-                            placeholder="Brief summary..."
+                            onChange={(html) => setData('description', html)}
+                            className="min-h-[300px]"
                         />
                         {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="stats">Stats (JSON)</Label>
+                        <Textarea
+                            id="stats"
+                            value={data.stats}
+                            onChange={e => setData('stats', e.target.value)}
+                            className="h-24 font-mono text-sm"
+                            placeholder='{"bestTime":"June-October","size":"14,763 km²","climate":"Tropical"}'
+                        />
+                        <p className="text-xs text-stone-500">JSON object for "At a Glance" sidebar</p>
+                        {errors.stats && <p className="text-red-500 text-sm">{errors.stats}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="highlights">Highlights (JSON)</Label>
+                        <Textarea
+                            id="highlights"
+                            value={data.highlights}
+                            onChange={e => setData('highlights', e.target.value)}
+                            className="h-32 font-mono text-sm"
+                            placeholder='[{"title":"Wildlife","description":"Home to the Big Five"},{"title":"Migration","description":"Witness the Great Migration"}]'
+                        />
+                        <p className="text-xs text-stone-500">JSON array of highlight cards</p>
+                        {errors.highlights && <p className="text-red-500 text-sm">{errors.highlights}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="sections">Additional Sections (JSON)</Label>
+                        <Textarea
+                            id="sections"
+                            value={data.sections}
+                            onChange={e => setData('sections', e.target.value)}
+                            className="h-32 font-mono text-sm"
+                            placeholder='[{"title":"Wildlife","content":"Rich description..."}]'
+                        />
+                        <p className="text-xs text-stone-500">JSON array of content sections</p>
+                        {errors.sections && <p className="text-red-500 text-sm">{errors.sections}</p>}
                     </div>
 
                     <div className="pt-4 flex justify-end">

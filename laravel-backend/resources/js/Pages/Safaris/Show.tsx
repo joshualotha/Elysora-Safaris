@@ -36,7 +36,10 @@ export default function SafariShow({ safari, relatedSafaris }: SafariShowProps) 
                             <h1 className="text-4xl md:text-6xl font-headline font-bold text-white mb-4">
                                 {safari.name}
                             </h1>
-                            <p className="text-xl text-white/90">{safari.description}</p>
+                            <div
+                                className="text-xl text-white/90 prose prose-invert max-w-none"
+                                dangerouslySetInnerHTML={{ __html: safari.description }}
+                            />
                         </div>
                     </div>
                 </section>

@@ -5,6 +5,14 @@ import { Input } from '@/Components/ui/input';
 import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
 import { ArrowLeft, Plus } from 'lucide-react';
+import RichTextEditor from '@/Components/RichTextEditor';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/Components/ui/select"
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -12,7 +20,7 @@ export default function Create() {
         slug: '',
         excerpt: '',
         content: '',
-        image: '',
+        image: null as File | null,
         category: '',
         author: 'Elysora Team',
         read_time: '5 min read',
@@ -72,13 +80,18 @@ export default function Create() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="space-y-2">
                             <Label htmlFor="category">Category</Label>
-                            <Input
-                                id="category"
-                                value={data.category}
-                                onChange={e => setData('category', e.target.value)}
-                                required
-                                placeholder="e.g. Wildlife"
-                            />
+                            <Select onValueChange={(value) => setData('category', value)} defaultValue={data.category}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a category" />
+                                </SelectTrigger>
+                                <SelectContent className="bg-white">
+                                    <SelectItem value="Wildlife">Wildlife</SelectItem>
+                                    <SelectItem value="Culture">Culture</SelectItem>
+                                    <SelectItem value="Travel Tips">Travel Tips</SelectItem>
+                                    <SelectItem value="News">News</SelectItem>
+                                    <SelectItem value="Conservation">Conservation</SelectItem>
+                                </SelectContent>
+                            </Select>
                             {errors.category && <p className="text-red-500 text-sm">{errors.category}</p>}
                         </div>
                         <div className="space-y-2">
@@ -102,13 +115,13 @@ export default function Create() {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="image">Image Filename</Label>
+                        <Label htmlFor="image">Featured Image</Label>
                         <Input
                             id="image"
-                            value={data.image}
-                            onChange={e => setData('image', e.target.value)}
-                            placeholder="e.g. blog-post-1.jpg"
+                            type="file"
+                            onChange={e => setData('image', e.target.files ? e.target.files[0] : null)}
                             required
+                            accept="image/*"
                         />
                         {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
                     </div>
@@ -127,16 +140,12 @@ export default function Create() {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="content">Content (HTML Supported)</Label>
-                        <Textarea
-                            id="content"
+                        <Label htmlFor="content">Content</Label>
+                        <RichTextEditor
                             value={data.content}
-                            onChange={e => setData('content', e.target.value)}
-                            className="h-96 font-mono text-sm"
-                            required
-                            placeholder="<p>Write your article here...</p>"
+                            onChange={(html) => setData('content', html)}
+                            className="min-h-[400px]"
                         />
-                        <p className="text-xs text-stone-500">Supports raw HTML for rich formatting.</p>
                         {errors.content && <p className="text-red-500 text-sm">{errors.content}</p>}
                     </div>
 

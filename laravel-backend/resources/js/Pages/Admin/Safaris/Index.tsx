@@ -51,7 +51,7 @@ export default function Index({ safaris }: { safaris: Safari[] }) {
                                 <td className="px-6 py-4">
                                     <div className="h-12 w-20 rounded-md overflow-hidden bg-stone-200">
                                         <img
-                                            src={`/images/${safari.image}.jpg`}
+                                            src={safari.image.startsWith('uploads/') ? `/storage/${safari.image}` : `/images/${safari.image}.jpg`}
                                             alt={safari.name}
                                             className="w-full h-full object-cover"
                                             onError={(e) => { e.currentTarget.src = 'https://placehold.co/80x48?text=No+Img' }}

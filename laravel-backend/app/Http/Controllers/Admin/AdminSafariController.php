@@ -29,14 +29,35 @@ class AdminSafariController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'duration' => 'required|integer',
-            'image' => 'required|string',
-            // Simple itinerary placeholders for now
+            'image' => 'required|image|max:2048',
+            'destinations' => 'nullable|string',
+            'highlights' => 'nullable|string',
+            'itinerary' => 'nullable|string',
+            'whats_included' => 'nullable|string',
+            'whats_excluded' => 'nullable|string',
         ]);
-        
-        // Add defaults for json fields if needed
-        $validated['itinerary'] = [];
-        $validated['inclusions'] = [];
-        $validated['exclusions'] = [];
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('uploads', 'public');
+            $validated['image'] = $path;
+        }
+
+        // Parse array fields
+        $validated['destinations'] = !empty($validated['destinations']) 
+            ? array_filter(array_map('trim', explode(',', $validated['destinations']))) 
+            : [];
+        $validated['highlights'] = !empty($validated['highlights']) 
+            ? array_filter(array_map('trim', explode(',', $validated['highlights']))) 
+            : [];
+        $validated['itinerary'] = !empty($validated['itinerary']) 
+            ? json_decode($validated['itinerary'], true) ?: [] 
+            : [];
+        $validated['whats_included'] = !empty($validated['whats_included']) 
+            ? array_filter(array_map('trim', explode(',', $validated['whats_included']))) 
+            : [];
+        $validated['whats_excluded'] = !empty($validated['whats_excluded']) 
+            ? array_filter(array_map('trim', explode(',', $validated['whats_excluded']))) 
+            : [];
 
         SafariPackage::create($validated);
 
@@ -58,8 +79,47 @@ class AdminSafariController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'duration' => 'required|integer',
-            'image' => 'required|string',
+            'image' => 'nullable|image|max:2048',
+            'destinations' => 'nullable|string',
+            'highlights' => 'nullable|string',
+            'itinerary' => 'nullable|string',
+            'whats_included' => 'nullable|string',
+            'whats_excluded' => 'nullable|string',
         ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('uploads', 'public');
+            $validated['image'] = $path;
+        } else {
+             unset($validated['image']);
+        }
+
+        // Parse array fields
+        if (isset($validated['destinations'])) {
+            $validated['destinations'] = !empty($validated['destinations']) 
+                ? array_filter(array_map('trim', explode(',', $validated['destinations']))) 
+                : [];
+        }
+        if (isset($validated['highlights'])) {
+            $validated['highlights'] = !empty($validated['highlights']) 
+                ? array_filter(array_map('trim', explode(',', $validated['highlights']))) 
+                : [];
+        }
+        if (isset($validated['itinerary'])) {
+            $validated['itinerary'] = !empty($validated['itinerary']) 
+                ? json_decode($validated['itinerary'], true) ?: [] 
+                : [];
+        }
+        if (isset($validated['whats_included'])) {
+            $validated['whats_included'] = !empty($validated['whats_included']) 
+                ? array_filter(array_map('trim', explode(',', $validated['whats_included']))) 
+                : [];
+        }
+        if (isset($validated['whats_excluded'])) {
+            $validated['whats_excluded'] = !empty($validated['whats_excluded']) 
+                ? array_filter(array_map('trim', explode(',', $validated['whats_excluded']))) 
+                : [];
+        }
 
         $safari->update($validated);
 

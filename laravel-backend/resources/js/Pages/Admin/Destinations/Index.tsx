@@ -48,7 +48,7 @@ export default function Index({ destinations }: { destinations: Destination[] })
                                 <td className="px-6 py-4">
                                     <div className="h-12 w-20 rounded-md overflow-hidden bg-stone-200">
                                         <img
-                                            src={`/images/${destination.image}.jpg`}
+                                            src={destination.image.startsWith('uploads/') ? `/storage/${destination.image}` : `/images/${destination.image}.jpg`}
                                             alt={destination.name}
                                             className="w-full h-full object-cover"
                                             onError={(e) => { e.currentTarget.src = 'https://placehold.co/80x48?text=No+Img' }}

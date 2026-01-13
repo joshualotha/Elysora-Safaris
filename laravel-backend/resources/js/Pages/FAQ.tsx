@@ -1,9 +1,8 @@
 import { Head } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/Components/ui/accordion';
-import { faqs } from '@/lib/data';
 
-export default function FAQ() {
+export default function FAQ({ faqs }: { faqs: Record<string, any[]> }) {
     return (
         <MainLayout title="FAQ - Elysora Safaris">
             <div className="flex flex-col min-h-screen">

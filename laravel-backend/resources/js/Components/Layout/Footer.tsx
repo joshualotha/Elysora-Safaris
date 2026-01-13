@@ -36,7 +36,7 @@ export default function Footer() {
 
         {/* Main Links Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
-          {/* Brand Column */}
+          {/* Brand Column with Contact */}
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="inline-block">
               {/* Use text logo if image not strictly required, or image with white filter */}
@@ -47,6 +47,27 @@ export default function Footer() {
             <p className="text-stone-400 leading-relaxed max-w-sm font-light">
               Crafting authentic, sustainable, and unforgettable safari experiences in the heart of Tanzania. We believe in travel that transforms.
             </p>
+
+            {/* Contact Info */}
+            <div className="space-y-4 pt-2">
+              <h3 className="text-white font-bold uppercase tracking-widest text-sm">Get In Touch</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <MapPin className="h-5 w-5 text-sahara-gold shrink-0 mt-1" />
+                  <span className="font-light text-sm">Sokoine Road, Arusha,<br />Tanzania, East Africa</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Phone className="h-5 w-5 text-sahara-gold shrink-0" />
+                  <a href="tel:+255754000000" className="font-light text-sm hover:text-white transition-colors">+255 754 000 000</a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail className="h-5 w-5 text-sahara-gold shrink-0" />
+                  <a href="mailto:info@elysora.com" className="font-light text-sm hover:text-white transition-colors">info@elysora.com</a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Social Media */}
             <div className="flex gap-4 pt-2">
               <a href="#" className="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-sahara-gold hover:border-sahara-gold hover:text-charcoal transition-all duration-300">
                 <Instagram className="h-5 w-5" />
@@ -69,6 +90,8 @@ export default function Footer() {
               <li><Link href="/safaris" className="hover:text-sahara-gold transition-colors block w-fit">Safari Packages</Link></li>
               <li><Link href="/blog" className="hover:text-sahara-gold transition-colors block w-fit">Journal</Link></li>
               <li><Link href="/gallery" className="hover:text-sahara-gold transition-colors block w-fit">Gallery</Link></li>
+              <li><Link href="/reviews" className="hover:text-sahara-gold transition-colors block w-fit">Reviews</Link></li>
+              <li><Link href="/faq" className="hover:text-sahara-gold transition-colors block w-fit">FAQ</Link></li>
               <li><Link href="/contact" className="hover:text-sahara-gold transition-colors block w-fit">Contact</Link></li>
             </ul>
           </div>
@@ -84,22 +107,16 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Column */}
+          {/* Useful Links Column */}
           <div className="lg:col-span-3 space-y-6">
-            <h3 className="text-white font-bold uppercase tracking-widest text-sm">Contact</h3>
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4">
-                <MapPin className="h-5 w-5 text-sahara-gold shrink-0 mt-1" />
-                <span className="font-light">Sokoine Road, Arusha,<br />Tanzania, East Africa</span>
-              </li>
-              <li className="flex items-center gap-4">
-                <Phone className="h-5 w-5 text-sahara-gold shrink-0" />
-                <a href="tel:+255754000000" className="font-light hover:text-white transition-colors">+255 754 000 000</a>
-              </li>
-              <li className="flex items-center gap-4">
-                <Mail className="h-5 w-5 text-sahara-gold shrink-0" />
-                <a href="mailto:info@elysora.com" className="font-light hover:text-white transition-colors">info@elysora.com</a>
-              </li>
+            <h3 className="text-white font-bold uppercase tracking-widest text-sm">Useful Links</h3>
+            <ul className="space-y-4 font-light">
+              <li><Link href="/planning/visa" className="hover:text-sahara-gold transition-colors block w-fit">Visa Information</Link></li>
+              <li><Link href="/planning/health" className="hover:text-sahara-gold transition-colors block w-fit">Health & Vaccinations</Link></li>
+              <li><Link href="/planning/packing" className="hover:text-sahara-gold transition-colors block w-fit">Packing Guide</Link></li>
+              <li><Link href="/planning/safari-guide" className="hover:text-sahara-gold transition-colors block w-fit">Safari Guide</Link></li>
+              <li><Link href="/planning/practical-information" className="hover:text-sahara-gold transition-colors block w-fit">Practical Info</Link></li>
+              <li><Link href="/conservation" className="hover:text-sahara-gold transition-colors block w-fit">Conservation</Link></li>
             </ul>
           </div>
         </div>

@@ -4,6 +4,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SafariController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +25,10 @@ Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.sho
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/conservation', [PageController::class, 'conservation'])->name('conservation');
-Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
-Route::get('/reviews', [PageController::class, 'reviews'])->name('reviews');
-Route::get('/faq', [PageController::class, 'faq'])->name('faq');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+Route::get('/reviews', [TestimonialController::class, 'index'])->name('reviews');
+Route::get('/faq', [FAQController::class, 'index'])->name('faq');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
 
@@ -70,6 +75,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('destinations', App\Http\Controllers\Admin\AdminDestinationController::class);
     Route::resource('safaris', App\Http\Controllers\Admin\AdminSafariController::class);
     Route::resource('blog', App\Http\Controllers\Admin\AdminBlogController::class);
+    Route::resource('gallery', App\Http\Controllers\Admin\AdminGalleryController::class);
+    Route::resource('testimonials', App\Http\Controllers\Admin\AdminTestimonialController::class);
+    Route::resource('faqs', App\Http\Controllers\Admin\AdminFAQController::class);
+    Route::resource('contacts', App\Http\Controllers\Admin\AdminContactController::class)->only(['index', 'show', 'update', 'destroy']);
     // More resource routes will go here
 });
 

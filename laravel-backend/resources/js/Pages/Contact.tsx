@@ -16,9 +16,7 @@ export default function Contact() {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        // For now, we'll just log or handle it later
-        console.log('Form submitted:', data);
-        // post(route('contact.store'));
+        post(route('contact.store'));
     }
 
     return (
