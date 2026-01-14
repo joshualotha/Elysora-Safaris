@@ -4,6 +4,7 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
 import { ArrowRight, Calendar, MapPin, Search, X, Filter } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 
 interface SafarisIndexProps {
     safaris: {
@@ -69,8 +70,8 @@ export default function SafarisIndex({ safaris, filters, siteImages }: SafarisIn
                 <section className="relative py-32 md:py-40 bg-gradient-to-br from-charcoal to-safari-green">
                     <div className="absolute inset-0 opacity-20">
                         <img
-                            src={siteImages?.safaris_index_hero?.image_path ? `/storage/${siteImages.safaris_index_hero.image_path}` : '/images/safari-card-1.jpg'}
-                            alt={siteImages?.safaris_index_hero?.alt_text || 'Safaris'}
+                            src={siteImages?.safaris_hero?.image_path ? resolveImagePath(siteImages.safaris_hero.image_path) : '/images/safari-card-1.jpg'}
+                            alt={siteImages?.safaris_hero?.alt_text || 'Safaris'}
                             className="w-full h-full object-cover"
                             onError={(e) => { e.currentTarget.src = '/images/safari-card-1.jpg'; }}
                         />
@@ -195,7 +196,7 @@ export default function SafarisIndex({ safaris, filters, siteImages }: SafarisIn
                                         {/* Image */}
                                         <div className="relative aspect-[4/3] overflow-hidden">
                                             <img
-                                                src={`/images/${safari.image}.jpg`}
+                                                src={resolveImagePath(safari.image)}
                                                 alt={safari.name}
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                             />

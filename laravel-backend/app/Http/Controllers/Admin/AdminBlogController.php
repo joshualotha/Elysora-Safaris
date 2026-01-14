@@ -45,24 +45,21 @@ class AdminBlogController extends Controller
         return redirect()->route('admin.blog.index')->with('success', 'Post created successfully.');
     }
 
-    public function edit(BlogPost $blog)
+    public function edit(BlogPost $blogPost)
     {
         return Inertia::render('Admin/Blog/Edit', [
-            'post' => $blog
+            'post' => $blogPost
         ]);
     }
 
-    // Using explicit binding handling if parameter name differs from model default logic
-    public function update(Request $request, $id)
+    public function update(Request $request, BlogPost $blogPost)
     {
-        $post = BlogPost::findOrFail($id);
-        
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:blog_posts,slug,' . $post->id,
+            'slug' => 'required|string|max:255|unique:blog_posts,slug,' . $blogPost->id,
             'excerpt' => 'required|string',
             'content' => 'required|string',
-            'image' => 'nullable|image|max:2048', // Optional
+            'image' => 'nullable|image|max:2048',
             'category' => 'required|string',
             'author' => 'required|string',
             'read_time' => 'required|string',
@@ -76,15 +73,14 @@ class AdminBlogController extends Controller
             unset($validated['image']);
         }
 
-        $post->update($validated);
+        $blogPost->update($validated);
 
         return redirect()->route('admin.blog.index')->with('success', 'Post updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy(BlogPost $blogPost)
     {
-        $post = BlogPost::findOrFail($id);
-        $post->delete();
+        $blogPost->delete();
         return redirect()->route('admin.blog.index')->with('success', 'Post deleted successfully.');
     }
 }

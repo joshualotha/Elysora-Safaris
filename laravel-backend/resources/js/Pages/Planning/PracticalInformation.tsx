@@ -1,15 +1,20 @@
 import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
-import { Card, CardContent } from '@/Components/ui/card';
+import { Card } from '@/Components/ui/card';
 import { Button } from '@/Components/ui/button';
-import { Globe, ShieldCheck, DollarSign, Smartphone, Briefcase, HandHeart, ArrowRight } from 'lucide-react';
+import { FileText, Plane, HeartPulse, DollarSign, Backpack, Users, Wifi, ShieldCheck, Briefcase, Smartphone, HandHeart, ArrowRight } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 
-export default function PracticalInformation() {
+interface PracticalInformationProps {
+    images?: Record<string, any>;
+}
+
+export default function PracticalInformationIndex({ images }: PracticalInformationProps) {
     const sections = [
         {
             title: "Visa & Entry",
             description: "E-Visa portal links, passport requirements, and fees.",
-            icon: Globe,
+            icon: Plane,
             href: route('planning.visa'),
             color: "bg-charcoal text-sahara-gold"
         },
@@ -56,7 +61,7 @@ export default function PracticalInformation() {
                 {/* Hero */}
                 <section className="relative h-[50vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_practical_pattern?.image_path ? resolveImagePath(images.planning_practical_pattern.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-10">
                         <span className="text-sahara-gold font-bold tracking-widest uppercase mb-4 block">Travel Essentials</span>

@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Mountain, Cloud, Compass, Thermometer, CheckCircle2, Trophy, HeartPulse } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 
 interface MountainHikingProps {
     images?: Record<string, any>;
@@ -15,7 +16,7 @@ export default function MountainHiking({ images }: MountainHikingProps) {
                 <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src={images?.services_mountain_hero?.image_path ? `/storage/${images.services_mountain_hero.image_path}` : '/images/mountain-kilimanjaro-hiker.png'}
+                            src={images?.services_mountain_hero?.image_path ? resolveImagePath(images.services_mountain_hero.image_path) : '/images/mountain-kilimanjaro-hiker.png'}
                             alt={images?.services_mountain_hero?.alt_text || 'Kilimanjaro Trekking'}
                             className="w-full h-full object-cover opacity-70"
                             onError={(e) => { e.currentTarget.src = '/images/mountain-kilimanjaro-hiker.png'; }}
@@ -167,7 +168,7 @@ export default function MountainHiking({ images }: MountainHikingProps) {
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="bg-white rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row">
                             <div className="md:w-1/2 relative h-[400px] md:h-auto">
-                                <img src="/images/destination-kilimanjaro.jpg" alt="Mount Meru" className="absolute inset-0 w-full h-full object-cover" />
+                                <img src={images?.services_mountain_meru?.image_path ? resolveImagePath(images.services_mountain_meru.image_path) : '/images/destination-kilimanjaro.jpg'} alt={images?.services_mountain_meru?.alt_text || 'Mount Meru'} className="absolute inset-0 w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/destination-kilimanjaro.jpg'; }} />
                                 <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
                                 <div className="absolute bottom-10 left-10 text-white">
                                     <h3 className="text-3xl font-bold font-headline">Mount Meru</h3>

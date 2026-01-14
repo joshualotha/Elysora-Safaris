@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { ArrowRight, MapPin } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 
 interface DestinationsIndexProps {
     destinations: Array<any>;
@@ -16,8 +17,8 @@ export default function DestinationsIndex({ destinations, siteImages }: Destinat
                 <section className="relative py-32 md:py-40 bg-gradient-to-br from-charcoal to-safari-green">
                     <div className="absolute inset-0 opacity-20">
                         <img
-                            src={siteImages?.destinations_index_hero?.image_path ? `/storage/${siteImages.destinations_index_hero.image_path}` : '/images/destination-serengeti.jpg'}
-                            alt={siteImages?.destinations_index_hero?.alt_text || 'Destinations'}
+                            src={siteImages?.destinations_hero?.image_path ? resolveImagePath(siteImages.destinations_hero.image_path) : '/images/destination-serengeti.jpg'}
+                            alt={siteImages?.destinations_hero?.alt_text || 'Destinations'}
                             className="w-full h-full object-cover"
                             onError={(e) => { e.currentTarget.src = '/images/destination-serengeti.jpg'; }}
                         />
@@ -48,7 +49,7 @@ export default function DestinationsIndex({ destinations, siteImages }: Destinat
                                 >
                                     <div className="relative aspect-[4/5]">
                                         <img
-                                            src={`/images/${dest.image}.jpg`}
+                                            src={resolveImagePath(dest.image)}
                                             alt={dest.name}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />

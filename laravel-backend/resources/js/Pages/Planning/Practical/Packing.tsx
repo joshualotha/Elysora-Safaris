@@ -3,15 +3,20 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Briefcase, Check, Shirt, Camera, Sun, Info, AlertTriangle, Backpack, ShoppingBag } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card';
 import { Badge } from '@/Components/ui/badge';
+import { resolveImagePath } from '@/lib/utils';
 
-export default function Packing() {
+interface PackingProps {
+    images?: Record<string, any>;
+}
+
+export default function Packing({ images }: PackingProps) {
     return (
         <MainLayout title="Safari Packing List - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 {/* Hero */}
                 <section className="relative h-screen md:h-[40vh] flex items-center justify-center overflow-hidden bg-sand">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_packing_pattern?.image_path ? resolveImagePath(images.planning_packing_pattern.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-24 md:pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-charcoal text-white flex items-center justify-center mx-auto mb-6 border border-charcoal/30">
@@ -42,7 +47,7 @@ export default function Packing() {
 
                         {/* Luggage Types */}
                         <div className="mb-12 rounded-2xl overflow-hidden shadow-xl">
-                            <img src="/images/packing_safari.png" alt="Efficient Safari Packing" className="w-full h-[400px] object-cover" />
+                            <img src={images?.planning_packing_info?.image_path ? resolveImagePath(images.planning_packing_info.image_path) : '/images/packing_safari.png'} alt={images?.planning_packing_info?.alt_text || 'Efficient Safari Packing'} className="w-full h-[400px] object-cover" onError={(e) => { e.currentTarget.src = '/images/packing_safari.png'; }} />
                         </div>
                         <h2 className="text-3xl font-headline font-bold text-charcoal mb-8 text-center md:text-left">The Three Bags You Need</h2>
                         <div className="grid md:grid-cols-3 gap-6 mb-20">

@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { HandHeart, Users, Music, Camera, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 
 interface CulturalToursProps {
     images?: Record<string, any>;
@@ -15,7 +16,7 @@ export default function CulturalTours({ images }: CulturalToursProps) {
                 <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src={images?.services_cultural_hero?.image_path ? `/storage/${images.services_cultural_hero.image_path}` : '/images/culture-maasai-portrait.png'}
+                            src={images?.services_cultural_hero?.image_path ? resolveImagePath(images.services_cultural_hero.image_path) : '/images/culture-maasai-portrait.png'}
                             alt={images?.services_cultural_hero?.alt_text || 'Maasai Warrior'}
                             className="w-full h-full object-cover opacity-60"
                             onError={(e) => { e.currentTarget.src = '/images/culture-maasai-portrait.png'; }}
@@ -75,9 +76,10 @@ export default function CulturalTours({ images }: CulturalToursProps) {
                             <div className="relative">
                                 <div className="absolute -inset-4 bg-sand rounded-3xl transform rotate-3" />
                                 <img
-                                    src="/images/maasai_warrior.jpg"
-                                    alt="Cultural Interaction"
+                                    src={images?.services_cultural_intro?.image_path ? resolveImagePath(images.services_cultural_intro.image_path) : '/images/maasai_warrior.jpg'}
+                                    alt={images?.services_cultural_intro?.alt_text || 'Cultural Interaction'}
                                     className="relative rounded-2xl shadow-xl w-full h-[500px] object-cover"
+                                    onError={(e) => { e.currentTarget.src = '/images/maasai_warrior.jpg'; }}
                                 />
                             </div>
                         </div>
@@ -97,7 +99,7 @@ export default function CulturalTours({ images }: CulturalToursProps) {
                             <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
                                 <div className="h-64 overflow-hidden relative">
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
-                                    <img src="/images/culture-maasai-portrait.png" alt="Maasai" className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                                    <img src={images?.services_cultural_maasai?.image_path ? resolveImagePath(images.services_cultural_maasai.image_path) : '/images/culture-maasai-portrait.png'} alt={images?.services_cultural_maasai?.alt_text || 'Maasai'} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" onError={(e) => { e.currentTarget.src = '/images/culture-maasai-portrait.png'; }} />
                                 </div>
                                 <div className="p-8">
                                     <h3 className="text-2xl font-headline font-bold text-charcoal mb-3">Maasai Boma Visit</h3>
@@ -117,7 +119,7 @@ export default function CulturalTours({ images }: CulturalToursProps) {
                                 <div className="h-64 overflow-hidden relative">
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
                                     {/* Using placeholder for Hadzabe if specific one not generated yet, or reuse generic */}
-                                    <img src="/images/blog-post-3.jpg" alt="Hadzabe" className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                                    <img src={images?.services_cultural_hadzabe?.image_path ? resolveImagePath(images.services_cultural_hadzabe.image_path) : '/images/blog-post-3.jpg'} alt={images?.services_cultural_hadzabe?.alt_text || 'Hadzabe'} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" onError={(e) => { e.currentTarget.src = '/images/blog-post-3.jpg'; }} />
                                 </div>
                                 <div className="p-8">
                                     <h3 className="text-2xl font-headline font-bold text-charcoal mb-3">Hadzabe Hunting</h3>
@@ -136,7 +138,7 @@ export default function CulturalTours({ images }: CulturalToursProps) {
                             <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
                                 <div className="h-64 overflow-hidden relative">
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
-                                    <img src="/images/zanzibar-stone-town-street.png" alt="Stone Town" className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                                    <img src={images?.services_cultural_stonetown?.image_path ? resolveImagePath(images.services_cultural_stonetown.image_path) : '/images/zanzibar-stone-town-street.png'} alt={images?.services_cultural_stonetown?.alt_text || 'Stone Town'} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" onError={(e) => { e.currentTarget.src = '/images/zanzibar-stone-town-street.png'; }} />
                                 </div>
                                 <div className="p-8">
                                     <h3 className="text-2xl font-headline font-bold text-charcoal mb-3">Swahili Coastal Culture</h3>
@@ -157,7 +159,7 @@ export default function CulturalTours({ images }: CulturalToursProps) {
                 {/* CTA Section */}
                 <section className="py-24 bg-charcoal text-white relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10">
-                        <img src="/images/sustainable_safari.jpg" alt="Pattern" className="w-full h-full object-cover" />
+                        <img src={images?.services_cultural_cta_bg?.image_path ? resolveImagePath(images.services_cultural_cta_bg.image_path) : '/images/sustainable_safari.jpg'} alt={images?.services_cultural_cta_bg?.alt_text || 'Pattern'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/sustainable_safari.jpg'; }} />
                     </div>
                     <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
                         <h2 className="text-4xl md:text-5xl font-headline font-bold mb-6">Experience the Real Tanzania</h2>

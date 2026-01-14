@@ -2,14 +2,19 @@ import { Head } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { ShieldCheck, ExternalLink, HeartPulse, Cross, Phone, Stethoscope, Syringe } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/Components/ui/card';
+import { resolveImagePath } from '@/lib/utils';
 
-export default function Health() {
+interface HealthProps {
+    images?: Record<string, any>;
+}
+
+export default function Health({ images }: HealthProps) {
     return (
         <MainLayout title="Health & Safety Advice - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 <section className="relative h-screen md:h-[40vh] flex items-center justify-center overflow-hidden bg-safari-green">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_health_pattern_hero?.image_path ? resolveImagePath(images.planning_health_pattern_hero.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-24 md:pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-white/10 text-white flex items-center justify-center mx-auto mb-6 border border-white/30">
@@ -90,7 +95,7 @@ export default function Health() {
                                     Recommended Medical Kit
                                 </h3>
                                 <div className="mb-6 rounded-2xl overflow-hidden shadow-md">
-                                    <img src="/images/health_safety.png" alt="Safari Medical Kit" className="w-full h-48 object-cover" />
+                                    <img src={images?.planning_health_info?.image_path ? resolveImagePath(images.planning_health_info.image_path) : '/images/health_safety.png'} alt={images?.planning_health_info?.alt_text || 'Safari Medical Kit'} className="w-full h-48 object-cover" onError={(e) => { e.currentTarget.src = '/images/health_safety.png'; }} />
                                 </div>
                                 <p className="text-stone-600 mb-6">While we carry first aid supplies, we recommend bringing a personal kit containing:</p>
                                 <ul className="grid sm:grid-cols-2 gap-3 text-sm text-stone-700">
@@ -131,7 +136,7 @@ export default function Health() {
                         {/* Emergency Info */}
                         <div className="bg-charcoal text-white rounded-3xl p-8 md:p-12 relative overflow-hidden">
                             <div className="absolute inset-0 opacity-10">
-                                <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                                <img src={images?.planning_health_pattern_cta?.image_path ? resolveImagePath(images.planning_health_pattern_cta.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                             </div>
                             <div className="relative z-10">
                                 <h2 className="text-2xl font-bold font-headline mb-8 text-center text-sahara-gold">Emergency Information</h2>

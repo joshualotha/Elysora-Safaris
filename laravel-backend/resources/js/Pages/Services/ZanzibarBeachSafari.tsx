@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Palmtree, Waves, Sun, Ship, Compass, MapPin, Fish } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 
 interface ZanzibarBeachSafariProps {
     safaris?: Array<any>;
@@ -16,7 +17,7 @@ export default function ZanzibarBeachSafari({ safaris, images }: ZanzibarBeachSa
                 <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src={images?.services_zanzibar_hero?.image_path ? `/storage/${images.services_zanzibar_hero.image_path}` : '/images/destination-zanzibar.jpg'}
+                            src={images?.services_zanzibar_hero?.image_path ? resolveImagePath(images.services_zanzibar_hero.image_path) : '/images/destination-zanzibar.jpg'}
                             alt={images?.services_zanzibar_hero?.alt_text || 'Zanzibar Beach'}
                             className="w-full h-full object-cover opacity-80"
                             onError={(e) => { e.currentTarget.src = '/images/destination-zanzibar.jpg'; }}
@@ -49,9 +50,10 @@ export default function ZanzibarBeachSafari({ safaris, images }: ZanzibarBeachSa
                             <div className="md:w-1/2 relative order-2 md:order-1">
                                 <div className="absolute -top-10 -left-10 w-full h-full border-2 border-sahara-gold rounded-3xl z-0 hidden md:block" />
                                 <img
-                                    src="/images/zanzibar-stone-town-street.png"
-                                    alt="Stone Town Alley"
+                                    src={images?.services_zanzibar_intro?.image_path ? resolveImagePath(images.services_zanzibar_intro.image_path) : '/images/zanzibar-stone-town-street.png'}
+                                    alt={images?.services_zanzibar_intro?.alt_text || 'Stone Town Alley'}
                                     className="relative z-10 rounded-2xl shadow-2xl w-full h-[600px] object-cover"
+                                    onError={(e) => { e.currentTarget.src = '/images/zanzibar-stone-town-street.png'; }}
                                 />
                             </div>
                             <div className="md:w-1/2 order-1 md:order-2">
@@ -141,7 +143,7 @@ export default function ZanzibarBeachSafari({ safaris, images }: ZanzibarBeachSa
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                             <div className="relative group overflow-hidden rounded-2xl h-80 cursor-pointer">
-                                <img src="/images/sustainable_safari.jpg" alt="Spice Tour" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <img src={images?.services_zanzibar_spice?.image_path ? resolveImagePath(images.services_zanzibar_spice.image_path) : '/images/sustainable_safari.jpg'} alt={images?.services_zanzibar_spice?.alt_text || 'Spice Tour'} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={(e) => { e.currentTarget.src = '/images/sustainable_safari.jpg'; }} />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                                 <div className="absolute bottom-6 left-6 text-white">
                                     <h4 className="font-headline font-bold text-2xl mb-1">Spice Tours</h4>
@@ -157,7 +159,7 @@ export default function ZanzibarBeachSafari({ safaris, images }: ZanzibarBeachSa
                                 </div>
                             </div>
                             <div className="relative group overflow-hidden rounded-2xl h-80 cursor-pointer">
-                                <img src="/images/blog-post-3.jpg" alt="Jozani Forest" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <img src={images?.services_zanzibar_forest?.image_path ? resolveImagePath(images.services_zanzibar_forest.image_path) : '/images/blog-post-3.jpg'} alt={images?.services_zanzibar_forest?.alt_text || 'Jozani Forest'} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={(e) => { e.currentTarget.src = '/images/blog-post-3.jpg'; }} />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                                 <div className="absolute bottom-6 left-6 text-white">
                                     <h4 className="font-headline font-bold text-2xl mb-1">Jozani Forest</h4>

@@ -4,14 +4,19 @@ import { Globe, Check, ExternalLink, Clock, DollarSign, FileText, AlertTriangle 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/Components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/Components/ui/accordion';
 import { Badge } from '@/Components/ui/badge';
+import { resolveImagePath } from '@/lib/utils';
 
-export default function Visa() {
+interface VisaProps {
+    images?: Record<string, any>;
+}
+
+export default function Visa({ images }: VisaProps) {
     return (
         <MainLayout title="Visa & Entry Requirements - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 <section className="relative h-screen md:h-[40vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_visa_pattern?.image_path ? resolveImagePath(images.planning_visa_pattern.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-24 md:pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-charcoal text-sahara-gold flex items-center justify-center mx-auto mb-6 border border-sahara-gold/30">
@@ -122,7 +127,7 @@ export default function Visa() {
                             <div className="flex-1">
                                 <h2 className="text-3xl font-headline font-bold text-charcoal mb-6">General Requirements</h2>
                                 <div className="mb-8 rounded-2xl overflow-hidden shadow-lg transform -rotate-1">
-                                    <img src="/images/visa_planning.png" alt="Passport and Visa Planning" className="w-full h-64 object-cover" />
+                                    <img src={images?.planning_visa_info?.image_path ? resolveImagePath(images.planning_visa_info.image_path) : '/images/visa_planning.png'} alt={images?.planning_visa_info?.alt_text || 'Passport and Visa Planning'} className="w-full h-64 object-cover" onError={(e) => { e.currentTarget.src = '/images/visa_planning.png'; }} />
                                 </div>
                                 <p className="text-stone-600 mb-8">
                                     To ensure a smooth entry, please have the following documents ready for inspection by immigration officers.

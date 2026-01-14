@@ -3,6 +3,7 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { useState, useMemo } from 'react';
+import { resolveImagePath } from '@/lib/utils';
 
 interface BlogIndexProps {
     blogPosts: {
@@ -35,7 +36,7 @@ export default function BlogIndex({ blogPosts, siteImages }: BlogIndexProps) {
                 <section className="relative py-32 md:py-40 overflow-hidden bg-charcoal">
                     <div className="absolute inset-0 opacity-40">
                         <img
-                            src={siteImages?.blog_index_hero?.image_path ? `/storage/${siteImages.blog_index_hero.image_path}` : '/images/blog-post-1.jpg'}
+                            src={siteImages?.blog_index_hero?.image_path ? resolveImagePath(siteImages.blog_index_hero.image_path) : '/images/blog-post-1.jpg'}
                             alt={siteImages?.blog_index_hero?.alt_text || 'Blog'}
                             className="w-full h-full object-cover"
                             onError={(e) => { e.currentTarget.src = '/images/blog-post-1.jpg'; }}

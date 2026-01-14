@@ -33,7 +33,7 @@ class AdminCarouselSlideController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('carousel', 'public');
+            $path = $request->file('image')->store('uploads/carousel_slides', 'public');
             $validated['image_path'] = $path;
         }
         
@@ -63,7 +63,7 @@ class AdminCarouselSlideController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('carousel', 'public');
+            $path = $request->file('image')->store('uploads/carousel_slides', 'public');
             $validated['image_path'] = $path;
         }
         

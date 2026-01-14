@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { ArrowRight, Calendar, MapPin, Check, X } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 
 interface SafariShowProps {
     safari: any;
@@ -15,7 +16,7 @@ export default function SafariShow({ safari, relatedSafaris }: SafariShowProps) 
                 {/* Hero Section */}
                 <section className="relative h-[60vh] md:h-[70vh]">
                     <img
-                        src={`/images/${safari.image}.jpg`}
+                        src={resolveImagePath(safari.image)}
                         alt={safari.name}
                         className="w-full h-full object-cover"
                     />
@@ -168,7 +169,7 @@ export default function SafariShow({ safari, relatedSafaris }: SafariShowProps) 
                                     >
                                         <div className="relative aspect-[4/3] overflow-hidden">
                                             <img
-                                                src={`/images/${related.image}.jpg`}
+                                                src={resolveImagePath(related.image)}
                                                 alt={related.name}
                                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                             />

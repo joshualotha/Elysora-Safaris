@@ -140,6 +140,97 @@ class SiteImagesSeeder extends Seeder
                 'is_active' => true,
                 'display_order' => 1,
             ],
+            
+            // Services - Group Safari
+            [
+                'key' => 'services_group_hero',
+                'page' => 'services_group',
+                'section' => 'hero',
+                'title' => 'Group Safari Hero',
+                'description' => 'Hero image for Group Safari service page',
+                'image_path' => 'images/group-safari-vehicle.png',
+                'alt_text' => 'Group Safari Adventure',
+                'is_active' => true,
+                'display_order' => 2,
+            ],
+            
+            // Services - Tailor Made Safari
+            [
+                'key' => 'services_tailor_made_hero',
+                'page' => 'services_tailor_made',
+                'section' => 'hero',
+                'title' => 'Tailor Made Safari Hero',
+                'description' => 'Hero image for Tailor-Made Safari service page',
+                'image_path' => 'images/tailor-made-bush-dinner.png',
+                'alt_text' => 'Tailor-Made Safari',
+                'is_active' => true,
+                'display_order' => 3,
+            ],
+            
+            // Services - Cultural Tours
+            [
+                'key' => 'services_cultural_hero',
+                'page' => 'services_cultural',
+                'section' => 'hero',
+                'title' => 'Cultural Tours Hero',
+                'description' => 'Hero image for Cultural Tours service page',
+                'image_path' => 'images/culture-maasai-portrait.png',
+                'alt_text' => 'Cultural Tours',
+                'is_active' => true,
+                'display_order' => 4,
+            ],
+            
+            // Services - Mountain Hiking
+            [
+                'key' => 'services_mountain_hero',
+                'page' => 'services_mountain',
+                'section' => 'hero',
+                'title' => 'Mountain Hiking Hero',
+                'description' => 'Hero image for Mountain Hiking service page',
+                'image_path' => 'images/mountain-kilimanjaro-hiker.png',
+                'alt_text' => 'Mountain Hiking',
+                'is_active' => true,
+                'display_order' => 5,
+            ],
+            
+            // Services - Zanzibar Beach Safari
+            [
+                'key' => 'services_zanzibar_hero',
+                'page' => 'services_zanzibar',
+                'section' => 'hero',
+                'title' => 'Zanzibar Beach Safari Hero',
+                'description' => 'Hero image for Zanzibar Beach Safari service page',
+                'image_path' => 'images/destination-zanzibar.jpg',
+                'alt_text' => 'Zanzibar Beach Safari',
+                'is_active' => true,
+                'display_order' => 6,
+            ],
+            
+            // Destinations Index Page
+            [
+                'key' => 'destinations_hero',
+                'page' => 'destinations',
+                'section' => 'hero',
+                'title' => 'Destinations Index Hero',
+                'description' => 'Hero image for Destinations index/listing page',
+                'image_path' => 'images/destination-serengeti.jpg',
+                'alt_text' => 'Tanzania Destinations',
+                'is_active' => true,
+                'display_order' => 1,
+            ],
+            
+            // Safaris Index Page
+            [
+                'key' => 'safaris_hero',
+                'page' => 'safaris',
+                'section' => 'hero',
+                'title' => 'Safaris Index Hero',
+                'description' => 'Hero image for Safaris index/listing page',
+                'image_path' => 'images/hero-serengeti.jpg',
+                'alt_text' => 'Tanzania Safari Packages',
+                'is_active' => true,
+                'display_order' => 1,
+            ],
         ];
 
         foreach ($images as $image) {

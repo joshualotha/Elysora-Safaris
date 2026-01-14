@@ -1,14 +1,20 @@
 import { Head } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { MapPin, Camera, HandHeart } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/Components/ui/card';
+import { resolveImagePath } from '@/lib/utils';
 
-export default function Culture() {
+interface CultureProps {
+    images?: Record<string, any>;
+}
+
+export default function Culture({ images }: CultureProps) {
     return (
         <MainLayout title="Cultural Etiquette - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 <section className="relative h-screen md:h-[50vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_culture_pattern?.image_path ? resolveImagePath(images.planning_culture_pattern.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-24 md:pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-sahara-gold text-charcoal flex items-center justify-center mx-auto mb-6">
@@ -39,7 +45,7 @@ export default function Culture() {
                                 <h2 className="text-3xl font-headline font-bold text-charcoal">The Art of Greeting</h2>
                             </div>
                             <div className="mb-8 rounded-2xl overflow-hidden shadow-lg">
-                                <img src="/images/cultural_greeting.png" alt="Respectful Greeting in Tanzania" className="w-full h-[300px] object-cover" />
+                                <img src={images?.planning_culture_info?.image_path ? resolveImagePath(images.planning_culture_info.image_path) : '/images/cultural_greeting.png'} alt={images?.planning_culture_info?.alt_text || 'Respectful Greeting in Tanzania'} className="w-full h-[300px] object-cover" onError={(e) => { e.currentTarget.src = '/images/cultural_greeting.png'; }} />
                             </div>
                             <div className="bg-ivory rounded-3xl p-8 md:p-10 shadow-sm border border-stone-100">
                                 <p className="text-stone-gray text-lg mb-6 leading-relaxed">

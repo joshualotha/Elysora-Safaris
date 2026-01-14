@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import CountUp from '@/Components/Shared/CountUp';
 import InteractiveHero from '@/Components/Shared/InteractiveHero';
 import { whyChooseUs } from '@/lib/data';
+import { resolveImagePath } from '@/lib/utils';
 
 interface HomeProps {
     featuredDestinations: Array<any>;
@@ -37,8 +38,8 @@ export default function Home({
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
                             <div className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl group">
                                 <img
-                                    src="/Welcome-to-the-Wild.png"
-                                    alt="Safari Experience"
+                                    src={homeImages?.home_welcome_hero?.image_path ? resolveImagePath(homeImages.home_welcome_hero.image_path) : '/Welcome-to-the-Wild.png'}
+                                    alt={homeImages?.home_welcome_hero?.alt_text || 'Safari Experience'}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-black/10" />
@@ -104,7 +105,7 @@ export default function Home({
                                     className="group relative flex-1 hover:flex-[4] transition-all duration-1000 ease-out cursor-pointer overflow-hidden"
                                 >
                                     <img
-                                        src={`/images/${dest.image}.jpg`}
+                                        src={resolveImagePath(dest.image)}
                                         alt={dest.name}
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                                     />
@@ -160,7 +161,7 @@ export default function Home({
                                     className="relative flex-shrink-0 w-[280px] aspect-[3/4] rounded-2xl overflow-hidden snap-center"
                                 >
                                     <img
-                                        src={`/images/${dest.image}.jpg`}
+                                        src={resolveImagePath(dest.image)}
                                         alt={dest.name}
                                         className="w-full h-full object-cover"
                                     />
@@ -200,7 +201,7 @@ export default function Home({
                     <div className="relative min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
                         <div className="absolute inset-0">
                             <img
-                                src={featuredSafari ? `/images/${featuredSafari.image}.jpg` : '/Featured-Safari.jpg'}
+                                src={featuredSafari ? resolveImagePath(featuredSafari.image) : '/Featured-Safari.jpg'}
                                 alt={featuredSafari?.name || 'Featured Safari'}
                                 className="w-full h-full object-cover"
                             />
@@ -280,7 +281,7 @@ export default function Home({
                                     >
                                         <div className="relative aspect-[4/3] overflow-hidden">
                                             <img
-                                                src={`/images/${safari.image}.jpg`}
+                                                src={resolveImagePath(safari.image)}
                                                 alt={safari.name}
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                             />

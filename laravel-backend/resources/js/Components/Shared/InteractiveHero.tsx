@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { Link } from "@inertiajs/react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn, resolveImagePath } from "@/lib/utils";
 import { heroCarouselItems, type HeroCarouselItem } from "@/lib/data";
 import { Button } from "@/Components/ui/button";
 import { ArrowLeft, ArrowRight, MoveRight } from "lucide-react";
@@ -23,10 +23,11 @@ export default function InteractiveHero({ slides }: InteractiveHeroProps) {
             id: slide.id,
             title: slide.title,
             subtitle: slide.subtitle,
-            image: slide.image_path.replace('images/', '').replace('.jpg', ''),
+            image: slide.image_path, // Keep full path
             link: slide.link_url || undefined,
         }))
         : heroCarouselItems;
+
 
     const [activeItem, setActiveItem] = useState(carouselItems[0]);
     const [carouselQueue, setCarouselQueue] = useState(carouselItems.slice(1));
@@ -68,7 +69,7 @@ export default function InteractiveHero({ slides }: InteractiveHeroProps) {
                     className="absolute inset-0"
                 >
                     <img
-                        src={`/images/${activeItem.image}.jpg`}
+                        src={resolveImagePath(activeItem.image)}
                         alt={activeItem.title}
                         className="w-full h-full object-cover object-center"
                     />
@@ -159,7 +160,7 @@ export default function InteractiveHero({ slides }: InteractiveHeroProps) {
                                                 "relative aspect-[3/4] rounded-2xl overflow-hidden group bg-black/30 backdrop-blur-sm border border-white/20 shadow-2xl origin-left transition-all duration-700 ease-out",
                                             )}>
                                                 <img
-                                                    src={`/images/${item.image}.jpg`}
+                                                    src={resolveImagePath(item.image)}
                                                     alt={item.title}
                                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                                 />

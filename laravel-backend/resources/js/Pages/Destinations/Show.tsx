@@ -3,6 +3,7 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { ArrowRight, MapPin, Camera, Leaf, Calendar, Thermometer, Info, ChevronRight } from 'lucide-react';
 import { destinationContent } from '@/lib/destination-content';
+import { resolveImagePath } from '@/lib/utils';
 
 interface DestinationShowProps {
     destination: any;
@@ -26,7 +27,7 @@ export default function DestinationShow({ destination, relatedSafaris }: Destina
                 <section className="relative h-[85vh] overflow-hidden flex items-end pb-20">
                     <div className="absolute inset-0">
                         <img
-                            src={`/images/${destination.image}.jpg`}
+                            src={resolveImagePath(destination.image)}
                             alt={destination.name}
                             className="w-full h-full object-cover"
                         />
@@ -176,7 +177,7 @@ export default function DestinationShow({ destination, relatedSafaris }: Destina
                                         <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6">
                                             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
                                             <img
-                                                src={`/images/${safari.image}.jpg`}
+                                                src={resolveImagePath(safari.image)}
                                                 alt={safari.name}
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                             />

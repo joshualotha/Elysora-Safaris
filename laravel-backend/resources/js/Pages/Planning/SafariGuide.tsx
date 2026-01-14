@@ -8,20 +8,26 @@ import {
     CalendarDays, Sun, CloudRain, Camera, Stethoscope,
     Shirt, CreditCard, Check, ArrowRight, Binoculars
 } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 import { monthlyGuide } from '@/lib/data';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/Components/ui/accordion';
 
-export default function SafariGuide() {
+interface SafariGuideProps {
+    images?: Record<string, any>;
+}
+
+export default function SafariGuide({ images }: SafariGuideProps) {
     return (
         <MainLayout title="Safari Planning Guide - Elysora Safaris">
             <div className="flex flex-col min-h-screen font-sans">
                 {/* Hero Section */}
                 <section className="relative h-screen md:h-[80vh] flex items-center justify-center overflow-hidden">
                     <img
-                        src="/images/hero-serengeti.jpg"
-                        alt="Safari Planning"
+                        src={images?.planning_safari_guide_hero?.image_path ? resolveImagePath(images.planning_safari_guide_hero.image_path) : '/images/hero-serengeti.jpg'}
+                        alt={images?.planning_safari_guide_hero?.alt_text || 'Safari Planning'}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 scale-105"
+                        onError={(e) => { e.currentTarget.src = '/images/hero-serengeti.jpg'; }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-charcoal/90" />
 
@@ -42,7 +48,7 @@ export default function SafariGuide() {
                 <section className="py-24 bg-charcoal text-white relative overflow-hidden">
                     {/* Background Pattern */}
                     <div className="absolute inset-0 opacity-5">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_safari_guide_pattern?.image_path ? resolveImagePath(images.planning_safari_guide_pattern.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
 
                     <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -67,17 +73,22 @@ export default function SafariGuide() {
                         {/* Horizontal Scroll Container */}
                         <div className="flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory hide-scrollbar">
                             {monthlyGuide.map((item, index) => {
-                                // Determine Image based on Season (mock logic)
-                                let bgImage = "/images/hero-serengeti.jpg"; // Default
-                                let seasonColor = "bg-stone-500";
+                                // Map month names to Site Image keys
+                                const imageKeyMap: Record<string, string> = {
+                                    'January-February': 'planning_calendar_jan_feb',
+                                    'March': 'planning_calendar_mar',
+                                    'April-May': 'planning_calendar_apr_may',
+                                    'June-July': 'planning_calendar_jun_jul',
+                                    'August-October': 'planning_calendar_aug_oct',
+                                    'November-December': 'planning_calendar_nov_dec',
+                                };
 
-                                if (['June', 'July', 'August', 'September', 'October'].includes(item.month)) {
-                                    bgImage = "/images/safari-card-1.jpg"; // Migration Look
-                                    seasonColor = "bg-sahara-gold";
-                                } else if (['November', 'December', 'March', 'April', 'May'].includes(item.month)) {
-                                    bgImage = "/images/accommodation-lodge.jpg"; // Green Look
-                                    seasonColor = "bg-safari-green";
-                                }
+                                const imageKey = imageKeyMap[item.month];
+                                const bgImage = images?.[imageKey]?.image_path
+                                    ? resolveImagePath(images[imageKey].image_path)
+                                    : '/images/hero-serengeti.jpg';
+
+                                let seasonColor = "bg-stone-500";
 
                                 return (
                                     <div key={item.month} className="min-w-[300px] md:min-w-[350px] h-[500px] relative rounded-3xl overflow-hidden snap-center group border border-white/10 flex-shrink-0">
@@ -207,7 +218,7 @@ export default function SafariGuide() {
                 {/* New Section: What to Expect on a Typical Day */}
                 <section className="py-24 bg-charcoal text-white relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_safari_guide_pattern_2?.image_path ? resolveImagePath(images.planning_safari_guide_pattern_2.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
                     <div className="container mx-auto px-4 md:px-6 relative z-10">
                         <div className="text-center mb-16">

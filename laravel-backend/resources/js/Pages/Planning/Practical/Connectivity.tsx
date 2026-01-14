@@ -1,14 +1,20 @@
 import { Head } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
-import { Smartphone, Wifi } from 'lucide-react';
+import { Wifi } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/Components/ui/card';
+import { resolveImagePath } from '@/lib/utils';
 
-export default function Connectivity() {
+interface ConnectivityProps {
+    images?: Record<string, any>;
+}
+
+export default function Connectivity({ images }: ConnectivityProps) {
     return (
         <MainLayout title="Internet & Connectivity - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 <section className="relative h-[40vh] flex items-center justify-center overflow-hidden bg-blue-900">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_connectivity_pattern?.image_path ? resolveImagePath(images.planning_connectivity_pattern.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-white/10 text-white flex items-center justify-center mx-auto mb-6 border border-white/30">
@@ -30,7 +36,7 @@ export default function Connectivity() {
                             <div className="grid md:grid-cols-2 gap-8 not-prose mb-12">
                                 <div className="p-8 bg-blue-50 rounded-2xl border border-blue-100">
                                     <div className="mb-6 rounded-xl overflow-hidden shadow-sm">
-                                        <img src="/images/connectivity_safari.png" alt="Connectivity in the Wild" className="w-full h-48 object-cover" />
+                                        <img src={images?.planning_connectivity_info?.image_path ? resolveImagePath(images.planning_connectivity_info.image_path) : '/images/connectivity_safari.png'} alt={images?.planning_connectivity_info?.alt_text || 'Connectivity in the Wild'} className="w-full h-48 object-cover" onError={(e) => { e.currentTarget.src = '/images/connectivity_safari.png'; }} />
                                     </div>
                                     <h3 className="font-bold text-2xl text-blue-900 mb-4">Wi-Fi at Lodges</h3>
                                     <p className="leading-relaxed text-blue-800">

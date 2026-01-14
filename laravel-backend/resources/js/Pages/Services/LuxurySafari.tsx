@@ -3,6 +3,7 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { ArrowRight, Plane, Star, Utensils, Check, Wine, Diamond, ShieldCheck } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card';
+import { resolveImagePath } from '@/lib/utils';
 
 interface LuxurySafariProps {
     images?: Record<string, any>;
@@ -15,7 +16,7 @@ export default function LuxurySafari({ images }: LuxurySafariProps) {
                 {/* Hero */}
                 <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
                     <img
-                        src={images?.services_luxury_hero?.image_path ? `/storage/${images.services_luxury_hero.image_path}` : '/images/luxury-safari-hero.jpg'}
+                        src={images?.services_luxury_hero?.image_path ? resolveImagePath(images.services_luxury_hero.image_path) : '/images/luxury-safari-hero.jpg'}
                         alt={images?.services_luxury_hero?.alt_text || 'Luxury Safari'}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 md:scale-105"
                         onError={(e) => { e.currentTarget.src = '/images/luxury-safari-hero.jpg'; }}
@@ -41,10 +42,11 @@ export default function LuxurySafari({ images }: LuxurySafariProps) {
                         <div className="grid md:grid-cols-2 gap-16 items-center">
                             <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl group">
                                 <img
-                                    src="/images/accommodation-lodge.jpg"
-                                    alt="Luxury Lodge Pool"
+                                    src={images?.services_luxury_intro?.image_path ? resolveImagePath(images.services_luxury_intro.image_path) : '/images/accommodation-lodge.jpg'}
+                                    alt={images?.services_luxury_intro?.alt_text || 'Luxury Lodge Pool'}
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     draggable={false}
+                                    onError={(e) => { e.currentTarget.src = '/images/accommodation-lodge.jpg'; }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
@@ -111,7 +113,7 @@ export default function LuxurySafari({ images }: LuxurySafariProps) {
                 {/* Who is this for? Section - Dark Mode style */}
                 <section className="py-24 bg-charcoal text-white relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.services_luxury_pattern?.image_path ? resolveImagePath(images.services_luxury_pattern.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
 
                     <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -178,9 +180,10 @@ export default function LuxurySafari({ images }: LuxurySafariProps) {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                             <Link href={route('safaris.show', 'tanzania-luxury-migration-safari')} className="group relative h-[400px] rounded-3xl overflow-hidden shadow-xl">
                                 <img
-                                    src="/images/safari-card-1.jpg"
+                                    src={images?.services_luxury_experience?.image_path ? resolveImagePath(images.services_luxury_experience.image_path) : '/images/safari-card-1.jpg'}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                    alt="Luxury Migration"
+                                    alt={images?.services_luxury_experience?.alt_text || 'Luxury Migration'}
+                                    onError={(e) => { e.currentTarget.src = '/images/safari-card-1.jpg'; }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                                 <div className="absolute bottom-0 left-0 p-8 w-full">

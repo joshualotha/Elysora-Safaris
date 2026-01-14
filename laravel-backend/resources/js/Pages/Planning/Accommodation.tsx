@@ -3,6 +3,11 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { ArrowRight, BedDouble, Tent, Building, Star, Check, DollarSign, Mountain } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card';
+import { resolveImagePath } from '@/lib/utils';
+
+interface AccommodationProps {
+    images?: Record<string, any>;
+}
 
 const accommodationTypes = [
     {
@@ -39,16 +44,17 @@ const accommodationTypes = [
     }
 ];
 
-export default function Accommodation() {
+export default function Accommodation({ images }: AccommodationProps) {
     return (
         <MainLayout title="Accommodation Options - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 {/* Hero */}
                 <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
                     <img
-                        src="/images/accommodation-hero.jpg"
-                        alt="Safari Accommodation"
+                        src={images?.planning_accommodation_hero?.image_path ? resolveImagePath(images.planning_accommodation_hero.image_path) : '/images/accommodation-hero.jpg'}
+                        alt={images?.planning_accommodation_hero?.alt_text || 'Safari Accommodation'}
                         className="absolute inset-0 w-full h-full object-cover"
+                        onError={(e) => { e.currentTarget.src = '/images/accommodation-hero.jpg'; }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-white/10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
@@ -88,9 +94,21 @@ export default function Accommodation() {
                                 <div className="w-full md:w-1/2">
                                     <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group">
                                         <img
-                                            src={`/images/${type.image}.jpg`}
+                                            src={(() => {
+                                                const imageMap: Record<string, string> = {
+                                                    'accommodation-lodge': 'planning_accommodation_lodge',
+                                                    'accommodation-tented-camp': 'planning_accommodation_tented',
+                                                    'accommodation-mobile-camp': 'planning_accommodation_mobile',
+                                                    'accommodation-public-camping': 'planning_accommodation_camping',
+                                                };
+                                                const key = imageMap[type.image];
+                                                return images?.[key]?.image_path
+                                                    ? resolveImagePath(images[key].image_path)
+                                                    : `/images/${type.image}.jpg`;
+                                            })()}
                                             alt={type.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            onError={(e) => { e.currentTarget.src = `/images/${type.image}.jpg`; }}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
                                             <div className="text-white">
@@ -130,7 +148,7 @@ export default function Accommodation() {
                 {/* Budget Comparison */}
                 <section className="py-24 bg-charcoal text-white relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_accommodation_pattern?.image_path ? resolveImagePath(images.planning_accommodation_pattern.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
                     <div className="container mx-auto px-4 md:px-6 relative z-10">
                         <div className="text-center mb-16">

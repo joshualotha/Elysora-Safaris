@@ -1,14 +1,20 @@
 import { Head } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { DollarSign } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/Components/ui/card';
+import { resolveImagePath } from '@/lib/utils';
 
-export default function Money() {
+interface MoneyProps {
+    images?: Record<string, any>;
+}
+
+export default function Money({ images }: MoneyProps) {
     return (
         <MainLayout title="Currency & Tipping - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 <section className="relative h-[40vh] flex items-center justify-center overflow-hidden bg-sahara-gold">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
+                        <img src={images?.planning_money_pattern?.image_path ? resolveImagePath(images.planning_money_pattern.image_path) : '/images/pattern-overlay.png'} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = '/images/pattern-overlay.png'; }} />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-charcoal text-sahara-gold flex items-center justify-center mx-auto mb-6 border border-charcoal/30">
@@ -40,7 +46,7 @@ export default function Money() {
 
                             <h3 className="text-2xl font-bold text-charcoal mt-10 mb-6">Tipping Guidelines</h3>
                             <div className="float-right ml-8 mb-6 w-1/2 rounded-2xl overflow-hidden shadow-lg rotate-2">
-                                <img src="/images/currency_money.png" alt="Tanzanian Currency and USD" className="w-full h-auto object-cover" />
+                                <img src={images?.planning_money_info?.image_path ? resolveImagePath(images.planning_money_info.image_path) : '/images/currency_money.png'} alt={images?.planning_money_info?.alt_text || 'Tanzanian Currency and USD'} className="w-full h-auto object-cover" onError={(e) => { e.currentTarget.src = '/images/currency_money.png'; }} />
                             </div>
                             <p className="text-stone-600 mb-6">
                                 Tipping is not mandatory but is a deeply ingrained culture in the safari industry to support staff who spend weeks away from their families. We recommend bringing small denominations ($1, $5, $10, $20) for this purpose.

@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Compass, Calendar, Camera, Binoculars, Star, Car, Clock, ShieldCheck } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 
 interface TailorMadeSafariProps {
     safaris?: Array<any>;
@@ -16,7 +17,7 @@ export default function TailorMadeSafari({ safaris, images }: TailorMadeSafariPr
                 <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src={images?.services_tailor_made_hero?.image_path ? `/storage/${images.services_tailor_made_hero.image_path}` : '/images/tailor-made-bush-dinner.png'}
+                            src={images?.services_tailor_made_hero?.image_path ? resolveImagePath(images.services_tailor_made_hero.image_path) : '/images/tailor-made-bush-dinner.png'}
                             alt={images?.services_tailor_made_hero?.alt_text || 'Private Bush Dinner'}
                             className="w-full h-full object-cover opacity-75"
                             onError={(e) => { e.currentTarget.src = '/images/tailor-made-bush-dinner.png'; }}
@@ -67,7 +68,7 @@ export default function TailorMadeSafari({ safaris, images }: TailorMadeSafariPr
                             </div>
                             <div className="md:w-1/2 relative">
                                 <div className="absolute top-10 right-10 w-full h-full border-2 border-sahara-gold/30 rounded-full z-0" />
-                                <img src="/images/luxury_tent.jpg" alt="Luxury Experience" className="relative z-10 w-full rounded-tr-[100px] rounded-bl-[100px] shadow-2xl" />
+                                <img src={images?.services_tailor_intro?.image_path ? resolveImagePath(images.services_tailor_intro.image_path) : '/images/luxury_tent.jpg'} alt={images?.services_tailor_intro?.alt_text || 'Luxury Experience'} className="relative z-10 w-full rounded-tr-[100px] rounded-bl-[100px] shadow-2xl" onError={(e) => { e.currentTarget.src = '/images/luxury_tent.jpg'; }} />
                             </div>
                         </div>
                     </div>

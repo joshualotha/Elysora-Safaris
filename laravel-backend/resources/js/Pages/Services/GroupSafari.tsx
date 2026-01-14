@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Users, Calendar, Banknote, ShieldCheck, CheckCircle2, MapPin, ArrowRight } from 'lucide-react';
+import { resolveImagePath } from '@/lib/utils';
 
 interface GroupSafariProps {
     safaris?: Array<any>;
@@ -16,7 +17,7 @@ export default function GroupSafari({ safaris = [], images }: GroupSafariProps) 
                 <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src={images?.services_group_hero?.image_path ? `/storage/${images.services_group_hero.image_path}` : '/images/group-safari-vehicle.png'}
+                            src={images?.services_group_hero?.image_path ? resolveImagePath(images.services_group_hero.image_path) : '/images/group-safari-vehicle.png'}
                             alt={images?.services_group_hero?.alt_text || 'Group Safari Adventure'}
                             className="w-full h-full object-cover opacity-80"
                             onError={(e) => { e.currentTarget.src = '/images/group-safari-vehicle.png'; }}

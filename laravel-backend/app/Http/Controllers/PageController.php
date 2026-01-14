@@ -64,37 +64,43 @@ class PageController extends Controller
 
     public function safariGuide(): Response
     {
-        return Inertia::render('Planning/SafariGuide');
+        $images = SiteImage::forPage('planning_safari_guide')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/SafariGuide', ['images' => $images]);
     }
 
     public function accommodation(): Response
     {
-        return Inertia::render('Planning/Accommodation');
+        $images = SiteImage::forPage('planning_accommodation')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/Accommodation', ['images' => $images]);
     }
 
     // Services Pages
     public function servicesCultural(): Response
     {
         $safaris = SafariPackage::where('category', 'classic-safari')->get();
-        return Inertia::render('Services/CulturalTours', ['safaris' => $safaris]);
+        $images = SiteImage::forPage('services_cultural')->active()->get()->keyBy('key');
+        return Inertia::render('Services/CulturalTours', ['safaris' => $safaris, 'images' => $images]);
     }
 
     public function servicesMountain(): Response
     {
         $safaris = SafariPackage::where('category', 'classic-safari')->get();
-        return Inertia::render('Services/MountainHiking', ['safaris' => $safaris]);
+        $images = SiteImage::forPage('services_mountain')->active()->get()->keyBy('key');
+        return Inertia::render('Services/MountainHiking', ['safaris' => $safaris, 'images' => $images]);
     }
 
     public function servicesLuxury(): Response
     {
         $safaris = SafariPackage::where('category', 'classic-safari')->get();
-        return Inertia::render('Services/LuxurySafari', ['safaris' => $safaris]);
+        $images = SiteImage::forPage('services_luxury')->active()->get()->keyBy('key');
+        return Inertia::render('Services/LuxurySafari', ['safaris' => $safaris, 'images' => $images]);
     }
 
     public function servicesGroup(): Response
     {
         $safaris = SafariPackage::where('category', 'group-safari')->get();
-        return Inertia::render('Services/GroupSafari', ['safaris' => $safaris]);
+        $images = SiteImage::forPage('services_group')->active()->get()->keyBy('key');
+        return Inertia::render('Services/GroupSafari', ['safaris' => $safaris, 'images' => $images]);
     }
 
     public function servicesTailorMade(): Response
@@ -119,36 +125,43 @@ class PageController extends Controller
 
     public function practicalInformation(): Response
     {
-        return Inertia::render('Planning/PracticalInformation');
+        $images = SiteImage::forPage('planning_practical')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/PracticalInformation', ['images' => $images]);
     }
 
     public function planningVisa(): Response
     {
-        return Inertia::render('Planning/Practical/Visa');
+        $images = SiteImage::forPage('planning_visa')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/Practical/Visa', ['images' => $images]);
     }
 
     public function planningHealth(): Response
     {
-        return Inertia::render('Planning/Practical/Health');
+        $images = SiteImage::forPage('planning_health')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/Practical/Health', ['images' => $images]);
     }
 
     public function planningMoney(): Response
     {
-        return Inertia::render('Planning/Practical/Money');
+        $images = SiteImage::forPage('planning_money')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/Practical/Money', ['images' => $images]);
     }
 
     public function planningPacking(): Response
     {
-        return Inertia::render('Planning/Practical/Packing');
+        $images = SiteImage::forPage('planning_packing')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/Practical/Packing', ['images' => $images]);
     }
 
     public function planningCulture(): Response
     {
-        return Inertia::render('Planning/Practical/Culture');
+        $images = SiteImage::forPage('planning_culture')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/Practical/Culture', ['images' => $images]);
     }
 
     public function planningConnectivity(): Response
     {
-        return Inertia::render('Planning/Practical/Connectivity');
+        $images = SiteImage::forPage('planning_connectivity')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/Practical/Connectivity', ['images' => $images]);
     }
 }
