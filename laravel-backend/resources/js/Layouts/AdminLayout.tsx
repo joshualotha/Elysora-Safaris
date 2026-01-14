@@ -11,8 +11,12 @@ import {
     Settings,
     Image as ImageIcon,
     MessageSquare,
+    Package,
+    CalendarCheck,
     HelpCircle,
-    Mail
+    Mail,
+    Layers,
+    Monitor
 } from 'lucide-react';
 import { Button } from '@/Components/ui/button';
 
@@ -22,9 +26,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
     const navItems = [
         { name: 'Dashboard', href: '/admin', icon: LayoutDashboard, active: component.startsWith('Admin/Dashboard') },
+        { name: 'Site Images', href: '/admin/site-images', icon: Monitor, active: component.startsWith('Admin/SiteImages') },
+        { name: 'Carousel', href: '/admin/carousel-slides', icon: Layers, active: component.startsWith('Admin/CarouselSlides') },
         { name: 'Destinations', href: '/admin/destinations', icon: MapPin, active: component.startsWith('Admin/Destinations') },
         { name: 'Safaris', href: '/admin/safaris', icon: Tent, active: component.startsWith('Admin/Safaris') },
         { name: 'Blog', href: '/admin/blog', icon: Newspaper, active: component.startsWith('Admin/Blog') },
+        { name: 'Bookings', href: '/admin/bookings', icon: CalendarCheck, active: component.startsWith('Admin/Bookings') },
+        { name: 'Add-Ons', href: '/admin/add-ons', icon: Package, active: component.startsWith('Admin/AddOns') },
         { name: 'Gallery', href: '/admin/gallery', icon: ImageIcon, active: component.startsWith('Admin/Gallery') },
         { name: 'Testimonials', href: '/admin/testimonials', icon: MessageSquare, active: component.startsWith('Admin/Testimonials') },
         { name: 'FAQs', href: '/admin/faqs', icon: HelpCircle, active: component.startsWith('Admin/FAQs') },

@@ -10,9 +10,10 @@ interface BlogIndexProps {
         links: any;
         meta: any;
     };
+    siteImages?: Record<string, any>;
 }
 
-export default function BlogIndex({ blogPosts }: BlogIndexProps) {
+export default function BlogIndex({ blogPosts, siteImages }: BlogIndexProps) {
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     // Extract unique categories
@@ -33,7 +34,12 @@ export default function BlogIndex({ blogPosts }: BlogIndexProps) {
                 {/* Hero */}
                 <section className="relative py-32 md:py-40 overflow-hidden bg-charcoal">
                     <div className="absolute inset-0 opacity-40">
-                        <img src="/images/blog-post-1.jpg" alt="Blog" className="w-full h-full object-cover" />
+                        <img
+                            src={siteImages?.blog_index_hero?.image_path ? `/storage/${siteImages.blog_index_hero.image_path}` : '/images/blog-post-1.jpg'}
+                            alt={siteImages?.blog_index_hero?.alt_text || 'Blog'}
+                            className="w-full h-full object-cover"
+                            onError={(e) => { e.currentTarget.src = '/images/blog-post-1.jpg'; }}
+                        />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
                     <div className="relative container mx-auto px-4 md:px-6 text-center text-white z-10">

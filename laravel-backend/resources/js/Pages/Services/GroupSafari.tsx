@@ -5,9 +5,10 @@ import { Users, Calendar, Banknote, ShieldCheck, CheckCircle2, MapPin, ArrowRigh
 
 interface GroupSafariProps {
     safaris?: Array<any>;
+    images?: Record<string, any>;
 }
 
-export default function GroupSafari({ safaris = [] }: GroupSafariProps) {
+export default function GroupSafari({ safaris = [], images }: GroupSafariProps) {
     return (
         <MainLayout title="Group Safaris - Elysora Safaris">
             <div className="flex flex-col min-h-screen bg-ivory">
@@ -15,9 +16,10 @@ export default function GroupSafari({ safaris = [] }: GroupSafariProps) {
                 <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src="/images/group-safari-vehicle.png"
-                            alt="Group Safari Adventure"
+                            src={images?.services_group_hero?.image_path ? `/storage/${images.services_group_hero.image_path}` : '/images/group-safari-vehicle.png'}
+                            alt={images?.services_group_hero?.alt_text || 'Group Safari Adventure'}
                             className="w-full h-full object-cover opacity-80"
+                            onError={(e) => { e.currentTarget.src = '/images/group-safari-vehicle.png'; }}
                         />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />

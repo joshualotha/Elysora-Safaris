@@ -3,7 +3,12 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Compass, Calendar, Camera, Binoculars, Star, Car, Clock, ShieldCheck } from 'lucide-react';
 
-export default function TailorMadeSafari() {
+interface TailorMadeSafariProps {
+    safaris?: Array<any>;
+    images?: Record<string, any>;
+}
+
+export default function TailorMadeSafari({ safaris, images }: TailorMadeSafariProps) {
     return (
         <MainLayout title="Tailor Made Safaris - Elysora Safaris">
             <div className="flex flex-col min-h-screen bg-ivory">
@@ -11,9 +16,10 @@ export default function TailorMadeSafari() {
                 <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src="/images/tailor-made-bush-dinner.png"
-                            alt="Private Bush Dinner"
+                            src={images?.services_tailor_made_hero?.image_path ? `/storage/${images.services_tailor_made_hero.image_path}` : '/images/tailor-made-bush-dinner.png'}
+                            alt={images?.services_tailor_made_hero?.alt_text || 'Private Bush Dinner'}
                             className="w-full h-full object-cover opacity-75"
+                            onError={(e) => { e.currentTarget.src = '/images/tailor-made-bush-dinner.png'; }}
                         />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />

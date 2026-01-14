@@ -3,7 +3,12 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Palmtree, Waves, Sun, Ship, Compass, MapPin, Fish } from 'lucide-react';
 
-export default function ZanzibarBeachSafari() {
+interface ZanzibarBeachSafariProps {
+    safaris?: Array<any>;
+    images?: Record<string, any>;
+}
+
+export default function ZanzibarBeachSafari({ safaris, images }: ZanzibarBeachSafariProps) {
     return (
         <MainLayout title="Zanzibar Beach Safari - Elysora Safaris">
             <div className="flex flex-col min-h-screen bg-ivory">
@@ -11,9 +16,10 @@ export default function ZanzibarBeachSafari() {
                 <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src="/images/destination-zanzibar.jpg"
-                            alt="Zanzibar Beach"
+                            src={images?.services_zanzibar_hero?.image_path ? `/storage/${images.services_zanzibar_hero.image_path}` : '/images/destination-zanzibar.jpg'}
+                            alt={images?.services_zanzibar_hero?.alt_text || 'Zanzibar Beach'}
                             className="w-full h-full object-cover opacity-80"
+                            onError={(e) => { e.currentTarget.src = '/images/destination-zanzibar.jpg'; }}
                         />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />

@@ -6,9 +6,30 @@ import { heroCarouselItems, type HeroCarouselItem } from "@/lib/data";
 import { Button } from "@/Components/ui/button";
 import { ArrowLeft, ArrowRight, MoveRight } from "lucide-react";
 
-export default function InteractiveHero() {
-    const [activeItem, setActiveItem] = useState(heroCarouselItems[0]);
-    const [carouselQueue, setCarouselQueue] = useState(heroCarouselItems.slice(1));
+interface InteractiveHeroProps {
+    slides?: Array<{
+        id: number;
+        title: string;
+        subtitle: string;
+        image_path: string;
+        link_url?: string | null;
+    }>;
+}
+
+export default function InteractiveHero({ slides }: InteractiveHeroProps) {
+    // Map database slides to component format or use fallback
+    const carouselItems: HeroCarouselItem[] = slides && slides.length > 0
+        ? slides.map(slide => ({
+            id: slide.id,
+            title: slide.title,
+            subtitle: slide.subtitle,
+            image: slide.image_path.replace('images/', '').replace('.jpg', ''),
+            link: slide.link_url || undefined,
+        }))
+        : heroCarouselItems;
+
+    const [activeItem, setActiveItem] = useState(carouselItems[0]);
+    const [carouselQueue, setCarouselQueue] = useState(carouselItems.slice(1));
 
     const handleCardClick = useCallback((id: number) => {
         const clickedItem = carouselQueue.find(item => item.id === id);
@@ -73,11 +94,22 @@ export default function InteractiveHero() {
                                 <p className="max-w-md mx-auto md:mx-0 text-lg md:text-xl text-stone-100 mb-4 font-body line-clamp-4 md:line-clamp-none">
                                     {activeItem.subtitle}
                                 </p>
+
+                                {activeItem.link ? (
+                                    <Link href={activeItem.link}>
+                                        <Button size="lg" className="bg-sahara-gold text-charcoal hover:bg-white font-semibold rounded-full px-8 shadow-2xl group">
+                                            Explore {activeItem.title}
+                                            <MoveRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                                        </Button>
+                                    </Link>
+                                ) : (
+                                    <Button size="lg" className="bg-sahara-gold text-charcoal hover:bg-white font-semibold rounded-full px-8 shadow-2xl group">
+                                        Explore {activeItem.title}
+                                        <MoveRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                                    </Button>
+                                )}
                             </motion.div>
                         </AnimatePresence>
-                        <Button asChild size="lg">
-                            <Link href={route('safaris.index')}>Explore <MoveRight className="ml-2 h-5 w-5" /></Link>
-                        </Button>
                     </div>
                     {/* Spacer for desktop grid layout */}
                     <div className="hidden md:block"></div>

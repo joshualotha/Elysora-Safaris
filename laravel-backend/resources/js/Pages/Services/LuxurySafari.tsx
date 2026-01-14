@@ -4,16 +4,21 @@ import { Button } from '@/Components/ui/button';
 import { ArrowRight, Plane, Star, Utensils, Check, Wine, Diamond, ShieldCheck } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card';
 
-export default function LuxurySafari() {
+interface LuxurySafariProps {
+    images?: Record<string, any>;
+}
+
+export default function LuxurySafari({ images }: LuxurySafariProps) {
     return (
         <MainLayout title="Luxury Safaris - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 {/* Hero */}
                 <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
                     <img
-                        src="/images/luxury-safari-hero.jpg"
-                        alt="Luxury Safari"
+                        src={images?.services_luxury_hero?.image_path ? `/storage/${images.services_luxury_hero.image_path}` : '/images/luxury-safari-hero.jpg'}
+                        alt={images?.services_luxury_hero?.alt_text || 'Luxury Safari'}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 md:scale-105"
+                        onError={(e) => { e.currentTarget.src = '/images/luxury-safari-hero.jpg'; }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-charcoal/90" />
 

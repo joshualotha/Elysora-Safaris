@@ -5,16 +5,22 @@ import { ArrowRight, MapPin } from 'lucide-react';
 
 interface DestinationsIndexProps {
     destinations: Array<any>;
+    siteImages?: Record<string, any>;
 }
 
-export default function DestinationsIndex({ destinations }: DestinationsIndexProps) {
+export default function DestinationsIndex({ destinations, siteImages }: DestinationsIndexProps) {
     return (
         <MainLayout title="Destinations - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 {/* Hero */}
                 <section className="relative py-32 md:py-40 bg-gradient-to-br from-charcoal to-safari-green">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/destination-serengeti.jpg" alt="Destinations" className="w-full h-full object-cover" />
+                        <img
+                            src={siteImages?.destinations_index_hero?.image_path ? `/storage/${siteImages.destinations_index_hero.image_path}` : '/images/destination-serengeti.jpg'}
+                            alt={siteImages?.destinations_index_hero?.alt_text || 'Destinations'}
+                            className="w-full h-full object-cover"
+                            onError={(e) => { e.currentTarget.src = '/images/destination-serengeti.jpg'; }}
+                        />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center text-white">
                         <span className="text-sahara-gold font-bold tracking-wider uppercase text-sm block mb-4">Discover Tanzania</span>

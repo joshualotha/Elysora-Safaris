@@ -89,6 +89,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('add-ons', App\Http\Controllers\Admin\AdminAddOnController::class);
     Route::get('settings', [App\Http\Controllers\Admin\AdminSettingController::class, 'index'])->name('settings.index');
     Route::post('settings', [App\Http\Controllers\Admin\AdminSettingController::class, 'update'])->name('settings.update');
+    
+    // Image Management
+    Route::resource('carousel-slides', App\Http\Controllers\Admin\AdminCarouselSlideController::class);
+    Route::resource('site-images', App\Http\Controllers\Admin\AdminSiteImageController::class);
+    
     // More resource routes will go here
 });
 

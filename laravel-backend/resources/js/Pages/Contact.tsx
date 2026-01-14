@@ -6,7 +6,11 @@ import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
-export default function Contact() {
+interface ContactProps {
+    images?: Record<string, any>;
+}
+
+export default function Contact({ images }: ContactProps) {
     const { props } = usePage();
     const settings = (props.settings as Record<string, string>) || {};
 
@@ -28,7 +32,12 @@ export default function Contact() {
                 {/* Hero */}
                 <section className="relative py-32 md:py-40 bg-gradient-to-br from-charcoal to-safari-green">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/Welcome-to-the-Wild.png" alt="Contact" className="w-full h-full object-cover" />
+                        <img
+                            src={images?.contact_hero?.image_path ? `/storage/${images.contact_hero.image_path}` : '/Welcome-to-the-Wild.png'}
+                            alt={images?.contact_hero?.alt_text || 'Contact'}
+                            className="w-full h-full object-cover"
+                            onError={(e) => { e.currentTarget.src = '/Welcome-to-the-Wild.png'; }}
+                        />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center text-white">
                         <span className="text-sahara-gold font-bold tracking-wider uppercase text-sm block mb-4">Get In Touch</span>

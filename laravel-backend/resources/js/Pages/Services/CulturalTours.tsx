@@ -3,7 +3,11 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { HandHeart, Users, Music, Camera, ArrowRight, CheckCircle2 } from 'lucide-react';
 
-export default function CulturalTours() {
+interface CulturalToursProps {
+    images?: Record<string, any>;
+}
+
+export default function CulturalTours({ images }: CulturalToursProps) {
     return (
         <MainLayout title="Cultural Tours - Elysora Safaris">
             <div className="flex flex-col min-h-screen bg-ivory">
@@ -11,9 +15,10 @@ export default function CulturalTours() {
                 <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src="/images/culture-maasai-portrait.png"
-                            alt="Maasai Warrior"
+                            src={images?.services_cultural_hero?.image_path ? `/storage/${images.services_cultural_hero.image_path}` : '/images/culture-maasai-portrait.png'}
+                            alt={images?.services_cultural_hero?.alt_text || 'Maasai Warrior'}
                             className="w-full h-full object-cover opacity-60"
+                            onError={(e) => { e.currentTarget.src = '/images/culture-maasai-portrait.png'; }}
                         />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />

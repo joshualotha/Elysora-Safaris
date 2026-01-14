@@ -6,6 +6,8 @@ use App\Models\Destination;
 use App\Models\SafariPackage;
 use App\Models\BlogPost;
 use App\Models\Review;
+use App\Models\HeroCarouselSlide;
+use App\Models\SiteImage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -20,12 +22,20 @@ class HomeController extends Controller
             $featuredSafari = SafariPackage::first();
         }
 
+        // Fetch carousel slides
+        $carouselSlides = HeroCarouselSlide::active()->get();
+        
+        // Fetch home page images
+        $homeImages = SiteImage::forPage('home')->active()->get()->keyBy('key');
+
         return Inertia::render('Home', [
             'featuredDestinations' => Destination::take(4)->get(),
             'safariPackages' => SafariPackage::take(6)->get(),
             'latestBlogPosts' => BlogPost::latest()->take(3)->get(),
             'reviews' => Review::where('rating', '>=', 4)->get(),
             'featuredSafari' => $featuredSafari,
+            'carouselSlides' => $carouselSlides,
+            'homeImages' => $homeImages,
         ]);
     }
 }

@@ -3,14 +3,23 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Leaf, Heart, Users, ArrowRight } from 'lucide-react';
 
-export default function Conservation() {
+interface ConservationProps {
+    images?: Record<string, any>;
+}
+
+export default function Conservation({ images }: ConservationProps) {
     return (
         <MainLayout title="Conservation - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 {/* Hero */}
                 <section className="relative py-32 md:py-40 bg-gradient-to-br from-charcoal to-safari-green">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/destination-serengeti.jpg" alt="Conservation" className="w-full h-full object-cover" />
+                        <img
+                            src={images?.conservation_hero?.image_path ? `/storage/${images.conservation_hero.image_path}` : '/images/destination-serengeti.jpg'}
+                            alt={images?.conservation_hero?.alt_text || 'Conservation'}
+                            className="w-full h-full object-cover"
+                            onError={(e) => { e.currentTarget.src = '/images/destination-serengeti.jpg'; }}
+                        />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center text-white">
                         <span className="text-sahara-gold font-bold tracking-wider uppercase text-sm">Our Commitment</span>

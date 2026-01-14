@@ -4,14 +4,23 @@ import { Button } from '@/Components/ui/button';
 import { ArrowRight, Users, Smile, ShieldCheck, Leaf } from 'lucide-react';
 import { whyChooseUs, teamMembers } from '@/lib/data';
 
-export default function About() {
+interface AboutProps {
+    images?: Record<string, any>;
+}
+
+export default function About({ images }: AboutProps) {
     return (
         <MainLayout title="About Us - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 {/* Hero */}
                 <section className="relative py-32 md:py-40 bg-gradient-to-br from-charcoal to-safari-green">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/Welcome-to-the-Wild.png" alt="About" className="w-full h-full object-cover" />
+                        <img
+                            src={images?.about_hero?.image_path ? `/storage/${images.about_hero.image_path}` : '/Welcome-to-the-Wild.png'}
+                            alt={images?.about_hero?.alt_text || 'About'}
+                            className="w-full h-full object-cover"
+                            onError={(e) => { e.currentTarget.src = '/Welcome-to-the-Wild.png'; }}
+                        />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center text-white">
                         <span className="text-sahara-gold font-bold tracking-wider uppercase text-sm block mb-4">Our Story</span>

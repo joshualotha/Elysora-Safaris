@@ -12,6 +12,8 @@ interface HomeProps {
     latestBlogPosts: Array<any>;
     reviews: Array<any>;
     featuredSafari: any;
+    carouselSlides?: Array<any>;
+    homeImages?: Record<string, any>;
 }
 
 export default function Home({
@@ -19,13 +21,15 @@ export default function Home({
     safariPackages,
     latestBlogPosts,
     reviews,
-    featuredSafari
+    featuredSafari,
+    carouselSlides,
+    homeImages
 }: HomeProps) {
     return (
         <MainLayout title="Home - Elysora Digital Safari">
             <div className="flex flex-col min-h-[100dvh]">
-                {/* Interactive Hero Carousel */}
-                <InteractiveHero />
+                {/* InteractiveHero Carousel */}
+                <InteractiveHero slides={carouselSlides} />
 
                 {/* Welcome Section */}
                 <section className="py-20 md:py-32 bg-white overflow-hidden">

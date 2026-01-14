@@ -31,7 +31,9 @@ const navLinks = [
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { url: pathname } = usePage();
+  // Get shared props
+  const { url: pathname, props } = usePage();
+  const navImages = props.navImages as Record<string, any> | undefined;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +84,16 @@ export default function Header() {
                 <NavigationMenuContent>
                   <div className="grid w-[600px] grid-cols-2 gap-4 p-4">
                     <div className="flex flex-col justify-center rounded-lg bg-sand p-6">
-                      <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=2071&auto=format&fit=crop" alt="Services" width={400} height={400} className="rounded-lg object-cover mb-4 aspect-video" />
+                      <img
+                        src={navImages?.nav_services_featured?.image_path ? `/storage/${navImages.nav_services_featured.image_path}` : 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=2071&auto=format&fit=crop'}
+                        alt={navImages?.nav_services_featured?.alt_text || 'Services'}
+                        width={400}
+                        height={400}
+                        className="rounded-lg object-cover mb-4 aspect-video"
+                        onError={(e) => {
+                          e.currentTarget.src = '/images/hero-serengeti.jpg';
+                        }}
+                      />
                       <h3 className="font-headline text-lg font-bold">Curated Adventures</h3>
                       <p className="text-sm text-stone-gray mt-1 mb-4">Discover the myriad ways to experience the magic of Tanzania.</p>
                       <Button variant="link" asChild className="p-0 justify-start h-auto">
@@ -109,7 +120,16 @@ export default function Header() {
                 <NavigationMenuContent>
                   <div className="grid w-[600px] grid-cols-2 gap-4 p-4">
                     <div className="flex flex-col justify-center rounded-lg bg-sand p-6">
-                      <img src="https://images.unsplash.com/photo-1519974749222-634241604d59?q=80&w=2070&auto=format&fit=crop" alt="Planning" width={400} height={400} className="rounded-lg object-cover mb-4 aspect-video" />
+                      <img
+                        src={navImages?.nav_planning_featured?.image_path ? `/storage/${navImages.nav_planning_featured.image_path}` : 'https://images.unsplash.com/photo-1519974749222-634241604d59?q=80&w=2070&auto=format&fit=crop'}
+                        alt={navImages?.nav_planning_featured?.alt_text || 'Planning'}
+                        width={400}
+                        height={400}
+                        className="rounded-lg object-cover mb-4 aspect-video"
+                        onError={(e) => {
+                          e.currentTarget.src = '/images/hero-ngorongoro.jpg';
+                        }}
+                      />
                       <h3 className="font-headline text-lg font-bold">Your Adventure Starts Here</h3>
                       <p className="text-sm text-stone-gray mt-1 mb-4">Let us help you craft the perfect Tanzanian safari.</p>
                       <Button variant="link" asChild className="p-0 justify-start h-auto">

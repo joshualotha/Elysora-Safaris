@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use App\Models\SafariPackage;
+use App\Models\SiteImage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -11,22 +12,26 @@ class PageController extends Controller
 {
     public function about(): Response
     {
-        return Inertia::render('About');
+        $images = SiteImage::forPage('about')->active()->get()->keyBy('key');
+        return Inertia::render('About', ['images' => $images]);
     }
 
     public function contact(): Response
     {
-        return Inertia::render('Contact');
+        $images = SiteImage::forPage('contact')->active()->get()->keyBy('key');
+        return Inertia::render('Contact', ['images' => $images]);
     }
 
     public function conservation(): Response
     {
-        return Inertia::render('Conservation');
+        $images = SiteImage::forPage('conservation')->active()->get()->keyBy('key');
+        return Inertia::render('Conservation', ['images' => $images]);
     }
 
     public function gallery(): Response
     {
-        return Inertia::render('Gallery');
+        $images = SiteImage::forPage('gallery')->active()->get()->keyBy('key');
+        return Inertia::render('Gallery', ['images' => $images]);
     }
 
     public function reviews(): Response
@@ -95,18 +100,21 @@ class PageController extends Controller
     public function servicesTailorMade(): Response
     {
         $safaris = SafariPackage::where('category', 'tailor-made-safari')->get();
-        return Inertia::render('Services/TailorMadeSafari', ['safaris' => $safaris]);
+        $images = SiteImage::forPage('services_tailor_made')->active()->get()->keyBy('key');
+        return Inertia::render('Services/TailorMadeSafari', ['safaris' => $safaris, 'images' => $images]);
     }
 
     public function servicesZanzibar(): Response
     {
         $safaris = SafariPackage::where('category', 'classic-safari')->get();
-        return Inertia::render('Services/ZanzibarBeachSafari', ['safaris' => $safaris]);
+        $images = SiteImage::forPage('services_zanzibar')->active()->get()->keyBy('key');
+        return Inertia::render('Services/ZanzibarBeachSafari', ['safaris' => $safaris, 'images' => $images]);
     }
 
     public function campingSafari(): Response
     {
-        return Inertia::render('Planning/CampingSafari');
+        $images = SiteImage::forPage('planning_camping')->active()->get()->keyBy('key');
+        return Inertia::render('Planning/CampingSafari', ['images' => $images]);
     }
 
     public function practicalInformation(): Response

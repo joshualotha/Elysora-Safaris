@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
+use App\Models\SiteImage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Vite::prefetch(concurrency: 3);
+        // Share navbar images globally with all Inertia pages
+        Inertia::share([
+            'navImages' => function () {
+                return SiteImage::forPage('navigation')->active()->get()->keyBy('key');
+            },
+        ]);
     }
 }

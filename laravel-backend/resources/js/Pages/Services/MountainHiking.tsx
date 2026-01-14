@@ -3,7 +3,11 @@ import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
 import { Mountain, Cloud, Compass, Thermometer, CheckCircle2, Trophy, HeartPulse } from 'lucide-react';
 
-export default function MountainHiking() {
+interface MountainHikingProps {
+    images?: Record<string, any>;
+}
+
+export default function MountainHiking({ images }: MountainHikingProps) {
     return (
         <MainLayout title="Mountain Hiking - Elysora Safaris">
             <div className="flex flex-col min-h-screen bg-ivory">
@@ -11,9 +15,10 @@ export default function MountainHiking() {
                 <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0">
                         <img
-                            src="/images/mountain-kilimanjaro-hiker.png"
-                            alt="Kilimanjaro Trekking"
+                            src={images?.services_mountain_hero?.image_path ? `/storage/${images.services_mountain_hero.image_path}` : '/images/mountain-kilimanjaro-hiker.png'}
+                            alt={images?.services_mountain_hero?.alt_text || 'Kilimanjaro Trekking'}
                             className="w-full h-full object-cover opacity-70"
+                            onError={(e) => { e.currentTarget.src = '/images/mountain-kilimanjaro-hiker.png'; }}
                         />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />

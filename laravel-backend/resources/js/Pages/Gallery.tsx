@@ -14,9 +14,10 @@ interface GalleryImage {
 interface GalleryProps {
     images: GalleryImage[];
     categories: string[];
+    siteImages?: Record<string, any>;
 }
 
-export default function Gallery({ images, categories }: GalleryProps) {
+export default function Gallery({ images, categories, siteImages }: GalleryProps) {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
@@ -32,7 +33,12 @@ export default function Gallery({ images, categories }: GalleryProps) {
                 {/* Hero */}
                 <section className="relative h-[60vh] flex items-center justify-center bg-charcoal">
                     <div className="absolute inset-0 overflow-hidden">
-                        <img src="/images/migration_photography.jpg" alt="Gallery Hero" className="w-full h-full object-cover opacity-60" />
+                        <img
+                            src={siteImages?.gallery_hero?.image_path ? `/storage/${siteImages.gallery_hero.image_path}` : '/images/migration_photography.jpg'}
+                            alt={siteImages?.gallery_hero?.alt_text || 'Gallery Hero'}
+                            className="w-full h-full object-cover opacity-60"
+                            onError={(e) => { e.currentTarget.src = '/images/migration_photography.jpg'; }}
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-ivory via-transparent to-transparent" />
                     </div>
                     <div className="relative z-10 text-center container px-4">

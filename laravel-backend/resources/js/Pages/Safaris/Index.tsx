@@ -16,6 +16,7 @@ interface SafarisIndexProps {
         category?: string;
         duration?: string;
     };
+    siteImages?: Record<string, any>;
 }
 
 const CATEGORIES = [
@@ -32,7 +33,7 @@ const DURATIONS = [
     { value: 'long', label: '8+ Days' },
 ];
 
-export default function SafarisIndex({ safaris, filters }: SafarisIndexProps) {
+export default function SafarisIndex({ safaris, filters, siteImages }: SafarisIndexProps) {
     const [search, setSearch] = useState(filters.search || '');
     const [category, setCategory] = useState(filters.category || '');
     const [duration, setDuration] = useState(filters.duration || '');
@@ -67,7 +68,12 @@ export default function SafarisIndex({ safaris, filters }: SafarisIndexProps) {
                 {/* Hero Section */}
                 <section className="relative py-32 md:py-40 bg-gradient-to-br from-charcoal to-safari-green">
                     <div className="absolute inset-0 opacity-20">
-                        <img src="/images/safari-card-1.jpg" alt="Safaris" className="w-full h-full object-cover" />
+                        <img
+                            src={siteImages?.safaris_index_hero?.image_path ? `/storage/${siteImages.safaris_index_hero.image_path}` : '/images/safari-card-1.jpg'}
+                            alt={siteImages?.safaris_index_hero?.alt_text || 'Safaris'}
+                            className="w-full h-full object-cover"
+                            onError={(e) => { e.currentTarget.src = '/images/safari-card-1.jpg'; }}
+                        />
                     </div>
                     <div className="relative container mx-auto px-4 md:px-6 text-center text-white">
                         <span className="text-sahara-gold font-bold tracking-wider uppercase text-sm block mb-4">Curated Experiences</span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SafariPackage;
+use App\Models\SiteImage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -45,7 +46,8 @@ class SafariController extends Controller
         
         return Inertia::render('Safaris/Index', [
             'safaris' => $safaris,
-            'filters' => $request->only(['search', 'category', 'duration'])
+            'filters' => $request->only(['search', 'category', 'duration']),
+            'siteImages' => SiteImage::forPage('safaris')->active()->get()->keyBy('key'),
         ]);
     }
 

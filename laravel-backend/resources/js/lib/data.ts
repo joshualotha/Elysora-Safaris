@@ -70,6 +70,7 @@ export type HeroCarouselItem = {
   title: string;
   subtitle: string;
   image: string;
+  link?: string;
 }
 
 export type NavItem = {
