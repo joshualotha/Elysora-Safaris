@@ -32,6 +32,11 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
 
+// Booking Routes
+Route::get('/safaris/{safari}/book', [App\Http\Controllers\BookingController::class, 'create'])->name('bookings.create');
+Route::post('/bookings', [App\Http\Controllers\BookingController::class, 'store'])->name('bookings.store');
+Route::get('/bookings/{booking}/confirmation', [App\Http\Controllers\BookingController::class, 'confirmation'])->name('bookings.confirmation');
+
 // Services Routes
 Route::prefix('services')->group(function () {
     Route::get('/cultural-tours', [PageController::class, 'servicesCultural'])->name('services.cultural-tours');
@@ -79,6 +84,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('testimonials', App\Http\Controllers\Admin\AdminTestimonialController::class);
     Route::resource('faqs', App\Http\Controllers\Admin\AdminFAQController::class);
     Route::resource('contacts', App\Http\Controllers\Admin\AdminContactController::class)->only(['index', 'show', 'update', 'destroy']);
+    Route::resource('bookings', App\Http\Controllers\Admin\AdminBookingController::class)->only(['index', 'show', 'destroy']);
+    Route::patch('bookings/{booking}/status', [App\Http\Controllers\Admin\AdminBookingController::class, 'updateStatus'])->name('bookings.updateStatus');
+    Route::resource('add-ons', App\Http\Controllers\Admin\AdminAddOnController::class);
     Route::get('settings', [App\Http\Controllers\Admin\AdminSettingController::class, 'index'])->name('settings.index');
     Route::post('settings', [App\Http\Controllers\Admin\AdminSettingController::class, 'update'])->name('settings.update');
     // More resource routes will go here

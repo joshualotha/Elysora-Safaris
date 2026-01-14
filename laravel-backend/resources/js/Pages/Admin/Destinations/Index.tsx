@@ -13,9 +13,9 @@ interface Destination {
 }
 
 export default function Index({ destinations }: { destinations: Destination[] }) {
-    const handleDelete = (id: number) => {
+    const handleDelete = (slug: string) => {
         if (confirm('Are you sure you want to delete this destination?')) {
-            router.delete(route('admin.destinations.destroy', id));
+            router.delete(route('admin.destinations.destroy', slug));
         }
     };
 
@@ -67,14 +67,14 @@ export default function Index({ destinations }: { destinations: Destination[] })
                                         <Eye className="h-4 w-4" />
                                     </Link>
                                     <Link
-                                        href={route('admin.destinations.edit', destination.id)}
+                                        href={route('admin.destinations.edit', destination.slug)}
                                         className="inline-flex p-2 text-stone-400 hover:text-sahara-gold transition-colors"
                                         title="Edit"
                                     >
                                         <Pencil className="h-4 w-4" />
                                     </Link>
                                     <button
-                                        onClick={() => handleDelete(destination.id)}
+                                        onClick={() => handleDelete(destination.slug)}
                                         className="inline-flex p-2 text-stone-400 hover:text-red-500 transition-colors"
                                         title="Delete"
                                     >

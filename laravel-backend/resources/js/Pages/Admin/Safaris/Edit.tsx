@@ -4,7 +4,7 @@ import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
 import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
-import { ArrowLeft, Save } from 'lucide-react';
+import { ArrowLeft, Save, Plus } from 'lucide-react';
 import RichTextEditor from '@/Components/RichTextEditor';
 
 export default function Edit({ safari }: { safari: any }) {
@@ -18,14 +18,14 @@ export default function Edit({ safari }: { safari: any }) {
         image: null as File | null,
         destinations: safari.destinations ? safari.destinations.join(', ') : '',
         highlights: safari.highlights ? safari.highlights.join(', ') : '',
-        itinerary: safari.itinerary ? JSON.stringify(safari.itinerary) : '',
+        itinerary: safari.itinerary ? JSON.stringify(safari.itinerary) : '[]',
         whats_included: safari.whats_included ? safari.whats_included.join(', ') : '',
         whats_excluded: safari.whats_excluded ? safari.whats_excluded.join(', ') : '',
     });
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
-        post(route('admin.safaris.update', safari.id));
+        post(route('admin.safaris.update', safari.slug));
     };
 
     return (
@@ -137,15 +137,84 @@ export default function Edit({ safari }: { safari: any }) {
                         <p className="text-xs text-stone-500">Comma-separated list</p>
                     </div>
 
-                    <div className="space-y-2">
-                        <Label htmlFor="itinerary">Itinerary (JSON)</Label>
-                        <Textarea
-                            id="itinerary"
-                            value={data.itinerary}
-                            onChange={e => setData('itinerary', e.target.value)}
-                            className="h-48 font-mono text-sm"
-                        />
-                        <p className="text-xs text-stone-500">JSON array of day-by-day itinerary</p>
+                    <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                            <Label>Day-by-Day Itinerary</Label>
+                            <Button
+                                type="button"
+                                variant="outline"
+                                size="sm"
+                                onClick={() => {
+                                    const currentItinerary = data.itinerary ? JSON.parse(data.itinerary) : [];
+                                    currentItinerary.push({
+                                        day: currentItinerary.length + 1,
+                                        title: '',
+                                        description: ''
+                                    });
+                                    setData('itinerary', JSON.stringify(currentItinerary));
+                                }}
+                                className="gap-2"
+                            >
+                                <Plus className="h-4 w-4" /> Add Day
+                            </Button>
+                        </div>
+
+                        {JSON.parse(data.itinerary || '[]').map((day: any, index: number) => (
+                            <div key={index} className="border border-stone-200 rounded-lg p-4 space-y-3 bg-stone-50">
+                                <div className="flex items-center justify-between">
+                                    <h4 className="font-semibold text-charcoal">Day {day.day}</h4>
+                                    <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => {
+                                            const currentItinerary = JSON.parse(data.itinerary);
+                                            currentItinerary.splice(index, 1);
+                                            // Re-order day numbers
+                                            currentItinerary.forEach((d: any, i: number) => d.day = i + 1);
+                                            setData('itinerary', JSON.stringify(currentItinerary));
+                                        }}
+                                        className="text-red-600 hover:text-red-700"
+                                    >
+                                        Remove
+                                    </Button>
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor={`day-${index}-title`}>Title</Label>
+                                    <Input
+                                        id={`day-${index}-title`}
+                                        value={day.title}
+                                        onChange={(e) => {
+                                            const currentItinerary = JSON.parse(data.itinerary);
+                                            currentItinerary[index].title = e.target.value;
+                                            setData('itinerary', JSON.stringify(currentItinerary));
+                                        }}
+                                        placeholder="e.g., Arrival in Arusha"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor={`day-${index}-description`}>Description</Label>
+                                    <Textarea
+                                        id={`day-${index}-description`}
+                                        value={day.description}
+                                        onChange={(e) => {
+                                            const currentItinerary = JSON.parse(data.itinerary);
+                                            currentItinerary[index].description = e.target.value;
+                                            setData('itinerary', JSON.stringify(currentItinerary));
+                                        }}
+                                        placeholder="Describe the activities for this day..."
+                                        rows={3}
+                                    />
+                                </div>
+                            </div>
+                        ))}
+
+                        {JSON.parse(data.itinerary || '[]').length === 0 && (
+                            <p className="text-sm text-stone-500 text-center py-8 border border-dashed border-stone-300 rounded-lg">
+                                No itinerary days added yet. Click "Add Day" to start building your itinerary.
+                            </p>
+                        )}
+                        {errors.itinerary && <p className="text-red-500 text-sm">{errors.itinerary}</p>}
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

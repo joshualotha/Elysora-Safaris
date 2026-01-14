@@ -165,16 +165,13 @@ export default function Header() {
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-ivory w-full sm:max-w-sm p-0">
-            <div className="flex justify-between items-center p-6 border-b">
+          <SheetContent side="right" className="bg-ivory w-full sm:max-w-sm p-0 overflow-y-auto">
+            <div className="flex justify-between items-center p-6 border-b sticky top-0 bg-ivory z-10">
               <Link href="/" className="flex items-center gap-2 text-charcoal" onClick={() => setIsMobileMenuOpen(false)}>
                 <img src="/elysora-logo.png" alt="Elysora Logo" width={80} height={80} className="object-contain" />
               </Link>
-              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                <X className="h-6 w-6 text-charcoal" />
-              </Button>
             </div>
-            <div className="flex flex-col gap-6 p-6">
+            <div className="flex flex-col gap-6 p-6 pb-20">
               <nav className="flex flex-col gap-4">
                 {navLinks.slice(0, 2).map((link) => (
                   <Link
@@ -192,21 +189,41 @@ export default function Header() {
                   </Link>
                 ))}
                 <div>
-                  <p className="text-2xl font-semibold text-charcoal">Planning</p>
-                  <div className="flex flex-col gap-2 mt-2 pl-4 border-l-2 border-sand">
+                  <p className="text-2xl font-semibold text-charcoal mb-2">Services</p>
+                  <div className="flex flex-col gap-2 pl-4">
+                    {servicesNavItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={cn(
+                          "text-lg font-medium transition-colors hover:text-sahara-gold",
+                          pathname.startsWith(item.href)
+                            ? "text-sahara-gold"
+                            : "text-stone-gray"
+                        )}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="text-2xl font-semibold text-charcoal mb-2">Planning</p>
+                  <div className="flex flex-col gap-2 pl-4">
                     {planningNavItems.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
-                          "text-xl font-semibold transition-colors hover:text-sahara-gold",
+                          "text-lg font-medium transition-colors hover:text-sahara-gold",
                           pathname.startsWith(item.href)
                             ? "text-sahara-gold"
-                            : "text-charcoal"
+                            : "text-stone-gray"
                         )}
                       >
-                        {item.label}
+                        {item.title}
                       </Link>
                     ))}
                   </div>
@@ -227,8 +244,8 @@ export default function Header() {
                   </Link>
                 ))}
               </nav>
-              <Button asChild size="lg" className="mt-8" onClick={() => setIsMobileMenuOpen(false)}>
-                <Link href="/custom-safari">Book Your Safari</Link>
+              <Button asChild size="lg" className="mt-8">
+                <Link href="/custom-safari" onClick={() => setIsMobileMenuOpen(false)}>Book Your Safari</Link>
               </Button>
             </div>
           </SheetContent>

@@ -15,6 +15,7 @@ class SafariPackage extends Model
         'price',
         'image',
         'description',
+        'category',
         'itinerary',
         'whats_included',
         'whats_excluded',

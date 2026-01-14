@@ -1,9 +1,13 @@
 import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 import { Button } from '@/Components/ui/button';
-import { Users, Calendar, Banknote, ShieldCheck, CheckCircle2, MapPin } from 'lucide-react';
+import { Users, Calendar, Banknote, ShieldCheck, CheckCircle2, MapPin, ArrowRight } from 'lucide-react';
 
-export default function GroupSafari() {
+interface GroupSafariProps {
+    safaris?: Array<any>;
+}
+
+export default function GroupSafari({ safaris = [] }: GroupSafariProps) {
     return (
         <MainLayout title="Group Safaris - Elysora Safaris">
             <div className="flex flex-col min-h-screen bg-ivory">
@@ -74,60 +78,48 @@ export default function GroupSafari() {
                 <section className="py-24 bg-stone-50">
                     <div className="container mx-auto px-4 md:px-6">
                         <div className="flex justify-between items-end mb-10 border-b border-stone-200 pb-4">
-                            <h2 className="text-3xl font-headline font-bold text-charcoal">Upcoming Departures</h2>
-                            <Link href="/contact" className="text-sahara-gold font-bold hover:underline">View Full Schedule &rarr;</Link>
+                            <h2 className="text-3xl font-headline font-bold text-charcoal">Available Group Safaris</h2>
+                            <Link href={route('safaris.index', { category: 'group-safari' })} className="text-sahara-gold font-bold hover:underline">View All &rarr;</Link>
                         </div>
 
-                        <div className="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
-                            <div className="grid grid-cols-5 bg-charcoal text-white p-4 font-bold text-sm uppercase tracking-wider hidden md:grid">
-                                <div className="col-span-2">New Adventure</div>
-                                <div>Date</div>
-                                <div>Availability</div>
-                                <div>Price</div>
-                            </div>
+                        {safaris && safaris.length > 0 ? (
+                            <div className="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
+                                <div className="grid grid-cols-5 bg-charcoal text-white p-4 font-bold text-sm uppercase tracking-wider hidden md:grid">
+                                    <div className="col-span-2">Safari Package</div>
+                                    <div>Duration</div>
+                                    <div>Group Size</div>
+                                    <div>Price</div>
+                                </div>
 
-                            {/* Row 1 */}
-                            <div className="grid md:grid-cols-5 p-6 border-b border-stone-100 items-center hover:bg-stone-50 transition-colors">
-                                <div className="col-span-2 mb-2 md:mb-0">
-                                    <h4 className="font-bold text-lg text-charcoal">Serengeti & Crater Highlights</h4>
-                                    <p className="text-stone-500 text-sm flex items-center gap-1"><MapPin className="h-3 w-3" /> Arusha, Tarangire, Serengeti, Ngorongoro</p>
-                                </div>
-                                <div className="text-stone-600 mb-2 md:mb-0 font-medium">Jun 15 - Jun 20</div>
-                                <div className="text-green-600 font-bold text-sm flex items-center gap-2 mb-2 md:mb-0"><div className="w-2 h-2 rounded-full bg-green-500" /> 4 Spots Left</div>
-                                <div className="flex justify-between items-center md:block">
-                                    <span className="font-bold text-charcoal block">$1,850</span>
-                                    <Button size="sm" variant="outline" className="md:mt-2">Book</Button>
-                                </div>
+                                {safaris.map((safari, index) => (
+                                    <div key={safari.slug} className={`grid md:grid-cols-5 p-6 ${index < safaris.length - 1 ? 'border-b border-stone-100' : ''} items-center hover:bg-stone-50 transition-colors`}>
+                                        <div className="col-span-2 mb-2 md:mb-0">
+                                            <h4 className="font-bold text-lg text-charcoal">{safari.name}</h4>
+                                            <p className="text-stone-500 text-sm flex items-center gap-1">
+                                                <MapPin className="h-3 w-3" />
+                                                {safari.destinations?.slice(0, 2).join(', ')}
+                                                {safari.destinations?.length > 2 && ` +${safari.destinations.length - 2} more`}
+                                            </p>
+                                        </div>
+                                        <div className="text-stone-600 mb-2 md:mb-0 font-medium">{safari.duration} Days</div>
+                                        <div className="text-green-600 font-bold text-sm flex items-center gap-2 mb-2 md:mb-0">
+                                            <div className="w-2 h-2 rounded-full bg-green-500" />
+                                            Max 6 People
+                                        </div>
+                                        <div className="flex justify-between items-center md:block">
+                                            <span className="font-bold text-charcoal block">${safari.price.toLocaleString()}</span>
+                                            <Button asChild size="sm" variant="outline" className="md:mt-2">
+                                                <Link href={route('safaris.show', safari.slug)}>View Details</Link>
+                                            </Button>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-
-                            {/* Row 2 */}
-                            <div className="grid md:grid-cols-5 p-6 border-b border-stone-100 items-center hover:bg-stone-50 transition-colors">
-                                <div className="col-span-2 mb-2 md:mb-0">
-                                    <h4 className="font-bold text-lg text-charcoal">Northern Circuit Explorer</h4>
-                                    <p className="text-stone-500 text-sm flex items-center gap-1"><MapPin className="h-3 w-3" /> Lake Manyara, Serengeti, Crater</p>
-                                </div>
-                                <div className="text-stone-600 mb-2 md:mb-0 font-medium">Jul 02 - Jul 09</div>
-                                <div className="text-orange-500 font-bold text-sm flex items-center gap-2 mb-2 md:mb-0"><div className="w-2 h-2 rounded-full bg-orange-500" /> 2 Spots Left</div>
-                                <div className="flex justify-between items-center md:block">
-                                    <span className="font-bold text-charcoal block">$2,400</span>
-                                    <Button size="sm" variant="outline" className="md:mt-2">Book</Button>
-                                </div>
+                        ) : (
+                            <div className="bg-white rounded-2xl shadow-sm border border-stone-100 p-12 text-center">
+                                <p className="text-stone-gray text-lg">No group safaris available at the moment. Check back soon!</p>
                             </div>
-
-                            {/* Row 3 */}
-                            <div className="grid md:grid-cols-5 p-6 items-center hover:bg-stone-50 transition-colors">
-                                <div className="col-span-2 mb-2 md:mb-0">
-                                    <h4 className="font-bold text-lg text-charcoal">Great Migration Special</h4>
-                                    <p className="text-stone-500 text-sm flex items-center gap-1"><MapPin className="h-3 w-3" /> Northern Serengeti</p>
-                                </div>
-                                <div className="text-stone-600 mb-2 md:mb-0 font-medium">Aug 10 - Aug 17</div>
-                                <div className="text-green-600 font-bold text-sm flex items-center gap-2 mb-2 md:mb-0"><div className="w-2 h-2 rounded-full bg-green-500" /> 6 Spots Left</div>
-                                <div className="flex justify-between items-center md:block">
-                                    <span className="font-bold text-charcoal block">$2,950</span>
-                                    <Button size="sm" variant="outline" className="md:mt-2">Book</Button>
-                                </div>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </section>
 

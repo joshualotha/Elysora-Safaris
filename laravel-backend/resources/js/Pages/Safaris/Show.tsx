@@ -140,7 +140,7 @@ export default function SafariShow({ safari, relatedSafaris }: SafariShowProps) 
                                     </div>
 
                                     <Button asChild size="lg" className="w-full bg-sahara-gold text-charcoal hover:bg-charcoal hover:text-white mb-4">
-                                        <Link href={route('contact')}>Book This Safari</Link>
+                                        <Link href={route('bookings.create', safari.slug)}>Book This Safari</Link>
                                     </Button>
 
                                     <Button asChild size="lg" variant="outline" className="w-full">

@@ -4,7 +4,7 @@ import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
 import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
-import { ArrowLeft, Save } from 'lucide-react';
+import { ArrowLeft, Save, Plus } from 'lucide-react';
 import RichTextEditor from '@/Components/RichTextEditor';
 
 export default function Edit({ destination }: { destination: any }) {
@@ -16,15 +16,15 @@ export default function Edit({ destination }: { destination: any }) {
         description: destination.description,
         image: null as File | null,
         attractions: destination.attractions ? destination.attractions.join(', ') : '',
-        stats: destination.stats ? JSON.stringify(destination.stats) : '',
-        highlights: destination.highlights ? JSON.stringify(destination.highlights) : '',
-        sections: destination.sections ? JSON.stringify(destination.sections) : '',
+        stats: destination.stats ? JSON.stringify(destination.stats) : '{}',
+        highlights: destination.highlights ? JSON.stringify(destination.highlights) : '[]',
+        sections: destination.sections ? JSON.stringify(destination.sections) : '[]',
     });
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
         // Use post with _method: put to handle file uploads in Laravel/Inertia
-        post(route('admin.destinations.update', destination.id));
+        post(route('admin.destinations.update', destination.slug));
     };
 
     return (
@@ -111,35 +111,201 @@ export default function Edit({ destination }: { destination: any }) {
                         <p className="text-xs text-stone-500">Comma-separated list</p>
                     </div>
 
-                    <div className="space-y-2">
-                        <Label htmlFor="stats">Stats (JSON)</Label>
-                        <Textarea
-                            id="stats"
-                            value={data.stats}
-                            onChange={e => setData('stats', e.target.value)}
-                            className="h-24 font-mono text-sm"
-                        />
-                        <p className="text-xs text-stone-500">JSON object for sidebar</p>
+                    <div className="space-y-4">
+                        <Label>"At a Glance" Stats</Label>
+                        <div className="space-y-3 border border-stone-200 rounded-lg p-4 bg-stone-50">
+                            <div className="grid grid-cols-2 gap-3">
+                                <div className="space-y-2">
+                                    <Label htmlFor="stats-bestTime" className="text-xs">Best Time to Visit</Label>
+                                    <Input
+                                        id="stats-bestTime"
+                                        value={JSON.parse(data.stats || '{}').bestTime || ''}
+                                        onChange={(e) => {
+                                            const stats = JSON.parse(data.stats || '{}');
+                                            stats.bestTime = e.target.value;
+                                            setData('stats', JSON.stringify(stats));
+                                        }}
+                                        placeholder="e.g., June-October"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="stats-size" className="text-xs">Size/Area</Label>
+                                    <Input
+                                        id="stats-size"
+                                        value={JSON.parse(data.stats || '{}').size || ''}
+                                        onChange={(e) => {
+                                            const stats = JSON.parse(data.stats || '{}');
+                                            stats.size = e.target.value;
+                                            setData('stats', JSON.stringify(stats));
+                                        }}
+                                        placeholder="e.g., 14,763 km²"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="stats-climate" className="text-xs">Climate</Label>
+                                    <Input
+                                        id="stats-climate"
+                                        value={JSON.parse(data.stats || '{}').climate || ''}
+                                        onChange={(e) => {
+                                            const stats = JSON.parse(data.stats || '{}');
+                                            stats.climate = e.target.value;
+                                            setData('stats', JSON.stringify(stats));
+                                        }}
+                                        placeholder="e.g., Tropical"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        {errors.stats && <p className="text-red-500 text-sm">{errors.stats}</p>}
                     </div>
 
-                    <div className="space-y-2">
-                        <Label htmlFor="highlights">Highlights (JSON)</Label>
-                        <Textarea
-                            id="highlights"
-                            value={data.highlights}
-                            onChange={e => setData('highlights', e.target.value)}
-                            className="h-32 font-mono text-sm"
-                        />
+                    <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                            <Label>Highlights</Label>
+                            <Button
+                                type="button"
+                                variant="outline"
+                                size="sm"
+                                onClick={() => {
+                                    const highlights = data.highlights ? JSON.parse(data.highlights) : [];
+                                    highlights.push({ title: '', description: '' });
+                                    setData('highlights', JSON.stringify(highlights));
+                                }}
+                                className="gap-2"
+                            >
+                                <Plus className="h-4 w-4" /> Add Highlight
+                            </Button>
+                        </div>
+
+                        {JSON.parse(data.highlights || '[]').map((highlight: any, index: number) => (
+                            <div key={index} className="border border-stone-200 rounded-lg p-4 space-y-3 bg-stone-50">
+                                <div className="flex items-center justify-between">
+                                    <h4 className="font-semibold text-charcoal text-sm">Highlight {index + 1}</h4>
+                                    <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => {
+                                            const highlights = JSON.parse(data.highlights);
+                                            highlights.splice(index, 1);
+                                            setData('highlights', JSON.stringify(highlights));
+                                        }}
+                                        className="text-red-600 hover:text-red-700"
+                                    >
+                                        Remove
+                                    </Button>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div className="space-y-2">
+                                        <Label htmlFor={`highlight-${index}-title`} className="text-xs">Title</Label>
+                                        <Input
+                                            id={`highlight-${index}-title`}
+                                            value={highlight.title}
+                                            onChange={(e) => {
+                                                const highlights = JSON.parse(data.highlights);
+                                                highlights[index].title = e.target.value;
+                                                setData('highlights', JSON.stringify(highlights));
+                                            }}
+                                            placeholder="e.g., Wildlife"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor={`highlight-${index}-description`} className="text-xs">Description</Label>
+                                        <Input
+                                            id={`highlight-${index}-description`}
+                                            value={highlight.description}
+                                            onChange={(e) => {
+                                                const highlights = JSON.parse(data.highlights);
+                                                highlights[index].description = e.target.value;
+                                                setData('highlights', JSON.stringify(highlights));
+                                            }}
+                                            placeholder="e.g., Home to the Big Five"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        {JSON.parse(data.highlights || '[]').length === 0 && (
+                            <p className="text-sm text-stone-500 text-center py-8 border border-dashed border-stone-300 rounded-lg">
+                                No highlights added yet. Click "Add Highlight" to start.
+                            </p>
+                        )}
+                        {errors.highlights && <p className="text-red-500 text-sm">{errors.highlights}</p>}
                     </div>
 
-                    <div className="space-y-2">
-                        <Label htmlFor="sections">Additional Sections (JSON)</Label>
-                        <Textarea
-                            id="sections"
-                            value={data.sections}
-                            onChange={e => setData('sections', e.target.value)}
-                            className="h-32 font-mono text-sm"
-                        />
+                    <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                            <Label>Additional Content Sections</Label>
+                            <Button
+                                type="button"
+                                variant="outline"
+                                size="sm"
+                                onClick={() => {
+                                    const sections = data.sections ? JSON.parse(data.sections) : [];
+                                    sections.push({ title: '', content: '' });
+                                    setData('sections', JSON.stringify(sections));
+                                }}
+                                className="gap-2"
+                            >
+                                <Plus className="h-4 w-4" /> Add Section
+                            </Button>
+                        </div>
+
+                        {JSON.parse(data.sections || '[]').map((section: any, index: number) => (
+                            <div key={index} className="border border-stone-200 rounded-lg p-4 space-y-3 bg-stone-50">
+                                <div className="flex items-center justify-between">
+                                    <h4 className="font-semibold text-charcoal text-sm">Section {index + 1}</h4>
+                                    <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => {
+                                            const sections = JSON.parse(data.sections);
+                                            sections.splice(index, 1);
+                                            setData('sections', JSON.stringify(sections));
+                                        }}
+                                        className="text-red-600 hover:text-red-700"
+                                    >
+                                        Remove
+                                    </Button>
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor={`section-${index}-title`} className="text-xs">Title</Label>
+                                    <Input
+                                        id={`section-${index}-title`}
+                                        value={section.title}
+                                        onChange={(e) => {
+                                            const sections = JSON.parse(data.sections);
+                                            sections[index].title = e.target.value;
+                                            setData('sections', JSON.stringify(sections));
+                                        }}
+                                        placeholder="e.g., Wildlife"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor={`section-${index}-content`} className="text-xs">Content</Label>
+                                    <Textarea
+                                        id={`section-${index}-content`}
+                                        value={section.content}
+                                        onChange={(e) => {
+                                            const sections = JSON.parse(data.sections);
+                                            sections[index].content = e.target.value;
+                                            setData('sections', JSON.stringify(sections));
+                                        }}
+                                        placeholder="Describe this section in detail..."
+                                        rows={4}
+                                    />
+                                </div>
+                            </div>
+                        ))}
+
+                        {JSON.parse(data.sections || '[]').length === 0 && (
+                            <p className="text-sm text-stone-500 text-center py-8 border border-dashed border-stone-300 rounded-lg">
+                                No content sections added yet. Click "Add Section" to start.
+                            </p>
+                        )}
+                        {errors.sections && <p className="text-red-500 text-sm">{errors.sections}</p>}
                     </div>
 
                     <div className="pt-4 flex justify-end">

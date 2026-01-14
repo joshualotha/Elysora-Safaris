@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\SafariPackage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -69,32 +70,38 @@ class PageController extends Controller
     // Services Pages
     public function servicesCultural(): Response
     {
-        return Inertia::render('Services/CulturalTours');
+        $safaris = SafariPackage::where('category', 'classic-safari')->get();
+        return Inertia::render('Services/CulturalTours', ['safaris' => $safaris]);
     }
 
     public function servicesMountain(): Response
     {
-        return Inertia::render('Services/MountainHiking');
+        $safaris = SafariPackage::where('category', 'classic-safari')->get();
+        return Inertia::render('Services/MountainHiking', ['safaris' => $safaris]);
     }
 
     public function servicesLuxury(): Response
     {
-        return Inertia::render('Services/LuxurySafari');
+        $safaris = SafariPackage::where('category', 'classic-safari')->get();
+        return Inertia::render('Services/LuxurySafari', ['safaris' => $safaris]);
     }
 
     public function servicesGroup(): Response
     {
-        return Inertia::render('Services/GroupSafari');
+        $safaris = SafariPackage::where('category', 'group-safari')->get();
+        return Inertia::render('Services/GroupSafari', ['safaris' => $safaris]);
     }
 
     public function servicesTailorMade(): Response
     {
-        return Inertia::render('Services/TailorMadeSafari');
+        $safaris = SafariPackage::where('category', 'tailor-made-safari')->get();
+        return Inertia::render('Services/TailorMadeSafari', ['safaris' => $safaris]);
     }
 
     public function servicesZanzibar(): Response
     {
-        return Inertia::render('Services/ZanzibarBeachSafari');
+        $safaris = SafariPackage::where('category', 'classic-safari')->get();
+        return Inertia::render('Services/ZanzibarBeachSafari', ['safaris' => $safaris]);
     }
 
     public function campingSafari(): Response

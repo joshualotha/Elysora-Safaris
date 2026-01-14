@@ -15,9 +15,9 @@ interface Safari {
 }
 
 export default function Index({ safaris }: { safaris: Safari[] }) {
-    const handleDelete = (id: number) => {
+    const handleDelete = (slug: string) => {
         if (confirm('Are you sure you want to delete this safari package?')) {
-            router.delete(route('admin.safaris.destroy', id));
+            router.delete(route('admin.safaris.destroy', slug));
         }
     };
 
@@ -71,14 +71,14 @@ export default function Index({ safaris }: { safaris: Safari[] }) {
                                         <Eye className="h-4 w-4" />
                                     </Link>
                                     <Link
-                                        href={route('admin.safaris.edit', safari.id)}
+                                        href={route('admin.safaris.edit', safari.slug)}
                                         className="inline-flex p-2 text-stone-400 hover:text-sahara-gold transition-colors"
                                         title="Edit"
                                     >
                                         <Pencil className="h-4 w-4" />
                                     </Link>
                                     <button
-                                        onClick={() => handleDelete(safari.id)}
+                                        onClick={() => handleDelete(safari.slug)}
                                         className="inline-flex p-2 text-stone-400 hover:text-red-500 transition-colors"
                                         title="Delete"
                                     >

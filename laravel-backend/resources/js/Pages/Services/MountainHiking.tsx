@@ -125,7 +125,7 @@ export default function MountainHiking() {
                                     <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-sahara-gold" /> Camping Only</div>
                                 </div>
                                 <Button asChild variant="outline" className="w-full border-stone-600 text-white hover:bg-sahara-gold hover:border-sahara-gold hover:text-charcoal transition-all">
-                                    <Link href="/contact?interest=Machame">Inquire about Machame</Link>
+                                    <Link href="/contact">Inquire about Machame</Link>
                                 </Button>
                             </div>
 
@@ -146,7 +146,7 @@ export default function MountainHiking() {
                                     <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-sahara-gold" /> Camping Only</div>
                                 </div>
                                 <Button asChild variant="outline" className="w-full border-stone-600 text-white hover:bg-sahara-gold hover:border-sahara-gold hover:text-charcoal transition-all">
-                                    <Link href="/contact?interest=Lemosho">Inquire about Lemosho</Link>
+                                    <Link href="/contact">Inquire about Lemosho</Link>
                                 </Button>
                             </div>
                         </div>
@@ -175,7 +175,7 @@ export default function MountainHiking() {
                                     Often overlooked, Mount Meru offers a spectacular 3-4 day trek with stunning views of Kilimanjaro. It's the ideal way to acclimatize before attempting the Roof of Africa, significantly increasing your summit success.
                                 </p>
                                 <Button asChild size="lg" className="self-start bg-charcoal hover:bg-black text-white rounded-full">
-                                    <Link href="/contact?interest=Meru">Explore Mount Meru</Link>
+                                    <Link href="/contact">Explore Mount Meru</Link>
                                 </Button>
                             </div>
                         </div>
