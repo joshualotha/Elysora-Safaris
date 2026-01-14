@@ -6,11 +6,11 @@ export default function Culture() {
     return (
         <MainLayout title="Cultural Etiquette - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
-                <section className="relative h-[50vh] flex items-center justify-center overflow-hidden bg-charcoal">
+                <section className="relative h-screen md:h-[50vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0 opacity-20">
                         <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
                     </div>
-                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-10">
+                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-24 md:pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-sahara-gold text-charcoal flex items-center justify-center mx-auto mb-6">
                             <HandHeart className="h-8 w-8" />
                         </div>

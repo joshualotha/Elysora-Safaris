@@ -17,7 +17,7 @@ export default function SafariGuide() {
         <MainLayout title="Safari Planning Guide - Elysora Safaris">
             <div className="flex flex-col min-h-screen font-sans">
                 {/* Hero Section */}
-                <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+                <section className="relative h-screen md:h-[80vh] flex items-center justify-center overflow-hidden">
                     <img
                         src="/images/hero-serengeti.jpg"
                         alt="Safari Planning"
@@ -25,14 +25,14 @@ export default function SafariGuide() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-charcoal/90" />
 
-                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-20">
+                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-24 md:pt-20">
                         <span className="bg-sahara-gold text-charcoal px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs md:text-sm mb-8 inline-block shadow-lg">
                             The Ultimate Guide
                         </span>
-                        <h1 className="text-5xl md:text-7xl font-headline font-bold text-white mb-6 drop-shadow-xl">
+                        <h1 className="text-4xl md:text-7xl font-headline font-bold text-white mb-6 drop-shadow-xl">
                             Planning Your Safari
                         </h1>
-                        <p className="text-xl md:text-2xl text-white/95 max-w-3xl mx-auto font-medium drop-shadow-md">
+                        <p className="text-lg md:text-2xl text-white/95 max-w-3xl mx-auto font-medium drop-shadow-md">
                             Everything you need to know about seasons, wildlife, and preparation for the trip of a lifetime.
                         </p>
                     </div>

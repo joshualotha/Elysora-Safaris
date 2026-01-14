@@ -35,6 +35,7 @@ class AdminSafariController extends Controller
             'itinerary' => 'nullable|string',
             'whats_included' => 'nullable|string',
             'whats_excluded' => 'nullable|string',
+            'is_featured' => 'nullable|boolean',
         ]);
 
         if ($request->hasFile('image')) {
@@ -58,6 +59,11 @@ class AdminSafariController extends Controller
         $validated['whats_excluded'] = !empty($validated['whats_excluded']) 
             ? array_filter(array_map('trim', explode(',', $validated['whats_excluded']))) 
             : [];
+
+        // If marking as featured, unfeature all other safaris
+        if (!empty($validated['is_featured'])) {
+            SafariPackage::where('is_featured', true)->update(['is_featured' => false]);
+        }
 
         SafariPackage::create($validated);
 
@@ -85,6 +91,7 @@ class AdminSafariController extends Controller
             'itinerary' => 'nullable|string',
             'whats_included' => 'nullable|string',
             'whats_excluded' => 'nullable|string',
+            'is_featured' => 'nullable|boolean',
         ]);
 
         if ($request->hasFile('image')) {
@@ -119,6 +126,13 @@ class AdminSafariController extends Controller
             $validated['whats_excluded'] = !empty($validated['whats_excluded']) 
                 ? array_filter(array_map('trim', explode(',', $validated['whats_excluded']))) 
                 : [];
+        }
+
+        // If marking as featured, unfeature all other safaris
+        if (!empty($validated['is_featured'])) {
+            SafariPackage::where('id', '!=', $safari->id)
+                ->where('is_featured', true)
+                ->update(['is_featured' => false]);
         }
 
         $safari->update($validated);

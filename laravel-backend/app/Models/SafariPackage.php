@@ -19,6 +19,7 @@ class SafariPackage extends Model
         'itinerary',
         'whats_included',
         'whats_excluded',
+        'is_featured',
     ];
 
     protected $casts = [
@@ -28,6 +29,7 @@ class SafariPackage extends Model
         'whats_included' => 'array',
         'whats_excluded' => 'array',
         'price' => 'decimal:2',
+        'is_featured' => 'boolean',
     ];
 
     public function getRouteKeyName()

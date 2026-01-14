@@ -170,6 +170,9 @@ export default function Header() {
               <Link href="/" className="flex items-center gap-2 text-charcoal" onClick={() => setIsMobileMenuOpen(false)}>
                 <img src="/elysora-logo.png" alt="Elysora Logo" width={80} height={80} className="object-contain" />
               </Link>
+              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                <X className="h-6 w-6 text-charcoal" />
+              </Button>
             </div>
             <div className="flex flex-col gap-6 p-6 pb-20">
               <nav className="flex flex-col gap-4">

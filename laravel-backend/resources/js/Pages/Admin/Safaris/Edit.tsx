@@ -4,6 +4,7 @@ import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
 import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
+import { Checkbox } from '@/Components/ui/checkbox';
 import { ArrowLeft, Save, Plus } from 'lucide-react';
 import RichTextEditor from '@/Components/RichTextEditor';
 
@@ -21,6 +22,7 @@ export default function Edit({ safari }: { safari: any }) {
         itinerary: safari.itinerary ? JSON.stringify(safari.itinerary) : '[]',
         whats_included: safari.whats_included ? safari.whats_included.join(', ') : '',
         whats_excluded: safari.whats_excluded ? safari.whats_excluded.join(', ') : '',
+        is_featured: safari.is_featured || false,
     });
 
     const submit = (e: React.FormEvent) => {
@@ -238,6 +240,22 @@ export default function Edit({ safari }: { safari: any }) {
                                 className="h-32"
                             />
                             <p className="text-xs text-stone-500">Comma-separated list</p>
+                        </div>
+                    </div>
+
+                    <div className="space-y-3 border-t pt-6">
+                        <div className="flex items-start gap-3">
+                            <Checkbox
+                                id="is_featured"
+                                checked={data.is_featured}
+                                onCheckedChange={(checked) => setData('is_featured', checked as boolean)}
+                            />
+                            <div className="space-y-1">
+                                <Label htmlFor="is_featured" className="font-semibold cursor-pointer">Featured Safari</Label>
+                                <p className="text-xs text-stone-500">
+                                    Mark this safari as the featured package on the homepage. Only one safari can be featured at a time.
+                                </p>
+                            </div>
                         </div>
                     </div>
 

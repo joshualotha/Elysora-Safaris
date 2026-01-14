@@ -9,11 +9,11 @@ export default function Packing() {
         <MainLayout title="Safari Packing List - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
                 {/* Hero */}
-                <section className="relative h-[40vh] flex items-center justify-center overflow-hidden bg-sand">
+                <section className="relative h-screen md:h-[40vh] flex items-center justify-center overflow-hidden bg-sand">
                     <div className="absolute inset-0 opacity-20">
                         <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
                     </div>
-                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-10">
+                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-24 md:pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-charcoal text-white flex items-center justify-center mx-auto mb-6 border border-charcoal/30">
                             <Briefcase className="h-8 w-8" />
                         </div>

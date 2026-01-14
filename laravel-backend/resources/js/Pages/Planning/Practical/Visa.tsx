@@ -9,11 +9,11 @@ export default function Visa() {
     return (
         <MainLayout title="Visa & Entry Requirements - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
-                <section className="relative h-[40vh] flex items-center justify-center overflow-hidden bg-charcoal">
+                <section className="relative h-screen md:h-[40vh] flex items-center justify-center overflow-hidden bg-charcoal">
                     <div className="absolute inset-0 opacity-20">
                         <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
                     </div>
-                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-10">
+                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-24 md:pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-charcoal text-sahara-gold flex items-center justify-center mx-auto mb-6 border border-sahara-gold/30">
                             <Globe className="h-8 w-8" />
                         </div>

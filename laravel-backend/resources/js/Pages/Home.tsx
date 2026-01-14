@@ -11,13 +11,15 @@ interface HomeProps {
     safariPackages: Array<any>;
     latestBlogPosts: Array<any>;
     reviews: Array<any>;
+    featuredSafari: any;
 }
 
 export default function Home({
     featuredDestinations,
     safariPackages,
     latestBlogPosts,
-    reviews
+    reviews,
+    featuredSafari
 }: HomeProps) {
     return (
         <MainLayout title="Home - Elysora Digital Safari">
@@ -194,57 +196,62 @@ export default function Home({
                     <div className="relative min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
                         <div className="absolute inset-0">
                             <img
-                                src="/Featured-Safari.jpg"
-                                alt="The Great Migration"
+                                src={featuredSafari ? `/images/${featuredSafari.image}.jpg` : '/Featured-Safari.jpg'}
+                                alt={featuredSafari?.name || 'Featured Safari'}
                                 className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/60 to-charcoal/30" />
                         </div>
 
-                        <div className="relative container mx-auto px-4 md:px-6 py-16 md:py-20">
-                            <div className="max-w-2xl">
-                                <span className="inline-block px-4 py-2 rounded-full bg-sahara-gold/20 text-sahara-gold text-sm font-bold uppercase tracking-wider mb-6 backdrop-blur-sm border border-sahara-gold/30">
-                                    Featured Safari
-                                </span>
+                        {featuredSafari ? (
+                            <div className="relative container mx-auto px-4 md:px-6 py-16 md:py-20">
+                                <div className="max-w-2xl">
+                                    <span className="inline-block px-4 py-2 rounded-full bg-sahara-gold/20 text-sahara-gold text-sm font-bold uppercase tracking-wider mb-6 backdrop-blur-sm border border-sahara-gold/30">
+                                        Featured Safari
+                                    </span>
 
-                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-headline font-bold text-white mb-6 leading-tight">
-                                    Witness the Great<br />
-                                    <span className="text-sahara-gold">Migration</span>
-                                </h3>
+                                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-headline font-bold text-white mb-6 leading-tight">
+                                        {featuredSafari.name}
+                                    </h3>
 
-                                <p className="text-lg text-white/80 leading-relaxed mb-8">
-                                    Follow millions of wildebeest and zebra across the Serengeti in one of nature's most breathtaking spectacles. An 8-day journey through the heart of Africa.
-                                </p>
+                                    <p className="text-lg text-white/80 leading-relaxed mb-8" dangerouslySetInnerHTML={{ __html: featuredSafari.description.substring(0, 200) + '...' }} />
 
-                                <div className="grid grid-cols-4 gap-6 mb-10 max-w-md">
-                                    <div className="text-center">
-                                        <p className="text-3xl md:text-4xl font-bold text-sahara-gold font-headline">8</p>
-                                        <p className="text-xs text-white/60">Days</p>
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10 max-w-md">
+                                        <div className="text-center">
+                                            <p className="text-3xl md:text-4xl font-bold text-sahara-gold font-headline">{featuredSafari.duration}</p>
+                                            <p className="text-xs text-white/60">Days</p>
+                                        </div>
+                                        <div className="text-center">
+                                            <p className="text-3xl md:text-4xl font-bold text-sahara-gold font-headline">{featuredSafari.destinations?.length || 0}</p>
+                                            <p className="text-xs text-white/60">Parks</p>
+                                        </div>
+                                        <div className="text-center">
+                                            <p className="text-3xl md:text-4xl font-bold text-sahara-gold font-headline">5★</p>
+                                            <p className="text-xs text-white/60">Lodges</p>
+                                        </div>
+                                        <div className="text-center">
+                                            <p className="text-3xl md:text-4xl font-bold text-sahara-gold font-headline">${featuredSafari.price.toLocaleString()}</p>
+                                            <p className="text-xs text-white/60">From</p>
+                                        </div>
                                     </div>
-                                    <div className="text-center">
-                                        <p className="text-3xl md:text-4xl font-bold text-sahara-gold font-headline">3</p>
-                                        <p className="text-xs text-white/60">Parks</p>
-                                    </div>
-                                    <div className="text-center">
-                                        <p className="text-3xl md:text-4xl font-bold text-sahara-gold font-headline">5★</p>
-                                        <p className="text-xs text-white/60">Lodges</p>
-                                    </div>
-                                    <div className="text-center">
-                                        <p className="text-3xl md:text-4xl font-bold text-sahara-gold font-headline">$4,500</p>
-                                        <p className="text-xs text-white/60">From</p>
-                                    </div>
-                                </div>
 
-                                <div className="flex flex-col sm:flex-row gap-4">
-                                    <Button asChild size="lg" className="bg-sahara-gold text-charcoal hover:bg-white font-semibold rounded-full px-8">
-                                        <Link href={route('safaris.index')}>View This Safari</Link>
-                                    </Button>
-                                    <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8">
-                                        <Link href={route('contact')}>Enquire Now</Link>
-                                    </Button>
+                                    <div className="flex flex-col sm:flex-row gap-4">
+                                        <Button asChild size="lg" className="bg-sahara-gold text-charcoal hover:bg-white font-semibold rounded-full px-8">
+                                            <Link href={route('safaris.show', featuredSafari.slug)}>View This Safari</Link>
+                                        </Button>
+                                        <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8">
+                                            <Link href={route('contact')}>Enquire Now</Link>
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        ) : (
+                            <div className="relative container mx-auto px-4 md:px-6 py-16 md:py-20">
+                                <div className="max-w-2xl">
+                                    <p className="text-white text-xl">No featured safari available at the moment.</p>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* More Adventures Label */}

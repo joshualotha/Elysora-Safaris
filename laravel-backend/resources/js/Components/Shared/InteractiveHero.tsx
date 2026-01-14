@@ -56,7 +56,7 @@ export default function InteractiveHero() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
 
             <div className="relative z-10 container mx-auto px-4 md:px-6 w-full h-full pointer-events-none">
-                <div className="grid md:grid-cols-2 items-start md:items-center h-full gap-8 pt-32 md:pt-0 md:pb-0">
+                <div className="grid md:grid-cols-2 items-start md:items-center h-full gap-4 md:gap-8 pt-28 md:pt-0 md:pb-0">
                     {/* Left side content */}
                     <div className="text-white text-center md:text-left pointer-events-auto">
                         <AnimatePresence mode="wait">
@@ -67,10 +67,10 @@ export default function InteractiveHero() {
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.5, ease: "easeInOut" }}
                             >
-                                <h1 className="text-4xl md:text-6xl lg:text-8xl font-headline font-bold mb-4 text-shadow tracking-tight">
+                                <h1 className="text-4xl md:text-6xl lg:text-8xl font-headline font-bold mb-3 text-shadow tracking-tight">
                                     {activeItem.title}
                                 </h1>
-                                <p className="max-w-md mx-auto md:mx-0 text-lg md:text-xl text-stone-100 mb-8 font-body">
+                                <p className="max-w-md mx-auto md:mx-0 text-lg md:text-xl text-stone-100 mb-4 font-body line-clamp-4 md:line-clamp-none">
                                     {activeItem.subtitle}
                                 </p>
                             </motion.div>

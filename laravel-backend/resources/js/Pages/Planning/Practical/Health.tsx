@@ -7,11 +7,11 @@ export default function Health() {
     return (
         <MainLayout title="Health & Safety Advice - Elysora Safaris">
             <div className="flex flex-col min-h-screen">
-                <section className="relative h-[40vh] flex items-center justify-center overflow-hidden bg-safari-green">
+                <section className="relative h-screen md:h-[40vh] flex items-center justify-center overflow-hidden bg-safari-green">
                     <div className="absolute inset-0 opacity-20">
                         <img src="/images/pattern-overlay.png" className="w-full h-full object-cover" />
                     </div>
-                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-10">
+                    <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-24 md:pt-10">
                         <div className="w-16 h-16 rounded-2xl bg-white/10 text-white flex items-center justify-center mx-auto mb-6 border border-white/30">
                             <ShieldCheck className="h-8 w-8" />
                         </div>

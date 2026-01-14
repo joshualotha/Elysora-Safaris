@@ -4,6 +4,7 @@ import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
 import { Textarea } from '@/Components/ui/textarea';
 import { Label } from '@/Components/ui/label';
+import { Checkbox } from '@/Components/ui/checkbox';
 import { ArrowLeft, Plus } from 'lucide-react';
 import RichTextEditor from '@/Components/RichTextEditor';
 
@@ -20,6 +21,7 @@ export default function Create() {
         itinerary: '',
         whats_included: '',
         whats_excluded: '',
+        is_featured: false,
     });
 
     const submit = (e: React.FormEvent) => {
@@ -254,6 +256,22 @@ export default function Create() {
                             />
                             <p className="text-xs text-stone-500">Comma-separated list</p>
                             {errors.whats_excluded && <p className="text-red-500 text-sm">{errors.whats_excluded}</p>}
+                        </div>
+                    </div>
+
+                    <div className="space-y-3 border-t pt-6">
+                        <div className="flex items-start gap-3">
+                            <Checkbox
+                                id="is_featured"
+                                checked={data.is_featured}
+                                onCheckedChange={(checked) => setData('is_featured', checked as boolean)}
+                            />
+                            <div className="space-y-1">
+                                <Label htmlFor="is_featured" className="font-semibold cursor-pointer">Featured Safari</Label>
+                                <p className="text-xs text-stone-500">
+                                    Mark this safari as the featured package on the homepage. Only one safari can be featured at a time.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
